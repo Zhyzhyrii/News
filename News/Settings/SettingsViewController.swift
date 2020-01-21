@@ -70,11 +70,4 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         //nameTextField.text = viewModel.name
     }
     
-    //MARK: - Table delegates
-  
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let request = Settings.SelectTab.Request(numberOfTab: indexPath.row)
-        interactor?.selectTab(request: request)
-    }
-    
 }

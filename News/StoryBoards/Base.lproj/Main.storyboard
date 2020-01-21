@@ -70,7 +70,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nOs-Vj-IIG" kind="show" identifier="TabSettings" id="9rH-Q4-ShK"/>
+                                            <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="KKV-eY-VTe"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7iT-7S-is9">
@@ -96,7 +96,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nOs-Vj-IIG" kind="show" identifier="TabSettings" id="c18-KF-f4C"/>
+                                            <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="5IJ-Xd-Kv9"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Uyz-iJ-874">
@@ -122,7 +122,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nOs-Vj-IIG" kind="show" identifier="TabSettings" id="4Yt-lf-o21"/>
+                                            <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="bXH-0g-cbQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -172,88 +172,6 @@
             </objects>
             <point key="canvasLocation" x="-2702.898550724638" y="-2040.4017857142856"/>
         </scene>
-        <!--Tab Settings View Controller-->
-        <scene sceneID="I2x-SL-Kov">
-            <objects>
-                <tableViewController id="nOs-Vj-IIG" customClass="TabSettingsViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lOh-3e-ULT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <sections>
-                            <tableViewSection headerTitle="The name of the new" id="kew-XS-BUK">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NZc-xW-jmN">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NZc-xW-jmN" id="Co4-Cf-EEe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oOi-q9-goc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="oOi-q9-goc" secondAttribute="bottom" id="0Uq-cH-6iS"/>
-                                                <constraint firstItem="oOi-q9-goc" firstAttribute="leading" secondItem="Co4-Cf-EEe" secondAttribute="leading" id="0gt-Ua-N2W"/>
-                                                <constraint firstItem="oOi-q9-goc" firstAttribute="top" secondItem="Co4-Cf-EEe" secondAttribute="top" id="Iry-uu-cb6"/>
-                                                <constraint firstAttribute="trailing" secondItem="oOi-q9-goc" secondAttribute="trailing" id="i7g-ov-wiJ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="The source of the new" id="Blo-nP-Clr">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="xJt-Cq-E10">
-                                        <rect key="frame" x="0.0" y="127.5" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xJt-Cq-E10" id="STv-cD-cs4">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chage the source of the new" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cu0-iY-j2n">
-                                                    <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Cu0-iY-j2n" secondAttribute="trailing" id="3nS-7J-O9h"/>
-                                                <constraint firstAttribute="bottom" secondItem="Cu0-iY-j2n" secondAttribute="bottom" id="9rw-fc-lqg"/>
-                                                <constraint firstItem="Cu0-iY-j2n" firstAttribute="top" secondItem="STv-cD-cs4" secondAttribute="top" id="P4Q-qw-Xh0"/>
-                                                <constraint firstItem="Cu0-iY-j2n" firstAttribute="leading" secondItem="STv-cD-cs4" secondAttribute="leading" id="U4E-hy-wpd"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="nOs-Vj-IIG" id="Gzu-F8-feA"/>
-                            <outlet property="delegate" destination="nOs-Vj-IIG" id="ivM-kd-fv4"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="zg7-Vr-2GB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KfH-Vb-rw8">
-                            <connections>
-                                <action selector="saveButtonPressed" destination="nOs-Vj-IIG" id="f66-lO-vBX"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="nameOfTheNewTextField" destination="oOi-q9-goc" id="foE-Zi-n0c"/>
-                        <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="nos-xY-Kcg"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oOX-rS-GHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1749" y="-2040"/>
-        </scene>
         <!--Source Of New Settings View Controller-->
         <scene sceneID="HrA-Ic-TuC">
             <objects>
@@ -263,7 +181,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="5Vy-Xh-0xz">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="5Vy-Xh-0xz" customClass="SourceOfNewCell" customModule="News" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Vy-Xh-0xz" id="02X-1O-dew">
@@ -277,11 +195,20 @@
                             <outlet property="delegate" destination="696-pS-5jl" id="Wpg-ju-alQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Jmu-t8-42a"/>
+                    <navigationItem key="navigationItem" id="zg7-Vr-2GB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KfH-Vb-rw8">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="696-pS-5jl" id="Ubg-jt-4uq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="KfH-Vb-rw8" id="TpK-2s-4XF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vU7-VP-9wX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-849" y="-2040"/>
+            <point key="canvasLocation" x="-1746.376811594203" y="-2040.4017857142856"/>
         </scene>
         <!--Second tab news-->
         <scene sceneID="mid-4F-COb">
@@ -384,6 +311,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9rH-Q4-ShK"/>
+        <segue reference="5IJ-Xd-Kv9"/>
     </inferredMetricsTieBreakers>
 </document>

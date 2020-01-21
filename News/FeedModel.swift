@@ -7,7 +7,7 @@
 //
 
 struct FeedModel: Codable {
-    let feedName: String
+    var feedName: String
     let feedSource: String
     var isSelected = false
 }

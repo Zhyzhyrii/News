@@ -13,15 +13,21 @@
 import UIKit
 
 protocol SourceOfNewSettingsDisplayLogic: class {
+    func displayNavigationTitle(viewModel: SourceOfNewSettings.DisplayNavigationTitle.ViewModel)
+    
     func displaySourcesOfNews(viewModel: SourceOfNewSettings.DisplaySourceOfNew.ViewModel)
+    func displayTabBarItemTitle(viewModel: SourceOfNewSettings.DisplayTabBarItemTitle.ViewModel) //TODO why 2 functions
     func displaySelectedSourceOfNew(viewModel: SourceOfNewSettings.SelectNewSource.ViewModel)
+    
+    func displayTabBarItem(viewModel: SourceOfNewSettings.SaveFeedSettings.ViewModel)
+    func displayTitleOfTheNew(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel)
 }
 
 class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSettingsDisplayLogic {
     
     // MARK: - Outlets
     
-    //@IBOutlet private var nameTextField: UITextField!
+    @IBOutlet var saveButton: UIBarButtonItem!
     
     // MARK: - Public properties
     
@@ -31,6 +37,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     // MARK: - Private properties
     
     private var feedsModels: [FeedModel]!
+    private let viewController = UIApplication.shared.windows.first?.rootViewController as! UITabBarController
     
     // MARK: - Object lifecycle
     
@@ -49,7 +56,10 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        displayNavigationTitle()
         displaySourceOfNew()
+        displayTabBarTitle()
+        
     }
     
     // MARK: - Routing
@@ -63,8 +73,17 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         }
     }
     
-    func displaySomething(viewModel: SourceOfNewSettings.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    // MARK: - Display navigation title
+    
+    func displayNavigationTitle() {
+        let request = SourceOfNewSettings.DisplayNavigationTitle.Request()
+        interactor?.displayNavigationTitle(request: request)
+    }
+    
+    //TODO - bug needs to be fixed
+    
+    func displayNavigationTitle(viewModel: SourceOfNewSettings.DisplayNavigationTitle.ViewModel) {
+        navigationItem.title = viewModel.title
     }
     
     // MARK: - Display source of new
@@ -78,6 +97,17 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         displaySourcesOfNews(feedsModels: viewModel.feedsModels)
     }
     
+    // MARK: - Display tab bar title
+    
+    func displayTabBarTitle() {
+        let request = SourceOfNewSettings.DisplayTabBarItemTitle.Request()
+        interactor?.displayTabBarItemTitle(request: request)
+    }
+    
+    func displayTabBarItemTitle(viewModel: SourceOfNewSettings.DisplayTabBarItemTitle.ViewModel) { // TODO why 2 functions
+        displayTabBarItemTitle(numberOfTab: viewModel.numberOfTab, title: viewModel.title)
+    }
+    
     // MARK: - Select new`s source
     
     func selectNewSource(tableView: UITableView, indexPath: IndexPath) {
@@ -88,6 +118,23 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     func displaySelectedSourceOfNew(viewModel: SourceOfNewSettings.SelectNewSource.ViewModel) {
         displaySourcesOfNews(feedsModels: viewModel.feedsModels)
     }
+    
+    // MARK: - Display bar item title
+        
+    func displayTabBarItem(viewModel: SourceOfNewSettings.SaveFeedSettings.ViewModel) {
+        displayTabBarItemTitle(numberOfTab: viewModel.numberOfTab, title: viewModel.feedName)
+    }
+    
+    func displayTitleOfTheNew(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel) {
+//         displayTabBarItemTitle(numberOfTab: viewModel.numberOfTab, title: viewModel.feedName)
+         
+         if let indexPathOfEditedRow = viewModel.indexPathOfRow {
+             let editedCell = tableView.cellForRow(at: indexPathOfEditedRow)
+             editedCell?.textLabel?.text = viewModel.feeds[indexPathOfEditedRow.row].feedName
+             
+            feedsModels = viewModel.feeds
+         }
+     }
     
     // MARK: - Private methods
     
@@ -102,6 +149,19 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
             tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
         }
     }
+    
+    private func displayTabBarItemTitle(numberOfTab: Int, title: String) {
+        let numberOfTab = numberOfTab
+        viewController.tabBar.items?[numberOfTab].title = title
+    }
+    
+    //MARK: - IBOutlets
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        let request = SourceOfNewSettings.SaveFeedSettings.Request()
+        interactor?.saveFeedSettings(request: request)
+    }
+    
 }
 
 extension SourceOfNewSettingsViewController {
@@ -111,9 +171,8 @@ extension SourceOfNewSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SourceOfNewCell //TODO - remove SourceOfNewCell ???
         cell.textLabel?.text = feedsModels[indexPath.row].feedName
-        
         return cell
     }
 }
@@ -122,6 +181,14 @@ extension SourceOfNewSettingsViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectNewSource(tableView: tableView, indexPath: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let changeTheTitleOfNew = UIContextualAction(style: .normal, title: "Update title") {_,_,_ in
+            let request = SourceOfNewSettings.UpdateTitleOfTheNew.Request(feedName: "Updated", indexPathOfRow: indexPath)
+            self.interactor?.updateTitleOfTheNew(request: request)
+        }
+        return UISwipeActionsConfiguration(actions: [changeTheTitleOfNew])
     }
     
 }

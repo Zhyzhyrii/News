@@ -10,7 +10,7 @@ struct Constants {
     
     struct UserDefaults {
         
-        static let savedFeedForTab = "savedFeedForTab"
+        static let savedFeedsForTab = "savedFeedsForTab"
         
     }
     

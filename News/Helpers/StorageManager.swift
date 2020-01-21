@@ -14,19 +14,21 @@ class StorageManager {
     
     private let defaults = UserDefaults.standard
     
-    func getSavedFeed(forKey numberOfTab: Int) -> FeedModel? {
-        guard let savedFeed = defaults.object(forKey: "\(Constants.UserDefaults.savedFeedForTab)" + "\(numberOfTab)") as? Data else { return nil}
-        guard let fetchedFeed = try? JSONDecoder().decode(FeedModel.self, from: savedFeed) else { return nil }
-        return fetchedFeed
+    func getSavedFeeds(forKey numberOfTab: Int) -> [FeedModel]? {
+        guard let savedFeeds = defaults.object(forKey: "\(Constants.UserDefaults.savedFeedsForTab)" + "\(numberOfTab)") as? Data else { return nil}
+        guard let fetchedFeeds = try? JSONDecoder().decode([FeedModel].self, from: savedFeeds) else { return nil }
+        return fetchedFeeds
     }
     
-    func saveFeed(_ feed: FeedModel?, forKey numberOfTab: Int) {
-        guard let feed = feed else { return }
-        if !feed.isSelected {
-            defaults.removeObject(forKey: "\(Constants.UserDefaults.savedFeedForTab)" + "\(numberOfTab)")
-        } else {
-            guard let feedEncoded = try? JSONEncoder().encode(feed) else { return }
-            defaults.set(feedEncoded, forKey: "\(Constants.UserDefaults.savedFeedForTab)" + "\(numberOfTab)")
-        }
+    func saveFeeds(_ feeds: [FeedModel], forKey numberOfTab: Int) {
+//        guard let feeds = feeds else { return }
+//        for feed in feeds {
+//            if !feed.isSelected {
+//                defaults.removeObject(forKey: "\(Constants.UserDefaults.savedFeedsForTab)" + "\(numberOfTab)")
+//            } else {
+                guard let feedEncoded = try? JSONEncoder().encode(feeds) else { return }
+                defaults.set(feedEncoded, forKey: "\(Constants.UserDefaults.savedFeedsForTab)" + "\(numberOfTab)")
+//            }
+//        }
     }
 }

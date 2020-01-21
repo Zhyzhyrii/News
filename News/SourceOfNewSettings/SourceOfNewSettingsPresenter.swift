@@ -13,14 +13,20 @@
 import UIKit
 
 protocol SourceOfNewSettingsPresentationLogic {
+    func presentNavigationTitle(response: SourceOfNewSettings.DisplayNavigationTitle.Response)
+    
     func presentSourceOfNew(response: SourceOfNewSettings.DisplaySourceOfNew.Response)
+    func presentTabBarItemTitle(response: SourceOfNewSettings.DisplayTabBarItemTitle.Response)
     func presentSelectedNewSource(response: SourceOfNewSettings.SelectNewSource.Response)
+    
+    func presentTabBarItemTitle(response: SourceOfNewSettings.SaveFeedSettings.Response)
+    func presentTitleOfTheNew(response: SourceOfNewSettings.UpdateTitleOfTheNew.Response)
 }
 
 class SourceOfNewSettingsPresenter: SourceOfNewSettingsPresentationLogic {
     
     weak var viewController: SourceOfNewSettingsDisplayLogic?
-
+    
     
     //MARK: - Present source of new
     
@@ -29,10 +35,46 @@ class SourceOfNewSettingsPresenter: SourceOfNewSettingsPresentationLogic {
         viewController?.displaySourcesOfNews(viewModel: viewModel)
     }
     
+    //MARK: - Present tab bar item title
+    
+    func presentTabBarItemTitle(response: SourceOfNewSettings.DisplayTabBarItemTitle.Response) {
+        let viewModel = SourceOfNewSettings.DisplayTabBarItemTitle.ViewModel(numberOfTab: response.numberOfTab, title: response.title)
+        viewController?.displayTabBarItemTitle(viewModel: viewModel)
+    }
+    
     //MARK: - Select source of new
     
     func presentSelectedNewSource(response: SourceOfNewSettings.SelectNewSource.Response) {
         let viewModel = SourceOfNewSettings.SelectNewSource.ViewModel(feedsModels: response.feedsModels)
         viewController?.displaySelectedSourceOfNew(viewModel: viewModel)
+    }
+    
+    // MARK: - Present navigation title
+    
+    func presentNavigationTitle(response: SourceOfNewSettings.DisplayNavigationTitle.Response) {
+        let navigationTitle = "Settings for \(response.numberOfTab + 1) tab"
+        let viewModel = SourceOfNewSettings.DisplayNavigationTitle.ViewModel(title: navigationTitle)
+        viewController?.displayNavigationTitle(viewModel: viewModel)
+    }
+    
+    // MARK: - Present bar item title
+    
+    func presentTabBarItemTitle(response: SourceOfNewSettings.SaveFeedSettings.Response) {
+        var feedName = "Item"
+        
+        if let selectedFeed = response.feeds.first(where: { (feed) -> Bool in
+            feed.isSelected
+        }) {
+            feedName = selectedFeed.feedName
+        }
+        let viewModel = SourceOfNewSettings.SaveFeedSettings.ViewModel(feedName: feedName, numberOfTab: response.numberOfTab, indexPathOfRow: response.indexPathfOfEditedRow)
+        viewController?.displayTabBarItem(viewModel: viewModel)
+    }
+    
+    // MARK: - Present title of the new
+    
+    func presentTitleOfTheNew(response: SourceOfNewSettings.UpdateTitleOfTheNew.Response) {
+        let viewModel = SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel(feeds: response.feeds, numberOfTab: response.numberOfTab, indexPathOfRow: response.indexPathfOfEditedRow)
+        viewController?.displayTitleOfTheNew(viewModel: viewModel)
     }
 }

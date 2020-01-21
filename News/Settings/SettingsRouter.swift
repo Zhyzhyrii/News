@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol SettingsRoutingLogic {
-    func routeToTabSettings(segue: UIStoryboardSegue?)
+    func routeToSourceOfNewSettings(segue: UIStoryboardSegue?)
 }
 
 protocol SettingsDataPassing {
@@ -27,14 +27,14 @@ class SettingsRouter: NSObject, SettingsRoutingLogic, SettingsDataPassing {
     
     // MARK: - Routing
     
-    func routeToTabSettings(segue: UIStoryboardSegue?) {
+    func routeToSourceOfNewSettings(segue: UIStoryboardSegue?) {
         if let segue = segue {
-            let destinationVC = segue.destination as! TabSettingsViewController
+            let destinationVC = segue.destination as! SourceOfNewSettingsViewController
             var destinationDS = destinationVC.router!.dataStore!
             passDataToTabSettings(source: dataStore!, destination: &destinationDS)
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let destinationVC = storyboard.instantiateViewController(withIdentifier: "TabSettingsViewController") as! TabSettingsViewController
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SourceOfNewSettingsViewController") as! SourceOfNewSettingsViewController
             var destinationDS = destinationVC.router!.dataStore!
             passDataToTabSettings(source: dataStore!, destination: &destinationDS)
             navigateToTabSettings(source: viewController!, destination: destinationVC)
@@ -43,13 +43,13 @@ class SettingsRouter: NSObject, SettingsRoutingLogic, SettingsDataPassing {
     
     // MARK: - Navigation
     
-    func navigateToTabSettings(source: SettingsViewController, destination: TabSettingsViewController) {
+    func navigateToTabSettings(source: SettingsViewController, destination: SourceOfNewSettingsViewController) {
         source.show(destination, sender: nil)
     }
     
     // MARK: - Passing data
     
-    func passDataToTabSettings(source: SettingsDataStore, destination: inout TabSettingsDataStore) {
+    func passDataToTabSettings(source: SettingsDataStore, destination: inout SourceOfNewSettingsDataStore) {
         destination.numberOfTab = source.numberOfTab
     }
 }

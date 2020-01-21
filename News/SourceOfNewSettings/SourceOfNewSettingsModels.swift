@@ -43,14 +43,68 @@ enum SourceOfNewSettings {
         }
     }
     
-    enum Something {
+    enum DisplayNavigationTitle {
         struct Request {
         }
         
         struct Response {
+            let numberOfTab: Int
         }
         
         struct ViewModel {
+            let title: String
         }
     }
+    
+    enum SaveFeedSettings {
+        struct Request {
+        }
+        
+        struct Response {
+            let feeds: [FeedModel]
+            let numberOfTab: Int
+            let indexPathfOfEditedRow: IndexPath?
+        }
+        
+        struct ViewModel {
+            let feedName: String
+            let numberOfTab: Int
+            let indexPathOfRow: IndexPath?
+        }
+    }
+    
+    enum UpdateTitleOfTheNew {
+        struct Request {
+            let feedName: String
+            let indexPathOfRow: IndexPath
+        }
+        
+        struct Response {
+            let feeds: [FeedModel]
+            let numberOfTab: Int
+            let indexPathfOfEditedRow: IndexPath?
+        }
+        
+        struct ViewModel {
+            let feeds: [FeedModel]
+            let numberOfTab: Int
+            let indexPathOfRow: IndexPath?
+        }
+    }
+    
+    enum DisplayTabBarItemTitle {
+        struct Request {
+        }
+        
+        struct Response {
+            let numberOfTab: Int
+            let title: String
+        }
+        
+        struct ViewModel {
+            let numberOfTab: Int
+            let title: String
+        }
+    }
+    
 }
