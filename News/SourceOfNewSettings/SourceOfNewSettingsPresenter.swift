@@ -74,7 +74,12 @@ class SourceOfNewSettingsPresenter: SourceOfNewSettingsPresentationLogic {
     // MARK: - Present title of the new
     
     func presentTitleOfTheNew(response: SourceOfNewSettings.UpdateTitleOfTheNew.Response) {
-        let viewModel = SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel(feeds: response.feeds, numberOfTab: response.numberOfTab, indexPathOfRow: response.indexPathfOfEditedRow)
-        viewController?.displayTitleOfTheNew(viewModel: viewModel)
+        if response.success {
+            let viewModel = SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel(feeds: response.feeds, numberOfTab: response.numberOfTab, indexPathOfRow: response.indexPathfOfEditedRow)
+            viewController?.displayTitleOfTheNew(viewModel: viewModel)
+        } else {
+            let viewModel = SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel(feeds: response.feeds, numberOfTab: response.numberOfTab, indexPathOfRow: response.indexPathfOfEditedRow)
+            viewController?.displayAlertTheSameTitle(viewModel: viewModel)
+        }
     }
 }

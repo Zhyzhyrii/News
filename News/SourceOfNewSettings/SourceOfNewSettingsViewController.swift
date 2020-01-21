@@ -20,7 +20,9 @@ protocol SourceOfNewSettingsDisplayLogic: class {
     func displaySelectedSourceOfNew(viewModel: SourceOfNewSettings.SelectNewSource.ViewModel)
     
     func displayTabBarItem(viewModel: SourceOfNewSettings.SaveFeedSettings.ViewModel)
+    
     func displayTitleOfTheNew(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel)
+    func displayAlertTheSameTitle(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel)
 }
 
 class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSettingsDisplayLogic {
@@ -120,21 +122,26 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     }
     
     // MARK: - Display bar item title
-        
+    
     func displayTabBarItem(viewModel: SourceOfNewSettings.SaveFeedSettings.ViewModel) {
         displayTabBarItemTitle(numberOfTab: viewModel.numberOfTab, title: viewModel.feedName)
     }
     
     func displayTitleOfTheNew(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel) {
-//         displayTabBarItemTitle(numberOfTab: viewModel.numberOfTab, title: viewModel.feedName)
-         
-         if let indexPathOfEditedRow = viewModel.indexPathOfRow {
-             let editedCell = tableView.cellForRow(at: indexPathOfEditedRow)
-             editedCell?.textLabel?.text = viewModel.feeds[indexPathOfEditedRow.row].feedName
-             
+        
+        if let indexPathOfEditedRow = viewModel.indexPathOfRow {
+            let editedCell = tableView.cellForRow(at: indexPathOfEditedRow)
+            editedCell?.textLabel?.text = viewModel.feeds[indexPathOfEditedRow.row].feedName
+            
             feedsModels = viewModel.feeds
-         }
-     }
+        }
+    }
+    
+    // MARK: - Display alert that another new has the same title
+    
+    func displayAlertTheSameTitle(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel) {
+        UIHelpers.showMessage(withTitle: "The same title", message: "Title for tne new must be unique", viewController: self, buttonTitle: "OK")
+    }
     
     // MARK: - Private methods
     
@@ -184,11 +191,23 @@ extension SourceOfNewSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let changeTheTitleOfNew = UIContextualAction(style: .normal, title: "Update title") {_,_,_ in
-            let request = SourceOfNewSettings.UpdateTitleOfTheNew.Request(feedName: "Updated", indexPathOfRow: indexPath)
-            self.interactor?.updateTitleOfTheNew(request: request)
+        let changeTheTitleOfNew = UIContextualAction(style: .normal, title: "Update title") {_,_,complete in
+            
+            UIHelpers.showAlertWithTextField(withTitle: "Change title",
+                                        message: "Provide new title for the new",
+                                        viewController: self,
+                                        buttonTitle: "OK",
+                                        actionHandler: { (newTitle) in
+                                            guard let newTitle = newTitle else { return }
+                                            let request = SourceOfNewSettings.UpdateTitleOfTheNew.Request(feedName: newTitle, indexPathOfRow: indexPath)
+                                            self.interactor?.updateTitleOfTheNew(request: request)
+
+                                            complete(true)
+            }) {
+                complete(false)
+            }
         }
+        
         return UISwipeActionsConfiguration(actions: [changeTheTitleOfNew])
     }
-    
 }

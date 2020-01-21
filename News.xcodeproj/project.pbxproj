@@ -47,6 +47,7 @@
 		78A92F5123C4EE940058A293 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5023C4EE940058A293 /* StorageManager.swift */; };
 		78A92F5723C4F9900058A293 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5623C4F9900058A293 /* Constants.swift */; };
 		78A92F5A23C72E870058A293 /* SourceOfNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5923C72E870058A293 /* SourceOfNewCell.swift */; };
+		78D97B9923D7778100442108 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9823D7778100442108 /* UIHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		78A92F5023C4EE940058A293 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		78A92F5623C4F9900058A293 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		78A92F5923C72E870058A293 /* SourceOfNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewCell.swift; sourceTree = "<group>"; };
+		78D97B9823D7778100442108 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 				78A92F5023C4EE940058A293 /* StorageManager.swift */,
 				7860597E23B2AD6000FEB374 /* ExtractHelper.swift */,
 				78A92F5623C4F9900058A293 /* Constants.swift */,
+				78D97B9823D7778100442108 /* UIHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */,
 				786059BC23B8CB0000FEB374 /* FeedModel.swift in Sources */,
 				7860598A23B35FF700FEB374 /* XmlFields.swift in Sources */,
+				78D97B9923D7778100442108 /* UIHelpers.swift in Sources */,
 				786059B323B5656F00FEB374 /* SettingsWorker.swift in Sources */,
 				786059B623B5656F00FEB374 /* SettingsViewController.swift in Sources */,
 				7860597223AC1A8900FEB374 /* SceneDelegate.swift in Sources */,

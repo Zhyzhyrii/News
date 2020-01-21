@@ -57,7 +57,6 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
             for index in 0..<feedsModels.count {
                 feedsModels[index].isSelected = (index == selectedIndex) ? !feedsModels[index].isSelected : false
             }
-            //            savedFeeds = feedsModels[selectedIndex]
         }
         
         let response = SourceOfNewSettings.SelectNewSource.Response(feedsModels: feedsModels)
@@ -71,7 +70,7 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
             feed.isSelected
         }) {
             let response = SourceOfNewSettings.DisplayTabBarItemTitle.Response(numberOfTab: numberOfTab, title: selectedFeed.feedName)
-                presenter?.presentTabBarItemTitle(response: response)
+            presenter?.presentTabBarItemTitle(response: response)
         }
     }
     
@@ -97,10 +96,18 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
     
     func updateTitleOfTheNew(request: SourceOfNewSettings.UpdateTitleOfTheNew.Request) {
         indexPathOfEditedRow = request.indexPathOfRow
-        feedsModels[indexPathOfEditedRow.row].feedName = request.feedName
         
-        let response = SourceOfNewSettings.UpdateTitleOfTheNew.Response(feeds: feedsModels, numberOfTab: numberOfTab, indexPathfOfEditedRow: indexPathOfEditedRow)
-        presenter?.presentTitleOfTheNew(response: response)
+        if let _ = feedsModels.first(where: { (feed) -> Bool in
+            feed.feedName == request.feedName
+        }) {
+            let response = SourceOfNewSettings.UpdateTitleOfTheNew.Response(success: false, feeds: feedsModels, numberOfTab: numberOfTab, indexPathfOfEditedRow: indexPathOfEditedRow)
+            presenter?.presentTitleOfTheNew(response: response)
+        } else {
+            feedsModels[indexPathOfEditedRow.row].feedName = request.feedName
+            
+            let response = SourceOfNewSettings.UpdateTitleOfTheNew.Response(success: true, feeds: feedsModels, numberOfTab: numberOfTab, indexPathfOfEditedRow: indexPathOfEditedRow)
+            presenter?.presentTitleOfTheNew(response: response)
+        }
     }
     
 }

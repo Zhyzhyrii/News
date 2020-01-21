@@ -80,6 +80,7 @@ enum SourceOfNewSettings {
         }
         
         struct Response {
+            let success: Bool
             let feeds: [FeedModel]
             let numberOfTab: Int
             let indexPathfOfEditedRow: IndexPath?
