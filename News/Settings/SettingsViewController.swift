@@ -45,7 +45,6 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         
         SettingsConfigurator.shared.configure(with: self)
         
-        doSomething()
     }
     
     // MARK: - Routing
@@ -59,15 +58,24 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         }
     }
     
-    // MARK: - Do something
+    // MARK: - Select tab`s settings
     
-    func doSomething() {
-        let request = Settings.SelectTab.Request(numberOfTab: 0)
+    func selectSettingsForSpecificTab(indexOfTab: Int) {
+        let request = Settings.SelectTab.Request(numberOfTab: indexOfTab)
         interactor?.selectTab(request: request)
     }
     
     func displaySomething(viewModel: Settings.SelectTab.ViewModel) {
         //nameTextField.text = viewModel.name
+    }
+    
+}
+
+extension SettingsViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectSettingsForSpecificTab(indexOfTab: indexPath.row)
+        performSegue(withIdentifier: "SourceOfNewSettings", sender: nil)
     }
     
 }

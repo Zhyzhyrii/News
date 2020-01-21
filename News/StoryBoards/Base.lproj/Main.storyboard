@@ -69,9 +69,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="6vS-63-Xuk" secondAttribute="bottom" id="Hja-Ox-W7k"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="KKV-eY-VTe"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7iT-7S-is9">
                                         <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
@@ -95,9 +92,6 @@
                                                 <constraint firstItem="bAN-Hf-O21" firstAttribute="leading" secondItem="F0g-pg-E5y" secondAttribute="leading" constant="10" id="hsd-Ab-G1a"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="5IJ-Xd-Kv9"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Uyz-iJ-874">
                                         <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
@@ -121,9 +115,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="xri-NO-E1r" secondAttribute="bottom" id="Z7c-Ec-LIa"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="bXH-0g-cbQ"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -166,6 +157,7 @@
                         <outletCollection property="tabsSettingsLabel" destination="6vS-63-Xuk" collectionClass="NSMutableArray" id="KAM-e8-O1h"/>
                         <outletCollection property="tabsSettingsLabel" destination="bAN-Hf-O21" collectionClass="NSMutableArray" id="9cP-C5-EDW"/>
                         <outletCollection property="tabsSettingsLabel" destination="xri-NO-E1r" collectionClass="NSMutableArray" id="o17-U2-lOT"/>
+                        <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="xCc-R2-rZD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTX-3f-lWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -290,11 +282,11 @@
             </objects>
             <point key="canvasLocation" x="-4744.927536231884" y="-604.01785714285711"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="OcP-oZ-8xE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GmI-uf-ip5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="nWs-CY-J5j"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="nWs-CY-J5j"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JcR-sH-VKD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -310,7 +302,4 @@
             <point key="canvasLocation" x="-3613.04347826087" y="-2040.4017857142856"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="5IJ-Xd-Kv9"/>
-    </inferredMetricsTieBreakers>
 </document>
