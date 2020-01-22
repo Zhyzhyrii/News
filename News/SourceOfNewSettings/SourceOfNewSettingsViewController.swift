@@ -39,7 +39,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     // MARK: - Private properties
     
     private var feedsModels: [FeedModel]!
-    private let viewController = UIApplication.shared.windows.first?.rootViewController as! UITabBarController
+//    private let tabBar = UIApplication.shared.windows.first?.rootViewController as! UITabBarController
     
     // MARK: - Object lifecycle
     
@@ -159,7 +159,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     
     private func displayTabBarItemTitle(numberOfTab: Int, title: String) {
         let numberOfTab = numberOfTab
-        viewController.tabBar.items?[numberOfTab].title = title
+        tabBarController?.tabBar.items?[numberOfTab].title = title
     }
     
     //MARK: - IBOutlets
@@ -178,7 +178,7 @@ extension SourceOfNewSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SourceOfNewCell //TODO - remove SourceOfNewCell ???
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = feedsModels[indexPath.row].feedName
         return cell
     }

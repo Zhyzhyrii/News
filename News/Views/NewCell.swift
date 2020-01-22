@@ -6,4 +6,8 @@
 //  Copyright © 2020 Igor Zhyzhyrii. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class NewCell: UITableViewCell {
+    
+}
