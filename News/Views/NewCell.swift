@@ -10,4 +10,26 @@ import UIKit
 
 class NewCell: UITableViewCell {
     
+    @IBOutlet var newImageView: UIImageView!
+    @IBOutlet var newTitleLabel: UILabel!
+    @IBOutlet var newTextLabel: UILabel!
+    
+    func configure(with newData: New) {
+        
+        newTitleLabel.text = newData.title
+        newTextLabel.text = newData.descripton
+        
+        if let imageData = newData.imageRef {
+            guard let url = URL(string: imageData) else { return }
+            DispatchQueue.global().async { //TODO - ??about dispatch
+                guard let data = try? Data(contentsOf: url) else { return }
+                DispatchQueue.main.async {
+                    self.newImageView.image = UIImage(data: data)
+                }
+            }
+        } else {
+            print("Default image") //TODO
+        }
+        
+    }
 }

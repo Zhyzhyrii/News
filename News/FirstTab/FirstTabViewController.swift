@@ -31,6 +31,7 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
     
     //    private var feedsModels: [FeedModel]!
     //    private lazy var selectedIndexOfTab = tabBarController?.selectedIndex
+    private var selectedIndex = -1
     private lazy var tabBar = tabBarController?.tabBar
     
     // MARK: Object lifecycle
@@ -50,6 +51,8 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
     override func viewDidLoad() {
         super.viewDidLoad()
         FirstTabConfigurator.shared.configure(with: self)
+        
+        tableView.register(UINib(nibName: "NewCell", bundle: nil), forCellReuseIdentifier: "NewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,20 +93,46 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
         tableView.reloadData()
     }
     
+}
+
+extension FirstTabViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let parser = parser else { return 0 }
         return parser.entities.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as! NewCell
         
         guard let parser = parser else { return cell }
         
-        if let title = parser.entities[indexPath.row].title {
-            cell.textLabel?.text = title
-        }
+        cell.configure(with: parser.entities[indexPath.row])
+        cell.selectionStyle = .none
         
         return cell
     }
+    
+}
+
+extension FirstTabViewController {
+    
+        override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            if indexPath.row == selectedIndex {
+                return 300
+            }
+            return 90
+        }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == selectedIndex {
+            selectedIndex = -1
+        }else{
+            selectedIndex = indexPath.row
+        }
+
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
 }
