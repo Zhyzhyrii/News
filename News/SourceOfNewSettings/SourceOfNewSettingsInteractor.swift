@@ -38,7 +38,7 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
     // MARK: - Display source of new
     
     func displaySourceOfNew(request: SourceOfNewSettings.DisplaySourceOfNew.Request) {
-        if let feedsModels = StorageManager.shared.getSavedFeeds(forKey: numberOfTab) {
+        if let feedsModels = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: numberOfTab) {
             self.feedsModels = feedsModels
         } else {
             feedsModels = Feed.allCases.map { (feed) -> FeedModel in
@@ -86,7 +86,7 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
     // MARK: - Save feed settings
     
     func saveFeedSettings(request: SourceOfNewSettings.SaveFeedSettings.Request) {
-        StorageManager.shared.saveFeeds(feedsModels, forKey: numberOfTab)
+        UserDefaultsStorageManager.shared.saveFeeds(feedsModels, forKey: numberOfTab)
         
         let response = SourceOfNewSettings.SaveFeedSettings.Response(feeds: feedsModels, numberOfTab: numberOfTab, indexPathfOfEditedRow: indexPathOfEditedRow)
         presenter?.presentTabBarItemTitle(response: response)

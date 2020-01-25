@@ -32,7 +32,7 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
 //        worker = FirstTabWorker()
 //        worker?.doSomeWork()
         
-        if let feedsModels = StorageManager.shared.getSavedFeeds(forKey: request.indexOfTab) {
+        if let feedsModels = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: request.indexOfTab) {
             
             self.feedModel = feedsModels.first(where: { (feedModel) -> Bool in
                 feedModel.isSelected

@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let tabBarItems = viewController.tabBar.items {
             for index in 0...tabBarItems.count - 2 {
-                if let savedFeeds = StorageManager.shared.getSavedFeeds(forKey: index) {
+                if let savedFeeds = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: index) {
                     if let selectedFeed = savedFeeds.first(where: { (feed) -> Bool in
                         feed.isSelected
                     }) {

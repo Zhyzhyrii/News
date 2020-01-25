@@ -1,5 +1,5 @@
 //
-//  StorageManager.swift
+//  UserDefaultsStorageManager.swift
 //  News
 //
 //  Created by Игорь on 07.01.2020.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class StorageManager {
+class UserDefaultsStorageManager {
     
-    static let shared = StorageManager()
+    static let shared = UserDefaultsStorageManager()
     
     private let defaults = UserDefaults.standard
     
@@ -21,14 +21,7 @@ class StorageManager {
     }
     
     func saveFeeds(_ feeds: [FeedModel], forKey numberOfTab: Int) {
-//        guard let feeds = feeds else { return }
-//        for feed in feeds {
-//            if !feed.isSelected {
-//                defaults.removeObject(forKey: "\(Constants.UserDefaults.savedFeedsForTab)" + "\(numberOfTab)")
-//            } else {
-                guard let feedEncoded = try? JSONEncoder().encode(feeds) else { return }
-                defaults.set(feedEncoded, forKey: "\(Constants.UserDefaults.savedFeedsForTab)" + "\(numberOfTab)")
-//            }
-//        }
+        guard let feedEncoded = try? JSONEncoder().encode(feeds) else { return }
+        defaults.set(feedEncoded, forKey: "\(Constants.UserDefaults.savedFeedsForTab)" + "\(numberOfTab)")
     }
 }
