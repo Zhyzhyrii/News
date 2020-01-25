@@ -13,26 +13,35 @@
 import UIKit
 
 protocol FirstTabBusinessLogic {
-    func doSomething(request: FirstTab.Something.Request)
+    func getSavedNewParser(request: FirstTab.GetSavedNewParser.Request)
 }
 
 protocol FirstTabDataStore {
-    //var name: String { get set }
+    var feedModel: FeedModel! { get }
 }
 
 class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     
     var presenter: FirstTabPresentationLogic?
     var worker: FirstTabWorker?
-    //var name: String = ""
+    var feedModel: FeedModel!
     
     // MARK: Do something
     
-    func doSomething(request: FirstTab.Something.Request) {
-        worker = FirstTabWorker()
-        worker?.doSomeWork()
+    func getSavedNewParser(request: FirstTab.GetSavedNewParser.Request) {
+//        worker = FirstTabWorker()
+//        worker?.doSomeWork()
         
-        let response = FirstTab.Something.Response()
-        presenter?.presentSomething(response: response)
+        if let feedsModels = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: request.indexOfTab) {
+            
+            self.feedModel = feedsModels.first(where: { (feedModel) -> Bool in
+                feedModel.isSelected
+            })
+            
+            guard let parser = Feed.init(rawValue: feedModel.feedSource)?.parser else { return } //TODO something went wrong alert
+            
+            let response = FirstTab.GetSavedNewParser.Response(parser: parser)
+            presenter?.getParser(response: response)
+        }
     }
 }

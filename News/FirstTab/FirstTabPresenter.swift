@@ -13,17 +13,17 @@
 import UIKit
 
 protocol FirstTabPresentationLogic {
-    func presentSomething(response: FirstTab.Something.Response)
+    func getParser(response: FirstTab.GetSavedNewParser.Response)
 }
 
 class FirstTabPresenter: FirstTabPresentationLogic {
     
     weak var viewController: FirstTabDisplayLogic?
     
-    // MARK: Do something
+    // MARK: Return specific parser
     
-    func presentSomething(response: FirstTab.Something.Response) {
-        let viewModel = FirstTab.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func getParser(response: FirstTab.GetSavedNewParser.Response) {
+        let viewModel = FirstTab.GetSavedNewParser.ViewModel(parser: response.parser)
+        viewController?.returnParser(viewModel: viewModel)
     }
 }

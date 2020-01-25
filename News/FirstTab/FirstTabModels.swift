@@ -13,16 +13,20 @@
 import UIKit
 
 enum FirstTab {
+    
     // MARK: Use cases
     
-    enum Something {
+    enum GetSavedNewParser {
         struct Request {
+            let indexOfTab: Int
         }
         
         struct Response {
+            let parser: GenericNewsParser
         }
         
         struct ViewModel {
+            let parser: GenericNewsParser
         }
     }
 }

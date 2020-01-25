@@ -12,6 +12,7 @@ enum Feed: String, CaseIterable {
     case cbnFeed = "https://www1.cbn.com/app_feeds/rss/news/rss.php?section=world"
     
     var url: String { rawValue }
+    
     var newName: String {
         get {
             switch self {
@@ -23,8 +24,17 @@ enum Feed: String, CaseIterable {
                 return "CBN"
             }
         }
-        set{ //todo need??
-            newName = newValue
+    }
+    
+    var parser: GenericNewsParser {
+        switch self {
+        case .theWestFeed:
+            return TheWestParser()
+        case .nprFeed:
+            return NprParser()
+        case .cbnFeed:
+            return CbnParser()
         }
     }
+    
 }

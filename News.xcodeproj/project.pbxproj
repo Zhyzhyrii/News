@@ -44,10 +44,13 @@
 		786059C823B8F76900FEB374 /* SourceOfNewSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059C223B8F76900FEB374 /* SourceOfNewSettingsViewController.swift */; };
 		786059C923B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059C323B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift */; };
 		786059CB23B8FC0700FEB374 /* SourceOfNewSettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059CA23B8FC0700FEB374 /* SourceOfNewSettingsConfigurator.swift */; };
-		78A92F5123C4EE940058A293 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5023C4EE940058A293 /* StorageManager.swift */; };
+		78A92F5123C4EE940058A293 /* UserDefaultsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5023C4EE940058A293 /* UserDefaultsStorageManager.swift */; };
 		78A92F5723C4F9900058A293 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5623C4F9900058A293 /* Constants.swift */; };
-		78A92F5A23C72E870058A293 /* SourceOfNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5923C72E870058A293 /* SourceOfNewCell.swift */; };
 		78D97B9923D7778100442108 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9823D7778100442108 /* UIHelpers.swift */; };
+		78D97B9B23D7B0EB00442108 /* FirstTabConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9A23D7B0EB00442108 /* FirstTabConfigurator.swift */; };
+		78D97B9D23D8E18B00442108 /* NewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9C23D8E18B00442108 /* NewCell.swift */; };
+		78D97B9F23D8E2C200442108 /* NewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D97B9E23D8E2C200442108 /* NewCell.xib */; };
+		78ED403323DC757100E04467 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED403223DC757100E04467 /* Extension+UIImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,10 +93,13 @@
 		786059C223B8F76900FEB374 /* SourceOfNewSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsViewController.swift; sourceTree = "<group>"; };
 		786059C323B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsInteractor.swift; sourceTree = "<group>"; };
 		786059CA23B8FC0700FEB374 /* SourceOfNewSettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsConfigurator.swift; sourceTree = "<group>"; };
-		78A92F5023C4EE940058A293 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		78A92F5023C4EE940058A293 /* UserDefaultsStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageManager.swift; sourceTree = "<group>"; };
 		78A92F5623C4F9900058A293 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		78A92F5923C72E870058A293 /* SourceOfNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewCell.swift; sourceTree = "<group>"; };
 		78D97B9823D7778100442108 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
+		78D97B9A23D7B0EB00442108 /* FirstTabConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabConfigurator.swift; sourceTree = "<group>"; };
+		78D97B9C23D8E18B00442108 /* NewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCell.swift; sourceTree = "<group>"; };
+		78D97B9E23D8E2C200442108 /* NewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewCell.xib; sourceTree = "<group>"; };
+		78ED403223DC757100E04467 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 				786059BA23B8CAE500FEB374 /* Models */,
 				78A92F5823C72E4E0058A293 /* Views */,
 				78A92F4F23C4EE5E0058A293 /* Helpers */,
+				78ED403123DC751200E04467 /* Extensions */,
 				7860596F23AC158900FEB374 /* StoryBoards */,
 				7860597023AC15BF00FEB374 /* Configurations */,
 				7860597123AC1A8900FEB374 /* SceneDelegate.swift */,
@@ -147,10 +154,11 @@
 			children = (
 				7860596623AC153E00FEB374 /* FirstTabViewController.swift */,
 				7860596723AC153E00FEB374 /* FirstTabInteractor.swift */,
-				7860596323AC153E00FEB374 /* FirstTabWorker.swift */,
 				7860596223AC153E00FEB374 /* FirstTabPresenter.swift */,
+				7860596323AC153E00FEB374 /* FirstTabWorker.swift */,
 				7860596423AC153E00FEB374 /* FirstTabRouter.swift */,
 				7860596523AC153E00FEB374 /* FirstTabModels.swift */,
+				78D97B9A23D7B0EB00442108 /* FirstTabConfigurator.swift */,
 			);
 			path = FirstTab;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				7860595423AC07F700FEB374 /* Main.storyboard */,
+				78D97B9E23D8E2C200442108 /* NewCell.xib */,
 				7860595923AC07FB00FEB374 /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoards;
@@ -236,7 +245,7 @@
 		78A92F4F23C4EE5E0058A293 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				78A92F5023C4EE940058A293 /* StorageManager.swift */,
+				78A92F5023C4EE940058A293 /* UserDefaultsStorageManager.swift */,
 				7860597E23B2AD6000FEB374 /* ExtractHelper.swift */,
 				78A92F5623C4F9900058A293 /* Constants.swift */,
 				78D97B9823D7778100442108 /* UIHelpers.swift */,
@@ -247,9 +256,17 @@
 		78A92F5823C72E4E0058A293 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				78A92F5923C72E870058A293 /* SourceOfNewCell.swift */,
+				78D97B9C23D8E18B00442108 /* NewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		78ED403123DC751200E04467 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				78ED403223DC757100E04467 /* Extension+UIImageView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +329,7 @@
 			files = (
 				7860595B23AC07FB00FEB374 /* LaunchScreen.storyboard in Resources */,
 				7860595823AC07FB00FEB374 /* Assets.xcassets in Resources */,
+				78D97B9F23D8E2C200442108 /* NewCell.xib in Resources */,
 				7860595623AC07F700FEB374 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,7 +342,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				786059B923B5659200FEB374 /* SettingsConfigurator.swift in Sources */,
-				78A92F5123C4EE940058A293 /* StorageManager.swift in Sources */,
+				78A92F5123C4EE940058A293 /* UserDefaultsStorageManager.swift in Sources */,
+				78ED403323DC757100E04467 /* Extension+UIImageView.swift in Sources */,
 				7860598823B356B500FEB374 /* CbnParser.swift in Sources */,
 				786059B523B5656F00FEB374 /* SettingsModels.swift in Sources */,
 				7860596D23AC153E00FEB374 /* FirstTabInteractor.swift in Sources */,
@@ -333,11 +352,11 @@
 				7860596A23AC153E00FEB374 /* FirstTabRouter.swift in Sources */,
 				786059C923B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift in Sources */,
 				7860597923AC1D4800FEB374 /* RSSParser.swift in Sources */,
+				78D97B9D23D8E18B00442108 /* NewCell.swift in Sources */,
 				786059C623B8F76900FEB374 /* SourceOfNewSettingsRouter.swift in Sources */,
 				786059CB23B8FC0700FEB374 /* SourceOfNewSettingsConfigurator.swift in Sources */,
 				7860596823AC153E00FEB374 /* FirstTabPresenter.swift in Sources */,
 				786059C723B8F76900FEB374 /* SourceOfNewSettingsModels.swift in Sources */,
-				78A92F5A23C72E870058A293 /* SourceOfNewCell.swift in Sources */,
 				7860596923AC153E00FEB374 /* FirstTabWorker.swift in Sources */,
 				786059C823B8F76900FEB374 /* SourceOfNewSettingsViewController.swift in Sources */,
 				7860596C23AC153E00FEB374 /* FirstTabViewController.swift in Sources */,
@@ -353,6 +372,7 @@
 				786059B623B5656F00FEB374 /* SettingsViewController.swift in Sources */,
 				7860597223AC1A8900FEB374 /* SceneDelegate.swift in Sources */,
 				7860598223B2B82B00FEB374 /* NprParser.swift in Sources */,
+				78D97B9B23D7B0EB00442108 /* FirstTabConfigurator.swift in Sources */,
 				786059B423B5656F00FEB374 /* SettingsRouter.swift in Sources */,
 				7860597D23B15F8B00FEB374 /* New.swift in Sources */,
 				7860597B23B1542700FEB374 /* Parser.swift in Sources */,

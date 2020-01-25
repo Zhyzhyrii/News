@@ -13,38 +13,61 @@
 import UIKit
 
 protocol FirstTabDisplayLogic: class {
-    func displaySomething(viewModel: FirstTab.Something.ViewModel)
+    func returnParser(viewModel: FirstTab.GetSavedNewParser.ViewModel)
 }
 
 class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parser {
     
     //@IBOutlet private var nameTextField: UITextField!
+    @IBOutlet var navigationBar: UINavigationItem!
+    
+    // MARK: - Public properties
     
     var interactor: FirstTabBusinessLogic?
     var router: (NSObjectProtocol & FirstTabRoutingLogic & FirstTabDataPassing)?
     
-    var xmlParser: GenericNewsParser!
+    var parser: GenericNewsParser!
+    
+    // MARK: - Private properties
+    
+    //    private var feedsModels: [FeedModel]!
+    //    private lazy var selectedIndexOfTab = tabBarController?.selectedIndex
+    private var selectedIndex = -1
+    private lazy var tabBar = tabBarController?.tabBar
     
     // MARK: Object lifecycle
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
+    //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    //        setup()
+    //    }
+    //
+    //    required init?(coder aDecoder: NSCoder) {
+    //        super.init(coder: aDecoder)
+    //        setup()
+    //    }
     
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        xmlParser = NprParser()
-        xmlParser.delegate = self
-        xmlParser.startParsingWithContentsOfURL()
-        doSomething()
+        FirstTabConfigurator.shared.configure(with: self)
+        
+        tableView.register(UINib(nibName: "NewCell", bundle: nil), forCellReuseIdentifier: "NewCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let tabBar = tabBar else { return }
+        guard let selectedBarItem = tabBar.selectedItem,
+            let indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem)) else { return }
+        
+        getSavedNewParser(indexOfTab: indexOfTab)
+        
+        navigationBar.title = tabBar.selectedItem?.title
+        guard let parser = parser else { return }
+        parser.delegate = self
+        parser.startParsingWithContentsOfURL()
     }
     
     // MARK: Routing
@@ -58,43 +81,74 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
         }
     }
     
-    // MARK: Do something
+    // MARK: Get parser of saved new
     
-    func doSomething() {
-        let request = FirstTab.Something.Request()
-        interactor?.doSomething(request: request)
+    func getSavedNewParser(indexOfTab: Int) {
+        let request = FirstTab.GetSavedNewParser.Request(indexOfTab: indexOfTab)
+        interactor?.getSavedNewParser(request: request)
     }
     
-    func displaySomething(viewModel: FirstTab.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
-    }
-    
-    // MARK: Setup
-    
-    private func setup() {
-        let viewController = self
-        let interactor = FirstTabInteractor()
-        let presenter = FirstTabPresenter()
-        let router = FirstTabRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+    func returnParser(viewModel: FirstTab.GetSavedNewParser.ViewModel) {
+        parser = viewModel.parser
     }
     
     func parsingWasFinished() {
         tableView.reloadData()
     }
     
+}
+
+extension FirstTabViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return xmlParser.entities.count
+        guard let parser = parser else { return 0 }
+        return parser.entities.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as! NewCell
+        
+        guard let parser = parser else { return cell }
+        
+        cell.configure(with: parser.entities[indexPath.row])
+        if selectedIndex == indexPath.row {
+            cell.newTextLabel.isHidden = false
+        }
+        cell.selectionStyle = .none
         
         return cell
     }
+    
+}
+
+extension FirstTabViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == selectedIndex {
+            return 120
+        }
+        return 60
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! NewCell
+        if indexPath.row == selectedIndex {
+            selectedIndex = -1
+            cell.newTextLabel?.isHidden = true
+        }else{
+            selectedIndex = indexPath.row
+            cell.newTextLabel?.isHidden = false
+        }
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+
+        guard let cell = tableView.cellForRow(at: indexPath) as? NewCell else { return }
+        cell.newTextLabel?.isHidden = true
+
+    }
+    
 }
