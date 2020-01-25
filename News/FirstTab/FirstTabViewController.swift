@@ -19,6 +19,7 @@ protocol FirstTabDisplayLogic: class {
 class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parser {
     
     //@IBOutlet private var nameTextField: UITextField!
+    @IBOutlet var navigationBar: UINavigationItem!
     
     // MARK: - Public properties
     
@@ -62,6 +63,8 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
             let indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem)) else { return }
         
         getSavedNewParser(indexOfTab: indexOfTab)
+        
+        navigationBar.title = tabBar.selectedItem?.title
         guard let parser = parser else { return }
         parser.delegate = self
         parser.startParsingWithContentsOfURL()
@@ -108,6 +111,9 @@ extension FirstTabViewController {
         guard let parser = parser else { return cell }
         
         cell.configure(with: parser.entities[indexPath.row])
+        if selectedIndex == indexPath.row {
+            cell.newTextLabel.isHidden = false
+        }
         cell.selectionStyle = .none
         
         return cell
@@ -117,22 +123,32 @@ extension FirstTabViewController {
 
 extension FirstTabViewController {
     
-        override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            if indexPath.row == selectedIndex {
-                return 300
-            }
-            return 90
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == selectedIndex {
+            return 120
         }
+        return 60
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! NewCell
         if indexPath.row == selectedIndex {
             selectedIndex = -1
+            cell.newTextLabel?.isHidden = true
         }else{
             selectedIndex = indexPath.row
+            cell.newTextLabel?.isHidden = false
         }
-
+        
         tableView.beginUpdates()
         tableView.endUpdates()
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+
+        guard let cell = tableView.cellForRow(at: indexPath) as? NewCell else { return }
+        cell.newTextLabel?.isHidden = true
+
     }
     
 }

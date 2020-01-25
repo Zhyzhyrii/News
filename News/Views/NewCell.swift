@@ -18,6 +18,7 @@ class NewCell: UITableViewCell {
         
         newTitleLabel.text = newData.title
         newTextLabel.text = newData.descripton
+        newTextLabel.isHidden = true
         
         if let imageData = newData.imageRef {
             guard let url = URL(string: imageData) else { return }
