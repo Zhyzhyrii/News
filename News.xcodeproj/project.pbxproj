@@ -50,6 +50,7 @@
 		78D97B9B23D7B0EB00442108 /* FirstTabConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9A23D7B0EB00442108 /* FirstTabConfigurator.swift */; };
 		78D97B9D23D8E18B00442108 /* NewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9C23D8E18B00442108 /* NewCell.swift */; };
 		78D97B9F23D8E2C200442108 /* NewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D97B9E23D8E2C200442108 /* NewCell.xib */; };
+		78ED403323DC757100E04467 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED403223DC757100E04467 /* Extension+UIImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		78D97B9A23D7B0EB00442108 /* FirstTabConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabConfigurator.swift; sourceTree = "<group>"; };
 		78D97B9C23D8E18B00442108 /* NewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCell.swift; sourceTree = "<group>"; };
 		78D97B9E23D8E2C200442108 /* NewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewCell.xib; sourceTree = "<group>"; };
+		78ED403223DC757100E04467 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				786059BA23B8CAE500FEB374 /* Models */,
 				78A92F5823C72E4E0058A293 /* Views */,
 				78A92F4F23C4EE5E0058A293 /* Helpers */,
+				78ED403123DC751200E04467 /* Extensions */,
 				7860596F23AC158900FEB374 /* StoryBoards */,
 				7860597023AC15BF00FEB374 /* Configurations */,
 				7860597123AC1A8900FEB374 /* SceneDelegate.swift */,
@@ -258,6 +261,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		78ED403123DC751200E04467 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				78ED403223DC757100E04467 /* Extension+UIImageView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,6 +343,7 @@
 			files = (
 				786059B923B5659200FEB374 /* SettingsConfigurator.swift in Sources */,
 				78A92F5123C4EE940058A293 /* StorageManager.swift in Sources */,
+				78ED403323DC757100E04467 /* Extension+UIImageView.swift in Sources */,
 				7860598823B356B500FEB374 /* CbnParser.swift in Sources */,
 				786059B523B5656F00FEB374 /* SettingsModels.swift in Sources */,
 				7860596D23AC153E00FEB374 /* FirstTabInteractor.swift in Sources */,
