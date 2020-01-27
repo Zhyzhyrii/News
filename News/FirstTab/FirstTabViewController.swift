@@ -13,10 +13,10 @@
 import UIKit
 
 protocol FirstTabDisplayLogic: class {
-    func returnParser(viewModel: FirstTab.GetSavedNewParser.ViewModel)
+    func displayNews(viewModel: FirstTab.GetNews.ViewModel)
 }
 
-class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parser {
+class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     
     //@IBOutlet private var nameTextField: UITextField!
     @IBOutlet var navigationBar: UINavigationItem!
@@ -29,6 +29,8 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
     var parser: GenericNewsParser!
     
     // MARK: - Private properties
+    
+    private var news: [DisplayedNew]!
     
     //    private var feedsModels: [FeedModel]!
     //    private lazy var selectedIndexOfTab = tabBarController?.selectedIndex
@@ -58,16 +60,16 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         guard let tabBar = tabBar else { return }
         guard let selectedBarItem = tabBar.selectedItem,
             let indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem)) else { return }
         
-        getSavedNewParser(indexOfTab: indexOfTab)
+//        getSavedNewParser(indexOfTab: indexOfTab)
         
         navigationBar.title = tabBar.selectedItem?.title
-        guard let parser = parser else { return }
-        parser.delegate = self
-        parser.startParsingWithContentsOfURL()
+        
+        getNews(indexOfTab: indexOfTab)
     }
     
     // MARK: Routing
@@ -81,19 +83,18 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
         }
     }
     
-    // MARK: Get parser of saved new
+    // MARK: Display news
     
-    func getSavedNewParser(indexOfTab: Int) {
-        let request = FirstTab.GetSavedNewParser.Request(indexOfTab: indexOfTab)
-        interactor?.getSavedNewParser(request: request)
-    }
-    
-    func returnParser(viewModel: FirstTab.GetSavedNewParser.ViewModel) {
-        parser = viewModel.parser
-    }
-    
-    func parsingWasFinished() {
+    func displayNews(viewModel: FirstTab.GetNews.ViewModel) {
+        news = viewModel.news
         tableView.reloadData()
+    }
+    
+    //MARK: - Get news
+    
+    func getNews(indexOfTab: Int)  {
+        let request = FirstTab.GetNews.Request(indexOfTab: indexOfTab)
+        interactor?.getNews(request: request)
     }
     
 }
@@ -101,16 +102,16 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, Parse
 extension FirstTabViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let parser = parser else { return 0 }
-        return parser.entities.count
+        guard let news = news else { return 0 }
+        return news.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as! NewCell
         
-        guard let parser = parser else { return cell }
+        guard let news = news else { return UITableViewCell() }
         
-        cell.configure(with: parser.entities[indexPath.row])
+        cell.configure(with: news[indexPath.row])
         if selectedIndex == indexPath.row {
             cell.newTextLabel.isHidden = false
         }

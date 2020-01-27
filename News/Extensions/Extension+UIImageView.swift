@@ -13,7 +13,7 @@ extension UIImageView {
     func fetchImage(with url: String?) {
         guard let imageUrl = url else { return }
         guard let imageURL = URL(string: imageUrl) else {
-            image = #imageLiteral(resourceName: "bookmark") //TODO - add default image
+//            image = #imageLiteral(resourceName: <#T##String#>) //TODO - add default image
             return
         }
         

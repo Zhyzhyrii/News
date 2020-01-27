@@ -16,17 +16,17 @@ enum FirstTab {
     
     // MARK: Use cases
     
-    enum GetSavedNewParser {
+    enum GetNews {
         struct Request {
             let indexOfTab: Int
         }
         
         struct Response {
-            let parser: GenericNewsParser
+            let news: [New]
         }
         
         struct ViewModel {
-            let parser: GenericNewsParser
+            let news: [DisplayedNew]
         }
     }
 }

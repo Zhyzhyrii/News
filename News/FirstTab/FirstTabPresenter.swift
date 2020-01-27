@@ -13,17 +13,38 @@
 import UIKit
 
 protocol FirstTabPresentationLogic {
-    func getParser(response: FirstTab.GetSavedNewParser.Response)
+    func presentNews(response: FirstTab.GetNews.Response)
 }
 
 class FirstTabPresenter: FirstTabPresentationLogic {
     
     weak var viewController: FirstTabDisplayLogic?
     
-    // MARK: Return specific parser
+    // MARK: Present news
     
-    func getParser(response: FirstTab.GetSavedNewParser.Response) {
-        let viewModel = FirstTab.GetSavedNewParser.ViewModel(parser: response.parser)
-        viewController?.returnParser(viewModel: viewModel)
+    func presentNews(response: FirstTab.GetNews.Response) {
+        
+        let news = prepareDisplayedNews(response.news)
+        
+        let viewModel = FirstTab.GetNews.ViewModel(news: news)
+        viewController?.displayNews(viewModel: viewModel)
+        
     }
+    
+    // MARK: - Prepare displayed news
+    
+    private func prepareDisplayedNews(_ news: [New]) -> [DisplayedNew] {
+        
+         var displayedNews: [DisplayedNew] = []
+            news.forEach { (new) in
+                let title = new.title ?? ""
+                let description = new.descripton ?? ""
+                let imageRef = new.imageRef ?? ""
+                
+                let displayedNew = DisplayedNew(title: title, descripton: description, imageRef: imageRef)
+                displayedNews.append(displayedNew)
+            }
+            return displayedNews
+        }
+
 }

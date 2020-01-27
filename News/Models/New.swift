@@ -6,10 +6,18 @@
 //  Copyright © 2019 Igor Zhyzhyrii. All rights reserved.
 //
 
-struct New {
+import RealmSwift
+
+class New: Object {
     
-    var title: String!
-    var descripton: String!
-    var imageRef: String!
+    //Fields from XML
+    
+    @objc dynamic var title: String?
+    @objc dynamic var descripton: String?
+    @objc dynamic var imageRef: String?
+    
+    //Custom fields
+    
+    @objc dynamic var sourceOfNew: String?
     
 }

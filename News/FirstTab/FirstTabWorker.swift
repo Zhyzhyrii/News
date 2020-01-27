@@ -10,9 +10,20 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import RealmSwift
 
 class FirstTabWorker {
-    func doSomeWork() {
+    
+    func saveNewsToDataBase(news: [New]) {
+        
+        RealmManager.addObjects(objects: news)
+        
     }
+    
+    func getNewsFromDataBase(feedSource: String) -> [New]? {
+        
+        return RealmNewManager.getNewsFromDataBase(feedSource: feedSource)
+        
+    }
+    
 }

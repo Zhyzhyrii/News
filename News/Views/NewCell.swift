@@ -14,12 +14,12 @@ class NewCell: UITableViewCell {
     @IBOutlet var newTitleLabel: UILabel!
     @IBOutlet var newTextLabel: UILabel!
     
-    func configure(with newData: New) {
+    func configure(with new: DisplayedNew) {
         
-        newTitleLabel.text = newData.title
-        newTextLabel.text = newData.descripton
+        newTitleLabel.text = new.title
+        newTextLabel.text = new.descripton
         newTextLabel.isHidden = true
-        newImageView.fetchImage(with: newData.imageRef)
+        newImageView.fetchImage(with: new.imageRef)
         
     }
 }

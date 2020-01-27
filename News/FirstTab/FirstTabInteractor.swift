@@ -13,35 +13,71 @@
 import UIKit
 
 protocol FirstTabBusinessLogic {
-    func getSavedNewParser(request: FirstTab.GetSavedNewParser.Request)
+    func getNews(request: FirstTab.GetNews.Request)
 }
 
 protocol FirstTabDataStore {
-    var feedModel: FeedModel! { get }
 }
 
-class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
+class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore, Parser {
     
     var presenter: FirstTabPresentationLogic?
     var worker: FirstTabWorker?
-    var feedModel: FeedModel!
     
-    // MARK: Do something
+    // MARK: - Parser delegate method
     
-    func getSavedNewParser(request: FirstTab.GetSavedNewParser.Request) {
-//        worker = FirstTabWorker()
-//        worker?.doSomeWork()
+    func parsingWasFinished() {
+        print("Parsing was finished") //TODO ??
+    }
+    
+    // MARK: - Get selected FeedModel
+    
+    private func getSelectedFeedModel(indexOfTab: Int) -> FeedModel? {
         
-        if let feedsModels = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: request.indexOfTab) {
+        guard let feedsModels = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: indexOfTab) else { return nil } //TODO something went wrong alert (not select source for tab)
+        guard let feedModel = feedsModels.first(where: { (feedModel) -> Bool in
+            feedModel.isSelected
+        }) else { return nil } //TODO something went wrong alert (not select source for tab)
+        
+        return feedModel
+        
+    }
+    
+    // MARK: Get saved parser
+    
+    private func getNewsFromParser(indexOfTab: Int) -> [New]? { //TODO do not need this func because we get getNews func ???
+        
+        guard let feedModel = getSelectedFeedModel(indexOfTab: indexOfTab) else { return nil }
+        
+        guard let parser = Feed.init(rawValue: feedModel.feedSource)?.parser else { return nil } //TODO something went wrong alert
+        
+        parser.delegate = self
+        parser.startParsingWithContentsOfURL()
+        
+        return parser.entities.map { (new) -> New in
+            new.sourceOfNew = feedModel.feedSource
+            return new
+        }
+        
+    }
+    
+    // MARK: Get news
+    
+    func getNews(request: FirstTab.GetNews.Request) {
+        worker = FirstTabWorker()
+        
+        guard let feedModel = getSelectedFeedModel(indexOfTab: request.indexOfTab) else { return }
+        
+        if let news = worker?.getNewsFromDataBase(feedSource: feedModel.feedSource) {
+            let response = FirstTab.GetNews.Response(news: news)
+            presenter?.presentNews(response: response)
+        } else {
+            guard let news = getNewsFromParser(indexOfTab: request.indexOfTab) else { return }
             
-            self.feedModel = feedsModels.first(where: { (feedModel) -> Bool in
-                feedModel.isSelected
-            })
+            worker?.saveNewsToDataBase(news: news)
             
-            guard let parser = Feed.init(rawValue: feedModel.feedSource)?.parser else { return } //TODO something went wrong alert
-            
-            let response = FirstTab.GetSavedNewParser.Response(parser: parser)
-            presenter?.getParser(response: response)
+            let response = FirstTab.GetNews.Response(news: news)
+            presenter?.presentNews(response: response)
         }
     }
 }
