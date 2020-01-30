@@ -14,6 +14,7 @@ import UIKit
 
 protocol FirstTabPresentationLogic {
     func presentNews(response: FirstTab.GetNews.Response)
+    func presentNewsByRefreshing(response: FirstTab.RefreshNews.Response)
 }
 
 class FirstTabPresenter: FirstTabPresentationLogic {
@@ -31,20 +32,31 @@ class FirstTabPresenter: FirstTabPresentationLogic {
         
     }
     
+    // MARK: - Present news by refreshing
+    
+    func presentNewsByRefreshing(response: FirstTab.RefreshNews.Response) {
+        
+        let news = prepareDisplayedNews(response.news)
+        
+        let viewModel = FirstTab.RefreshNews.ViewModel(news: news)
+        viewController?.displayNewsByRefreshing(viewModel: viewModel)
+        
+    }
+    
     // MARK: - Prepare displayed news
     
     private func prepareDisplayedNews(_ news: [New]) -> [DisplayedNew] {
         
-         var displayedNews: [DisplayedNew] = []
-            news.forEach { (new) in
-                let title = new.title ?? ""
-                let description = new.descripton ?? ""
-                let imageRef = new.imageRef ?? ""
-                
-                let displayedNew = DisplayedNew(title: title, descripton: description, imageRef: imageRef)
-                displayedNews.append(displayedNew)
-            }
-            return displayedNews
+        var displayedNews: [DisplayedNew] = []
+        news.forEach { (new) in
+            let title = new.title ?? ""
+            let description = new.descripton ?? ""
+            let imageRef = new.imageRef ?? ""
+            
+            let displayedNew = DisplayedNew(title: title, descripton: description, imageRef: imageRef)
+            displayedNews.append(displayedNew)
         }
-
+        return displayedNews
+    }
+    
 }

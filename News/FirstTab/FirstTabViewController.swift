@@ -14,6 +14,7 @@ import UIKit
 
 protocol FirstTabDisplayLogic: class {
     func displayNews(viewModel: FirstTab.GetNews.ViewModel)
+    func displayNewsByRefreshing(viewModel: FirstTab.RefreshNews.ViewModel)
 }
 
 class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
@@ -35,7 +36,8 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     //    private var feedsModels: [FeedModel]!
     //    private lazy var selectedIndexOfTab = tabBarController?.selectedIndex
     private var selectedIndex = -1
-    private lazy var tabBar = tabBarController?.tabBar
+    private var tabBar: UITabBar!
+    private var indexOfTab: Int!
     
     // MARK: Object lifecycle
     
@@ -61,11 +63,9 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let tabBar = tabBar else { return }
-        guard let selectedBarItem = tabBar.selectedItem,
-            let indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem)) else { return }
-        
-//        getSavedNewParser(indexOfTab: indexOfTab)
+        guard let tabBar = tabBarController?.tabBar else { return }
+        guard let selectedBarItem = tabBar.selectedItem else { return }
+        indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem))
         
         navigationBar.title = tabBar.selectedItem?.title
         
@@ -86,8 +86,7 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     // MARK: Display news
     
     func displayNews(viewModel: FirstTab.GetNews.ViewModel) {
-        news = viewModel.news
-        tableView.reloadData()
+        displayNews(news: viewModel.news)
     }
     
     //MARK: - Get news
@@ -95,6 +94,27 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     func getNews(indexOfTab: Int)  {
         let request = FirstTab.GetNews.Request(indexOfTab: indexOfTab)
         interactor?.getNews(request: request)
+    }
+    
+    // MARK: - Display news by refreshing
+    
+    func displayNewsByRefreshing(viewModel: FirstTab.RefreshNews.ViewModel) {
+        displayNews(news: viewModel.news)
+    }
+    
+    // MARK: - Private methods
+    
+    private func displayNews(news: [DisplayedNew]) {
+        self.news = news
+        tableView.reloadData()
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
+        print("Get news by refreshing")
+        let request = FirstTab.RefreshNews.Request(indexOfTab: indexOfTab)
+        interactor?.getNewsByRefreshing(request: request)
     }
     
 }

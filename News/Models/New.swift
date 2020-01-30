@@ -15,6 +15,7 @@ class New: Object {
     @objc dynamic var title: String?
     @objc dynamic var descripton: String?
     @objc dynamic var imageRef: String?
+    @objc dynamic var pubDate: Date?
     
     //Custom fields
     

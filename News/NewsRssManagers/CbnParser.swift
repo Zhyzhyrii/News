@@ -31,4 +31,14 @@ class CbnParser: GenericNewsParser {
         }
     }
     
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+          if entity != nil {
+              if currentElement == XmlFields.pubDate.description {
+                  if let date = ExtractHelper.getFormattedDate(format: "yyyy-MM-dd'T'HH:mm:ssZ", from: string ) {
+                      entity.pubDate = date
+                  }
+              }
+          }
+      }
+
 }

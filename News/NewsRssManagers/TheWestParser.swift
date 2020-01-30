@@ -27,4 +27,15 @@ class TheWestParser: GenericNewsParser {
             }
         }
     }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        if entity != nil {
+            if currentElement == XmlFields.pubDate.description {
+                if let date = ExtractHelper.getFormattedDate(format: "E, d MMM yyyy HH:mm:ss Z", from: string ) {
+                    entity.pubDate = date
+                }
+            }
+        }
+    }
+
 }

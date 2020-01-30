@@ -18,7 +18,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Title" id="RHF-yO-4Yf"/>
+                                <navigationItem title="Title" id="RHF-yO-4Yf">
+                                    <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="9Ig-k0-zTh">
+                                        <connections>
+                                            <action selector="refreshButtonPressed:" destination="g0p-SO-lSd" id="4nY-VD-XF6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
                             </items>
                         </navigationBar>
                         <prototypes>

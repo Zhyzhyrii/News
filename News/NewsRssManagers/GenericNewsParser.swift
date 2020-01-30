@@ -9,7 +9,7 @@
 import Foundation
 
 class GenericNewsParser: NSObject, RSSParser {
-
+    
     var feed: Feed!
     
     var currentElement = ""

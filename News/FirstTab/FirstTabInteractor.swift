@@ -14,6 +14,7 @@ import UIKit
 
 protocol FirstTabBusinessLogic {
     func getNews(request: FirstTab.GetNews.Request)
+    func getNewsByRefreshing(request: FirstTab.RefreshNews.Request)
 }
 
 protocol FirstTabDataStore {
@@ -22,7 +23,7 @@ protocol FirstTabDataStore {
 class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore, Parser {
     
     var presenter: FirstTabPresentationLogic?
-    var worker: FirstTabWorker?
+    var worker = FirstTabWorker()
     
     // MARK: - Parser delegate method
     
@@ -57,6 +58,9 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore, Parser {
         return parser.entities.map { (new) -> New in
             new.sourceOfNew = feedModel.feedSource
             return new
+        }.sorted { (firstNew, secondNew) -> Bool in
+            guard let firstDate = firstNew.pubDate, let secondDate = secondNew.pubDate else { return false }
+            return firstDate > secondDate
         }
         
     }
@@ -64,20 +68,46 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore, Parser {
     // MARK: Get news
     
     func getNews(request: FirstTab.GetNews.Request) {
-        worker = FirstTabWorker()
         
         guard let feedModel = getSelectedFeedModel(indexOfTab: request.indexOfTab) else { return }
         
-        if let news = worker?.getNewsFromDataBase(feedSource: feedModel.feedSource) {
+        if let news = worker.getNewsFromDataBase(feedSource: feedModel.feedSource) {
             let response = FirstTab.GetNews.Response(news: news)
             presenter?.presentNews(response: response)
         } else {
             guard let news = getNewsFromParser(indexOfTab: request.indexOfTab) else { return }
             
-            worker?.saveNewsToDataBase(news: news)
+            worker.saveNewsToDataBase(news: news)
             
             let response = FirstTab.GetNews.Response(news: news)
             presenter?.presentNews(response: response)
         }
+    }
+    
+    // MARK: - Get news by refreshing
+    
+    func getNewsByRefreshing(request: FirstTab.RefreshNews.Request) {
+        var refreshedNews: [New]!
+        
+        guard let feedModel = getSelectedFeedModel(indexOfTab: request.indexOfTab) else { return }
+        
+        guard let newsFromNetwork = getNewsFromParser(indexOfTab: request.indexOfTab) else { return }
+        
+        if let newsFromDB = worker.getNewsFromDataBase(feedSource: feedModel.feedSource) {
+            var amountOfDifferentNews = 0
+            
+            for new in newsFromNetwork {
+                if new.title != newsFromDB[0].title {
+                    amountOfDifferentNews += 1
+                } else {
+                    refreshedNews = Array(newsFromNetwork.prefix(amountOfDifferentNews))
+                    worker.saveNewsToDataBase(news: refreshedNews)
+                    break
+                }
+            }
+        }
+        
+        let response = FirstTab.RefreshNews.Response(news: newsFromNetwork)
+        presenter?.presentNewsByRefreshing(response: response)
     }
 }

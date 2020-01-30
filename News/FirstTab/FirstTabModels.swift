@@ -29,4 +29,18 @@ enum FirstTab {
             let news: [DisplayedNew]
         }
     }
+    
+    enum RefreshNews {
+        struct Request {
+            let indexOfTab: Int
+        }
+        
+        struct Response {
+            let news: [New]
+        }
+        
+        struct ViewModel {
+            let news: [DisplayedNew]
+        }
+    }
 }

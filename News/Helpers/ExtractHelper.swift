@@ -7,7 +7,7 @@
 //
 
 import Foundation
-    
+
 class ExtractHelper {
     
     static func matches(for regex: String, in text: String) -> [String] {
@@ -29,6 +29,20 @@ class ExtractHelper {
         if let matched = matches(for: "<img src='.* alt", in: string).first {
             return matched.replacingOccurrences(of: "<img src='", with: "")
                 .replacingOccurrences(of: "' alt", with: "")
+        }
+        return nil
+    }
+    
+    static func getFormattedDate(format: String, from date: String) -> Date? {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = format
+        if date.prefix(1) != "\n" {
+            if let formattedDate = dateFormatterGet.date(from: date) {
+                return formattedDate
+            } else {
+                print("There was an error decoding the string")
+                return nil
+            }
         }
         return nil
     }

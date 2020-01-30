@@ -13,6 +13,7 @@ enum XmlFields: String {
     case title
     case description
     case thumbnail
+    case pubDate
     
     var description: String { rawValue }
 }
