@@ -20,6 +20,7 @@ protocol FirstTabDisplayLogic: class {
 class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     
     //@IBOutlet private var nameTextField: UITextField!
+    
     @IBOutlet var navigationBar: UINavigationItem!
     
     // MARK: - Public properties
