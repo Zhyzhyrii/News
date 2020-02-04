@@ -74,8 +74,12 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
 extension SettingsViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectSettingsForSpecificTab(indexOfTab: indexPath.row)
-        performSegue(withIdentifier: "SourceOfNewSettings", sender: nil)
+        if indexPath.section == 0 {
+            selectSettingsForSpecificTab(indexOfTab: indexPath.row)
+            performSegue(withIdentifier: "SourceOfNewSettings", sender: nil) // TODO constant
+        } else {
+            performSegue(withIdentifier: "IntervalOfUpdating", sender: nil) // TODO constant
+        }
     }
     
 }

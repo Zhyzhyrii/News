@@ -32,12 +32,6 @@ class SettingsRouter: NSObject, SettingsRoutingLogic, SettingsDataPassing {
             let destinationVC = segue.destination as! SourceOfNewSettingsViewController
             var destinationDS = destinationVC.router!.dataStore!
             passDataToTabSettings(source: dataStore!, destination: &destinationDS)
-        } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SourceOfNewSettingsViewController") as! SourceOfNewSettingsViewController
-            var destinationDS = destinationVC.router!.dataStore!
-            passDataToTabSettings(source: dataStore!, destination: &destinationDS)
-            navigateToTabSettings(source: viewController!, destination: destinationVC)
         }
     }
     

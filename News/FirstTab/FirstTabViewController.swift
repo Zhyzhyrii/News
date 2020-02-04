@@ -40,6 +40,8 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     private var tabBar: UITabBar!
     private var indexOfTab: Int!
     
+//    private var timer: Timer!
+    
     // MARK: Object lifecycle
     
     //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -71,6 +73,9 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
         navigationBar.title = tabBar.selectedItem?.title
         
         getNews(indexOfTab: indexOfTab)
+        
+//        Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(getNewsByTimer(timer:)), userInfo: indexOfTab, repeats: true)
+        
     }
     
     // MARK: Routing
@@ -110,12 +115,22 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
         tableView.reloadData()
     }
     
+    private func getNewsByRefreshing(indexOfTab: Int) {
+        let request = FirstTab.RefreshNews.Request(indexOfTab: indexOfTab)
+        interactor?.getNewsByRefreshing(request: request)
+    }
+    
+    @objc private func getNewsByTimer(timer: Timer) {
+        if let indexOfTab = timer.userInfo as? Int {
+            print(indexOfTab)
+            getNewsByRefreshing(indexOfTab: indexOfTab)
+        }
+    }
+    
     // MARK: - IBActions
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
-        print("Get news by refreshing")
-        let request = FirstTab.RefreshNews.Request(indexOfTab: indexOfTab)
-        interactor?.getNewsByRefreshing(request: request)
+        getNewsByRefreshing(indexOfTab: indexOfTab)
     }
     
 }

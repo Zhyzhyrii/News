@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -173,12 +174,47 @@
                         <outletCollection property="tabsSettingsLabel" destination="6vS-63-Xuk" collectionClass="NSMutableArray" id="KAM-e8-O1h"/>
                         <outletCollection property="tabsSettingsLabel" destination="bAN-Hf-O21" collectionClass="NSMutableArray" id="9cP-C5-EDW"/>
                         <outletCollection property="tabsSettingsLabel" destination="xri-NO-E1r" collectionClass="NSMutableArray" id="o17-U2-lOT"/>
-                        <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="xCc-R2-rZD"/>
+                        <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="DNh-XH-RUu"/>
+                        <segue destination="CjO-eX-EsR" kind="show" identifier="IntervalOfUpdating" id="K6X-cM-3nd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTX-3f-lWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2702.898550724638" y="-2040.4017857142856"/>
+        </scene>
+        <!--Interval Of Updating View Controller-->
+        <scene sceneID="cGx-z1-qYz">
+            <objects>
+                <viewController id="CjO-eX-EsR" customClass="IntervalOfUpdatingViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1XW-r7-TeA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXZ-fw-Ldl">
+                                <rect key="frame" x="0.0" y="340" width="414" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CjO-eX-EsR" id="arc-Mc-yZJ"/>
+                                    <outlet property="delegate" destination="CjO-eX-EsR" id="tBE-xG-QzA"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iXZ-fw-Ldl" firstAttribute="centerX" secondItem="gXm-PJ-LHg" secondAttribute="centerX" id="0No-Br-Z9i"/>
+                            <constraint firstItem="gXm-PJ-LHg" firstAttribute="trailing" secondItem="iXZ-fw-Ldl" secondAttribute="trailing" id="NxR-iF-Tnx"/>
+                            <constraint firstItem="iXZ-fw-Ldl" firstAttribute="leading" secondItem="gXm-PJ-LHg" secondAttribute="leading" id="Sx1-wg-WSp"/>
+                            <constraint firstItem="iXZ-fw-Ldl" firstAttribute="centerY" secondItem="gXm-PJ-LHg" secondAttribute="centerY" constant="-2.5" id="bfO-VY-w4s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gXm-PJ-LHg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8Wa-X5-WJe"/>
+                    <connections>
+                        <outlet property="timeIntervalPickerView" destination="iXZ-fw-Ldl" id="LUp-pw-Ype"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WPK-Pf-vso" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1936" y="-1761"/>
         </scene>
         <!--Source Of New Settings View Controller-->
         <scene sceneID="HrA-Ic-TuC">
@@ -216,7 +252,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vU7-VP-9wX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1746.376811594203" y="-2040.4017857142856"/>
+            <point key="canvasLocation" x="-1936" y="-2431"/>
         </scene>
         <!--Second tab news-->
         <scene sceneID="mid-4F-COb">

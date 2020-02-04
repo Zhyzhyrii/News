@@ -24,4 +24,14 @@ class UserDefaultsStorageManager {
         guard let feedEncoded = try? JSONEncoder().encode(feeds) else { return }
         defaults.set(feedEncoded, forKey: "\(Constants.UserDefaults.savedFeedsForTab)" + "\(numberOfTab)")
     }
+    
+    func getSavedIntervalOfUpdatingInSeconds() -> Int? {
+        guard let savedIntervalOfUpdating = defaults.object(forKey: Constants.UserDefaults.savedIntervalOfUpdating) as? Int else { return nil }
+        return savedIntervalOfUpdating
+    }
+
+    func saveIntervalOfUpdatingIn(seconds: Int) {
+        defaults.set(seconds, forKey: Constants.UserDefaults.savedIntervalOfUpdating)
+    }
+    
 }
