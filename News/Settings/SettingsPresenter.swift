@@ -13,17 +13,17 @@
 import UIKit
 
 protocol SettingsPresentationLogic {
-    func presentSomething(response: Settings.SelectTab.Response)
+    func presentSwitcherValue(response: Settings.GetSwitcherValue.Response)
 }
 
 class SettingsPresenter: SettingsPresentationLogic {
     
     weak var viewController: SettingsDisplayLogic?
     
-    // MARK: Do something
+    // MARK: Present switcher value
     
-    func presentSomething(response: Settings.SelectTab.Response) {
-        let viewModel = Settings.SelectTab.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentSwitcherValue(response: Settings.GetSwitcherValue.Response) {
+        let viewModel = Settings.GetSwitcherValue.ViewModel(isOn: response.isOn)
+        viewController?.displaySwitcherValue(viewModel: viewModel)
     }
 }

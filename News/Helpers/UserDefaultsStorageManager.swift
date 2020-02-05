@@ -34,4 +34,13 @@ class UserDefaultsStorageManager {
         defaults.set(seconds, forKey: Constants.UserDefaults.savedIntervalOfUpdating)
     }
     
+    func getSavedSwitchValueForIntervalOfUpdating() -> Bool {
+        guard let switchValueForIntervalOfUpdating = defaults.object(forKey: Constants.UserDefaults.savedSwitchValueForIntervalOfUpdating) as? Bool else { return false }
+        return switchValueForIntervalOfUpdating
+    }
+
+    func saveSwitchValueForIntervalOfUpdating(value: Bool) {
+        defaults.set(value, forKey: Constants.UserDefaults.savedSwitchValueForIntervalOfUpdating)
+    }
+    
 }

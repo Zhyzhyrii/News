@@ -12,6 +12,7 @@ struct Constants {
         
         static let savedFeedsForTab = "savedFeedsForTab"
         static let savedIntervalOfUpdating = "savedIntervalOfUpdating"
+        static let savedSwitchValueForIntervalOfUpdating = "savedSwitchValueForIntervalOfUpdating"
         
     }
     

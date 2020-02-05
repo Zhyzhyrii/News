@@ -28,4 +28,27 @@ enum Settings {
         struct ViewModel {
         }
     }
+    
+    enum ChangeValueOfSwitchOfIntervalOfUpdating {
+       
+        struct Request {
+            let switchValue: Bool
+        }
+        
+    }
+    
+    enum GetSwitcherValue {
+        
+        struct Request {
+        }
+        
+        struct Response {
+            let isOn: Bool
+        }
+        
+        struct ViewModel {
+            let isOn: Bool
+        }
+        
+    }
 }

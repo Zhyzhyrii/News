@@ -13,8 +13,9 @@
 import UIKit
 
 protocol FirstTabPresentationLogic {
-    func presentNews(response: FirstTab.GetNews.Response)
+    func presentNews(response: FirstTab.GetNewsFromDBOrNetwork.Response)
     func presentNewsByRefreshing(response: FirstTab.RefreshNews.Response)
+    func presentNewsByTimer(response: FirstTab.GetNewsByTimer.Response)
 }
 
 class FirstTabPresenter: FirstTabPresentationLogic {
@@ -23,11 +24,11 @@ class FirstTabPresenter: FirstTabPresentationLogic {
     
     // MARK: Present news
     
-    func presentNews(response: FirstTab.GetNews.Response) {
+    func presentNews(response: FirstTab.GetNewsFromDBOrNetwork.Response) { //TODOthe same as 2 below - have to make use only one
         
         let news = prepareDisplayedNews(response.news)
         
-        let viewModel = FirstTab.GetNews.ViewModel(news: news)
+        let viewModel = FirstTab.GetNewsFromDBOrNetwork.ViewModel(news: news)
         viewController?.displayNews(viewModel: viewModel)
         
     }
@@ -35,12 +36,19 @@ class FirstTabPresenter: FirstTabPresentationLogic {
     // MARK: - Present news by refreshing
     
     func presentNewsByRefreshing(response: FirstTab.RefreshNews.Response) {
-        
         let news = prepareDisplayedNews(response.news)
         
         let viewModel = FirstTab.RefreshNews.ViewModel(news: news)
         viewController?.displayNewsByRefreshing(viewModel: viewModel)
+    }
+    
+    // MARK: - Present news by timer
+    
+    func presentNewsByTimer(response: FirstTab.GetNewsByTimer.Response) {
+        let news = prepareDisplayedNews(response.news)
         
+        let viewModel = FirstTab.GetNewsByTimer.ViewModel(news: news)
+        viewController?.displayNewsByTimer(viewModel: viewModel)
     }
     
     // MARK: - Prepare displayed news

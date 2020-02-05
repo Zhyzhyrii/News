@@ -16,7 +16,7 @@ enum FirstTab {
     
     // MARK: Use cases
     
-    enum GetNews {
+    enum GetNewsFromDBOrNetwork {
         struct Request {
             let indexOfTab: Int
         }
@@ -31,6 +31,20 @@ enum FirstTab {
     }
     
     enum RefreshNews {
+        struct Request {
+            let indexOfTab: Int
+        }
+        
+        struct Response {
+            let news: [New]
+        }
+        
+        struct ViewModel {
+            let news: [DisplayedNew]
+        }
+    }
+    
+    enum GetNewsByTimer {
         struct Request {
             let indexOfTab: Int
         }

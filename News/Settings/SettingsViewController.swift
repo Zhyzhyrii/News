@@ -13,15 +13,14 @@
 import UIKit
 
 protocol SettingsDisplayLogic: class {
-    func displaySomething(viewModel: Settings.SelectTab.ViewModel)
+    func displaySwitcherValue(viewModel: Settings.GetSwitcherValue.ViewModel)
 }
 
 class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     
     // MARK: - IBOutlets
     
-    @IBOutlet var tabsSettingsLabel: [UILabel]!
-    @IBOutlet var intervalLabel: UILabel!
+    @IBOutlet var switcherIntervalOfUpdating: UISwitch!
     
     var interactor: SettingsBusinessLogic?
     var router: (NSObjectProtocol & SettingsRoutingLogic & SettingsDataPassing)?
@@ -44,7 +43,7 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         super.viewDidLoad()
         
         SettingsConfigurator.shared.configure(with: self)
-        
+        getSwitcherValue()
     }
     
     // MARK: - Routing
@@ -58,6 +57,16 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         }
     }
     
+    // MARK: - Display switcher`s value
+    
+    func getSwitcherValue() {
+        interactor?.getSwitcherValue()
+    }
+    
+    func displaySwitcherValue(viewModel: Settings.GetSwitcherValue.ViewModel) {
+        switcherIntervalOfUpdating.setOn(viewModel.isOn, animated: false)
+    }
+    
     // MARK: - Select tab`s settings
     
     func selectSettingsForSpecificTab(indexOfTab: Int) {
@@ -67,6 +76,13 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     
     func displaySomething(viewModel: Settings.SelectTab.ViewModel) {
         //nameTextField.text = viewModel.name
+    }
+    
+    // MARK: - @IBActions
+    
+    @IBAction func switchIntervalOfUpdatingNews(_ sender: UISwitch) {
+        let request = Settings.ChangeValueOfSwitchOfIntervalOfUpdating.Request(switchValue: sender.isOn)
+        interactor?.changeValueOfSwitchOfIntervalOfUpdating(request: request)
     }
     
 }

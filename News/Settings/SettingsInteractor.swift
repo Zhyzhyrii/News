@@ -14,6 +14,8 @@ import UIKit
 
 protocol SettingsBusinessLogic {
     func selectTab(request: Settings.SelectTab.Request)
+    func changeValueOfSwitchOfIntervalOfUpdating(request: Settings.ChangeValueOfSwitchOfIntervalOfUpdating.Request)
+    func getSwitcherValue()
 }
 
 protocol SettingsDataStore {
@@ -27,9 +29,23 @@ class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore {
     
     var numberOfTab: Int!
     
-    // MARK: Do something
+    // MARK: Select tab
     
     func selectTab(request: Settings.SelectTab.Request) {
         numberOfTab = request.numberOfTab
+    }
+    
+    // MARK: - on/off switch value
+    
+    func changeValueOfSwitchOfIntervalOfUpdating(request: Settings.ChangeValueOfSwitchOfIntervalOfUpdating.Request) {
+        UserDefaultsStorageManager.shared.saveSwitchValueForIntervalOfUpdating(value: request.switchValue)
+    }
+    
+    // MARK: - Get switcher value
+    
+    func getSwitcherValue() {
+        let isOn = UserDefaultsStorageManager.shared.getSavedSwitchValueForIntervalOfUpdating()
+        let response = Settings.GetSwitcherValue.Response(isOn: isOn)
+        presenter?.presentSwitcherValue(response: response)
     }
 }
