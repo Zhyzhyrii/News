@@ -28,7 +28,7 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     
     private var timer: Timer?
     
-    // MARK: Get news
+    // MARK: Get news from BD. If news are missing in DB - fetch news from network
     
     func getNewsFromDBOrNetworkFor(request: FirstTab.GetNewsFromDBOrNetwork.Request) {
         guard let news = worker.getNewsFromDBOrNetworkFor(indexOfTab: request.indexOfTab) else { return } //TODO alert error??
@@ -44,12 +44,6 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
         let response = FirstTab.RefreshNews.Response(news: news)
         presenter?.presentNewsByRefreshing(response: response)
         
-    }
-    
-    private func getNewsByRefreshing(indexOfTab: Int) -> [New]? {
-        guard let news = worker.getNewsFromParser(indexOfTab: indexOfTab) else { return nil} //TODO alert error??
-        worker.updateNewsInDBFor(indexOfTab: indexOfTab)
-        return news
     }
     
     // MARK: - Get news by timer
@@ -84,5 +78,13 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
             presenter?.presentNewsByTimer(response: response)
         }
     }
+    
+    // MARK: - Get news from network and update DB
+    
+    private func getNewsByRefreshing(indexOfTab: Int) -> [New]? {
+         guard let news = worker.getNewsFromDBOrNetworkFor(indexOfTab: indexOfTab) else { return nil} //TODO alert error??
+         worker.updateNewsInDBFor(indexOfTab: indexOfTab)
+         return news
+     }
     
 }

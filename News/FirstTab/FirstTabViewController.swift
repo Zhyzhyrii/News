@@ -18,7 +18,7 @@ protocol FirstTabDisplayLogic: class {
     func displayNewsByTimer(viewModel: FirstTab.GetNewsByTimer.ViewModel)
 }
 
-class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
+class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, GetNewsByTimerProtocol {
     
     //@IBOutlet private var nameTextField: UITextField!
     
@@ -35,13 +35,9 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     
     private var news: [DisplayedNew]!
     
-    //    private var feedsModels: [FeedModel]!
-    //    private lazy var selectedIndexOfTab = tabBarController?.selectedIndex
     private var selectedIndex = -1
     private var tabBar: UITabBar!
     private var indexOfTab: Int!
-    
-//    private var timer: Timer!
     
     // MARK: Object lifecycle
     
@@ -73,6 +69,10 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
         
         navigationBar.title = tabBar.selectedItem?.title
         
+        let navigationController = tabBarController?.viewControllers?.last as! UINavigationController
+        let settingsVC = navigationController.viewControllers.first as! SettingsViewController
+        settingsVC.delegate = self
+        
         getNews(indexOfTab: indexOfTab)
         getNewsByTimer(indexOfTab: indexOfTab)
     }
@@ -99,6 +99,12 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     func getNews(indexOfTab: Int)  {
         let request = FirstTab.GetNewsFromDBOrNetwork.Request(indexOfTab: indexOfTab)
         interactor?.getNewsFromDBOrNetworkFor(request: request)
+    }
+    
+    // MARK: - Get news by timer delegate method (to get new immediately - you do not need to select tab)
+    
+    func getNews() {
+        getNewsByTimer(indexOfTab: indexOfTab)
     }
     
     // MARK: - Display news by refreshing
@@ -131,13 +137,6 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
         let request = FirstTab.RefreshNews.Request(indexOfTab: indexOfTab)
         interactor?.getNewsByRefreshing(request: request)
     }
-    
-//    @objc private func getNewsByTimer(timer: Timer) {
-//        if let indexOfTab = timer.userInfo as? Int {
-//            print(indexOfTab)
-//            getNewsByRefreshing(indexOfTab: indexOfTab)
-//        }
-//    }
     
     // MARK: - IBActions
     

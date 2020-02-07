@@ -90,11 +90,11 @@ class FirstTabWorker: Parser {
                 if new.title != newsFromDB[0].title {
                     amountOfDifferentNews += 1
                 } else {
-                    refreshedNews = Array(newsFromNetwork.prefix(amountOfDifferentNews))
-                    saveNewsToDataBase(news: refreshedNews)
                     break
                 }
             }
+            refreshedNews = Array(newsFromNetwork.prefix(amountOfDifferentNews))
+            saveNewsToDataBase(news: refreshedNews)
         }
     }
     

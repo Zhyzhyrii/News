@@ -25,6 +25,8 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     var interactor: SettingsBusinessLogic?
     var router: (NSObjectProtocol & SettingsRoutingLogic & SettingsDataPassing)?
     
+    var delegate: GetNewsByTimerProtocol?
+    
     // MARK: Object lifecycle
     
     //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -83,6 +85,7 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     @IBAction func switchIntervalOfUpdatingNews(_ sender: UISwitch) {
         let request = Settings.ChangeValueOfSwitchOfIntervalOfUpdating.Request(switchValue: sender.isOn)
         interactor?.changeValueOfSwitchOfIntervalOfUpdating(request: request)
+        delegate?.getNews()
     }
     
 }
