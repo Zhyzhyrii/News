@@ -112,7 +112,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     
     // MARK: - Select new`s source
     
-    func selectNewSource(tableView: UITableView, indexPath: IndexPath) {
+    func selectNewSource(indexPath: IndexPath) {
         let request = SourceOfNewSettings.SelectNewSource.Request(feed: feedsModels[indexPath.row])
         interactor?.selectNewSource(request: request)
     }
@@ -149,7 +149,9 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         self.feedsModels = feedsModels
         tableView.reloadData()
         for index in 0..<feedsModels.count {
-            tableView.cellForRow(at: IndexPath(row: index, section: 0))?.accessoryType = (feedsModels[index].isSelected) ? .checkmark : .none
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! SourceOfNewCell
+            let toggleValue = (feedsModels[index].isSelected) ? true : false
+            cell.turnSourceOfNew.setOn(toggleValue, animated: true)
         }
         
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
@@ -162,12 +164,22 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         tabBarController?.tabBar.items?[numberOfTab].title = title
     }
     
-    //MARK: - IBOutlets
+    //MARK: - @IBActions
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         let request = SourceOfNewSettings.SaveFeedSettings.Request()
         interactor?.saveFeedSettings(request: request)
     }
+    
+    @IBAction func changeToggleSourceOfNew(_ sender: UISwitch) {
+        
+        guard let cell = sender.superview?.superview as? SourceOfNewCell else { return }
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        selectNewSource(indexPath: indexPath)
+        
+    }
+    
     
 }
 
@@ -185,10 +197,6 @@ extension SourceOfNewSettingsViewController {
 }
 
 extension SourceOfNewSettingsViewController {
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectNewSource(tableView: tableView, indexPath: indexPath)
-    }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let changeTheTitleOfNew = UIContextualAction(style: .normal, title: "Update title") {_,_,complete in

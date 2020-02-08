@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		319D3C3F5B0E9FF7675B169F /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC180ECE2F63029AA8A8F05F /* Pods_News.framework */; };
 		782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782744E523E96F3B00EBCD43 /* TimeHelper.swift */; };
+		785489C223EEEE4C002B55E6 /* SourceOfNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */; };
 		7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860594E23AC07F700FEB374 /* AppDelegate.swift */; };
 		7860595623AC07F700FEB374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7860595423AC07F700FEB374 /* Main.storyboard */; };
 		7860595823AC07FB00FEB374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7860595723AC07FB00FEB374 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		782744E523E96F3B00EBCD43 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
+		785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewCell.swift; sourceTree = "<group>"; };
 		7860594B23AC07F700FEB374 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7860594E23AC07F700FEB374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7860595523AC07F700FEB374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				78D97B9C23D8E18B00442108 /* NewCell.swift */,
+				785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				7860596C23AC153E00FEB374 /* FirstTabViewController.swift in Sources */,
 				7860598423B2BDD100FEB374 /* GenericNewsParser.swift in Sources */,
 				786059B223B5656F00FEB374 /* SettingsPresenter.swift in Sources */,
+				785489C223EEEE4C002B55E6 /* SourceOfNewCell.swift in Sources */,
 				78A92F5723C4F9900058A293 /* Constants.swift in Sources */,
 				7860597F23B2AD6000FEB374 /* ExtractHelper.swift in Sources */,
 				789CD1CC23E474F500B7EA12 /* IntervalOfUpdatingRouter.swift in Sources */,
