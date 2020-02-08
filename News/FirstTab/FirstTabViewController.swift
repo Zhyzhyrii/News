@@ -18,9 +18,7 @@ protocol FirstTabDisplayLogic: class {
     func displayNewsByTimer(viewModel: FirstTab.GetNewsByTimer.ViewModel)
 }
 
-class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, GetNewsByTimerProtocol {
-    
-    //@IBOutlet private var nameTextField: UITextField!
+class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     
     @IBOutlet var navigationBar: UINavigationItem!
     
@@ -68,10 +66,6 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic, GetNe
         indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem))
         
         navigationBar.title = tabBar.selectedItem?.title
-        
-        let navigationController = tabBarController?.viewControllers?.last as! UINavigationController
-        let settingsVC = navigationController.viewControllers.first as! SettingsViewController
-        settingsVC.delegate = self
         
         getNews(indexOfTab: indexOfTab)
         getNewsByTimer(indexOfTab: indexOfTab)

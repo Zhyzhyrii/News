@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		319D3C3F5B0E9FF7675B169F /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC180ECE2F63029AA8A8F05F /* Pods_News.framework */; };
 		782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782744E523E96F3B00EBCD43 /* TimeHelper.swift */; };
-		785489BE23EDACEF002B55E6 /* GetNewsByTimerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785489BD23EDACEF002B55E6 /* GetNewsByTimerProtocol.swift */; };
 		7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860594E23AC07F700FEB374 /* AppDelegate.swift */; };
 		7860595623AC07F700FEB374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7860595423AC07F700FEB374 /* Main.storyboard */; };
 		7860595823AC07FB00FEB374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7860595723AC07FB00FEB374 /* Assets.xcassets */; };
@@ -68,7 +67,6 @@
 
 /* Begin PBXFileReference section */
 		782744E523E96F3B00EBCD43 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
-		785489BD23EDACEF002B55E6 /* GetNewsByTimerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsByTimerProtocol.swift; sourceTree = "<group>"; };
 		7860594B23AC07F700FEB374 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7860594E23AC07F700FEB374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7860595523AC07F700FEB374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				7860596F23AC158900FEB374 /* StoryBoards */,
 				7860597023AC15BF00FEB374 /* Configurations */,
 				7860597123AC1A8900FEB374 /* SceneDelegate.swift */,
-				785489BD23EDACEF002B55E6 /* GetNewsByTimerProtocol.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -497,7 +494,6 @@
 				78D97B9B23D7B0EB00442108 /* FirstTabConfigurator.swift in Sources */,
 				786059B423B5656F00FEB374 /* SettingsRouter.swift in Sources */,
 				789CD1C023DF6E0800B7EA12 /* DisplayedNew.swift in Sources */,
-				785489BE23EDACEF002B55E6 /* GetNewsByTimerProtocol.swift in Sources */,
 				7860597D23B15F8B00FEB374 /* New.swift in Sources */,
 				7860597B23B1542700FEB374 /* Parser.swift in Sources */,
 				786059C523B8F76900FEB374 /* SourceOfNewSettingsWorker.swift in Sources */,
