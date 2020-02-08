@@ -18,8 +18,11 @@ protocol FirstTabDisplayLogic: class {
     func displayNewsByTimer(viewModel: FirstTab.GetNewsByTimer.ViewModel)
 }
 
-class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
+class FirstTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FirstTabDisplayLogic {
     
+    //MARK: - @IBOutlets
+    
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var navigationBar: UINavigationItem!
     
     // MARK: - Public properties
@@ -54,6 +57,9 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         FirstTabConfigurator.shared.configure(with: self)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         tableView.register(UINib(nibName: "NewCell", bundle: nil), forCellReuseIdentifier: "NewCell")
     }
@@ -142,12 +148,12 @@ class FirstTabViewController: UITableViewController, FirstTabDisplayLogic {
 
 extension FirstTabViewController {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let news = news else { return 0 }
         return news.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as! NewCell
         
         guard let news = news else { return UITableViewCell() }
@@ -165,14 +171,14 @@ extension FirstTabViewController {
 
 extension FirstTabViewController {
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == selectedIndex {
             return 120
         }
         return 60
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! NewCell
         if indexPath.row == selectedIndex {
             selectedIndex = -1
@@ -186,7 +192,7 @@ extension FirstTabViewController {
         tableView.endUpdates()
     }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
 
         guard let cell = tableView.cellForRow(at: indexPath) as? NewCell else { return }
         cell.newTextLabel?.isHidden = true
