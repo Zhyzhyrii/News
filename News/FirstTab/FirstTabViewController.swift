@@ -14,6 +14,7 @@ import UIKit
 
 protocol FirstTabDisplayLogic: class {
     func displayNews(viewModel: FirstTab.GetNewsFromDBOrNetwork.ViewModel)
+    func notDisplayNews()
     func displayNewsByRefreshing(viewModel: FirstTab.RefreshNews.ViewModel)
     func displayNewsByTimer(viewModel: FirstTab.GetNewsByTimer.ViewModel)
 }
@@ -34,23 +35,11 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Private properties
     
-    private var news: [DisplayedNew]!
+    private var news: [DisplayedNew]?
     
     private var selectedIndex = -1
     private var tabBar: UITabBar!
     private var indexOfTab: Int!
-    
-    // MARK: Object lifecycle
-    
-    //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    //        setup()
-    //    }
-    //
-    //    required init?(coder aDecoder: NSCoder) {
-    //        super.init(coder: aDecoder)
-    //        setup()
-    //    }
     
     // MARK: View lifecycle
     
@@ -126,9 +115,16 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         interactor?.getNewsByTimer(request: request)
     }
     
+    // MARK: - News are not displayed if the source is not selected for the specific tab
+    
+    func notDisplayNews() {
+        self.news = nil
+        tableView.reloadData()
+    }
+    
     // MARK: - Private methods
     
-    private func displayNews(news: [DisplayedNew]) {
+    private func displayNews(news: [DisplayedNew]?) {
         self.news = news
         tableView.reloadData()
     }
@@ -193,10 +189,10 @@ extension FirstTabViewController {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-
+        
         guard let cell = tableView.cellForRow(at: indexPath) as? NewCell else { return }
         cell.newTextLabel?.isHidden = true
-
+        
     }
     
 }

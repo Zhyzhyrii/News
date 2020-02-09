@@ -24,11 +24,15 @@ class FirstTabPresenter: FirstTabPresentationLogic {
     
     // MARK: Present news
     
-    func presentNews(response: FirstTab.GetNewsFromDBOrNetwork.Response) { //TODOthe same as 2 below - have to make use only one
+    func presentNews(response: FirstTab.GetNewsFromDBOrNetwork.Response) { //TODO the same as 2 below - have to make use only one
         
-        let news = prepareDisplayedNews(response.news)
+        guard let news = response.news else {
+            viewController?.notDisplayNews()
+            return }
         
-        let viewModel = FirstTab.GetNewsFromDBOrNetwork.ViewModel(news: news)
+        let displayedNews = prepareDisplayedNews(news)
+        
+        let viewModel = FirstTab.GetNewsFromDBOrNetwork.ViewModel(news: displayedNews)
         viewController?.displayNews(viewModel: viewModel)
         
     }

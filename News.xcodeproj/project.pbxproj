@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		319D3C3F5B0E9FF7675B169F /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC180ECE2F63029AA8A8F05F /* Pods_News.framework */; };
+		782468FE23F06F24004B7812 /* GetNewsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782468FD23F06F24004B7812 /* GetNewsError.swift */; };
 		782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782744E523E96F3B00EBCD43 /* TimeHelper.swift */; };
 		785489C223EEEE4C002B55E6 /* SourceOfNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */; };
 		7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860594E23AC07F700FEB374 /* AppDelegate.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		782468FD23F06F24004B7812 /* GetNewsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsError.swift; sourceTree = "<group>"; };
 		782744E523E96F3B00EBCD43 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewCell.swift; sourceTree = "<group>"; };
 		7860594B23AC07F700FEB374 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,7 @@
 				7860596423AC153E00FEB374 /* FirstTabRouter.swift */,
 				7860596523AC153E00FEB374 /* FirstTabModels.swift */,
 				78D97B9A23D7B0EB00442108 /* FirstTabConfigurator.swift */,
+				782468FD23F06F24004B7812 /* GetNewsError.swift */,
 			);
 			path = FirstTab;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				786059BC23B8CB0000FEB374 /* FeedModel.swift in Sources */,
 				7860598A23B35FF700FEB374 /* XmlFields.swift in Sources */,
 				78D97B9923D7778100442108 /* UIHelpers.swift in Sources */,
+				782468FE23F06F24004B7812 /* GetNewsError.swift in Sources */,
 				786059B323B5656F00FEB374 /* SettingsWorker.swift in Sources */,
 				789CD1CA23E474F500B7EA12 /* IntervalOfUpdatingPresenter.swift in Sources */,
 				789CD1D123E4752600B7EA12 /* IntervalOfUpdatingConfigurator.swift in Sources */,

@@ -22,7 +22,7 @@ enum FirstTab {
         }
         
         struct Response {
-            let news: [New]
+            let news: [New]?
         }
         
         struct ViewModel {

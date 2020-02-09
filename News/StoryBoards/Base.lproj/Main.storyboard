@@ -162,6 +162,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bOz-Tp-z6I">
                                                     <rect key="frame" x="333" y="14.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchIntervalOfUpdatingNews:" destination="odC-Qe-wUV" eventType="valueChanged" id="k4a-N5-aPW"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>

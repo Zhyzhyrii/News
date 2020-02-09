@@ -19,6 +19,7 @@ protocol FirstTabBusinessLogic {
 }
 
 protocol FirstTabDataStore {
+    var news: [New]? { get }
 }
 
 class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
@@ -26,13 +27,24 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     var presenter: FirstTabPresentationLogic?
     var worker = FirstTabWorker()
     
+    var news: [New]?
+    
     private var timer: Timer?
     
     // MARK: Get news from BD. If news are missing in DB - fetch news from network
     
     func getNewsFromDBOrNetworkFor(request: FirstTab.GetNewsFromDBOrNetwork.Request) {
-        guard let news = worker.getNewsFromDBOrNetworkFor(indexOfTab: request.indexOfTab) else { return } //TODO alert error??
-        let response = FirstTab.GetNewsFromDBOrNetwork.Response(news: news)
+        worker.getNewsFromDBOrNetworkFor(indexOfTab: request.indexOfTab) { [weak self] (news, getNewsError) in
+            guard let self = self else { return }
+            
+            if let error = getNewsError, error == .noSourceIsSelected {
+                self.news = nil
+            }
+            if let news = news {
+                self.news = news
+            }
+        }
+        let response = FirstTab.GetNewsFromDBOrNetwork.Response(news: self.news)
         presenter?.presentNews(response: response)
     }
     
@@ -43,7 +55,6 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
        
         let response = FirstTab.RefreshNews.Response(news: news)
         presenter?.presentNewsByRefreshing(response: response)
-        
     }
     
     // MARK: - Get news by timer
@@ -82,9 +93,13 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     // MARK: - Get news from network and update DB
     
     private func getNewsByRefreshing(indexOfTab: Int) -> [New]? {
-         guard let news = worker.getNewsFromDBOrNetworkFor(indexOfTab: indexOfTab) else { return nil} //TODO alert error??
-         worker.updateNewsInDBFor(indexOfTab: indexOfTab)
-         return news
+        worker.updateNewsInDBFor(indexOfTab: indexOfTab)
+        worker.getNewsFromDBOrNetworkFor(indexOfTab: indexOfTab) { [weak self ] (news, getNewsError) in
+            guard let self = self else { return }
+            guard let news = news else { return }
+            self.news = news
+        }
+        return news
      }
     
 }
