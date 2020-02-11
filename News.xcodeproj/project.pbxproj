@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		319D3C3F5B0E9FF7675B169F /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC180ECE2F63029AA8A8F05F /* Pods_News.framework */; };
 		782468FE23F06F24004B7812 /* GetNewsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782468FD23F06F24004B7812 /* GetNewsError.swift */; };
+		7824690023F1874E004B7812 /* Extension+URLCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782468FF23F1874D004B7812 /* Extension+URLCache.swift */; };
 		782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782744E523E96F3B00EBCD43 /* TimeHelper.swift */; };
 		785489C223EEEE4C002B55E6 /* SourceOfNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */; };
 		7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860594E23AC07F700FEB374 /* AppDelegate.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		782468FD23F06F24004B7812 /* GetNewsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsError.swift; sourceTree = "<group>"; };
+		782468FF23F1874D004B7812 /* Extension+URLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URLCache.swift"; sourceTree = "<group>"; };
 		782744E523E96F3B00EBCD43 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewCell.swift; sourceTree = "<group>"; };
 		7860594B23AC07F700FEB374 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				78ED403223DC757100E04467 /* Extension+UIImageView.swift */,
+				782468FF23F1874D004B7812 /* Extension+URLCache.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				786059B523B5656F00FEB374 /* SettingsModels.swift in Sources */,
 				789CD1C223DF97D600B7EA12 /* RealmNewManager.swift in Sources */,
 				7860596D23AC153E00FEB374 /* FirstTabInteractor.swift in Sources */,
+				7824690023F1874E004B7812 /* Extension+URLCache.swift in Sources */,
 				7860596B23AC153E00FEB374 /* FirstTabModels.swift in Sources */,
 				7860597723AC1CB500FEB374 /* ParsingResult.swift in Sources */,
 				789CD1CF23E474F500B7EA12 /* IntervalOfUpdatingInteractor.swift in Sources */,
