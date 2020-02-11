@@ -75,7 +75,7 @@ class FirstTabWorker: Parser {
     
     // MARK: - Get selected FeedModel
     
-    private func getSelectedFeedModel(indexOfTab: Int) -> FeedModel? {
+    func getSelectedFeedModel(indexOfTab: Int) -> FeedModel? {
         
         guard let feedsModels = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: indexOfTab) else { return nil }
         guard let feedModel = feedsModels.first(where: { (feedModel) -> Bool in

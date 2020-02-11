@@ -17,6 +17,7 @@ protocol FirstTabDisplayLogic: class {
     func notDisplayNews()
     func displayNewsByRefreshing(viewModel: FirstTab.RefreshNews.ViewModel)
     func displayNewsByTimer(viewModel: FirstTab.GetNewsByTimer.ViewModel)
+    func displayNavigationBar(viewModel: FirstTab.DisplayNavigatioBar.ViewModel)
 }
 
 class FirstTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FirstTabDisplayLogic {
@@ -66,7 +67,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         getNews(indexOfTab: indexOfTab)
         getNewsByTimer(indexOfTab: indexOfTab)
         
-        navigationBar.topItem?.title = tabBar.selectedItem?.title
+        displayNavigatioBar()
     }
     
     // MARK: Routing
@@ -77,6 +78,22 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
             if let router = router, router.responds(to: selector) {
                 router.perform(selector, with: segue)
             }
+        }
+    }
+    
+    // MARK: - Display navigation bar
+    
+    func displayNavigatioBar() {
+        let request = FirstTab.DisplayNavigatioBar.Request(indexOfTab: indexOfTab)
+        interactor?.getNavigationBar(request: request)
+    }
+    
+    func displayNavigationBar(viewModel: FirstTab.DisplayNavigatioBar.ViewModel) {
+        if let title = viewModel.title {
+            navigationBar.isHidden = false
+            navigationBar.topItem?.title = title
+        } else {
+            navigationBar.isHidden = true
         }
     }
     

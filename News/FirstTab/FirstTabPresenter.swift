@@ -16,6 +16,7 @@ protocol FirstTabPresentationLogic {
     func presentNews(response: FirstTab.GetNewsFromDBOrNetwork.Response)
     func presentNewsByRefreshing(response: FirstTab.RefreshNews.Response)
     func presentNewsByTimer(response: FirstTab.GetNewsByTimer.Response)
+    func presentNavigationBar(response: FirstTab.DisplayNavigatioBar.Response)
 }
 
 class FirstTabPresenter: FirstTabPresentationLogic {
@@ -53,6 +54,13 @@ class FirstTabPresenter: FirstTabPresentationLogic {
         
         let viewModel = FirstTab.GetNewsByTimer.ViewModel(news: news)
         viewController?.displayNewsByTimer(viewModel: viewModel)
+    }
+    
+    // MARK: - Present navigation bar
+    
+    func presentNavigationBar(response: FirstTab.DisplayNavigatioBar.Response) {
+        let viewModel = FirstTab.DisplayNavigatioBar.ViewModel(title: response.title)
+        viewController?.displayNavigationBar(viewModel: viewModel)
     }
     
     // MARK: - Prepare displayed news

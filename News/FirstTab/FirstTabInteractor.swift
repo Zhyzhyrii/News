@@ -16,6 +16,7 @@ protocol FirstTabBusinessLogic {
     func getNewsFromDBOrNetworkFor(request: FirstTab.GetNewsFromDBOrNetwork.Request)
     func getNewsByRefreshing(request: FirstTab.RefreshNews.Request)
     func getNewsByTimer(request: FirstTab.GetNewsByTimer.Request)
+    func getNavigationBar(request: FirstTab.DisplayNavigatioBar.Request)
 }
 
 protocol FirstTabDataStore {
@@ -65,6 +66,17 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
         } else {
             stopTimer()
         }
+    }
+    
+    // MARK: - Get navigation bar
+    
+    func getNavigationBar(request: FirstTab.DisplayNavigatioBar.Request) {
+        var title: String?
+        if let selectedFeedModel = worker.getSelectedFeedModel(indexOfTab: request.indexOfTab) {
+            title = selectedFeedModel.feedName
+        }
+        let reponse = FirstTab.DisplayNavigatioBar.Response(title: title)
+        presenter?.presentNavigationBar(response: reponse)
     }
     
     private func startTimer(indexOfTab: Int) {

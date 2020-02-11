@@ -57,4 +57,19 @@ enum FirstTab {
             let news: [DisplayedNew]
         }
     }
+    
+    enum DisplayNavigatioBar {
+        struct Request {
+            let indexOfTab: Int
+        }
+        
+        struct Response {
+            let title: String?
+        }
+        
+        struct ViewModel {
+            let title: String?
+        }
+    }
+    
 }
