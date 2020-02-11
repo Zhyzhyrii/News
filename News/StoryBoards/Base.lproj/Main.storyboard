@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--No source-->
         <scene sceneID="NaP-kH-dEj">
             <objects>
                 <viewController id="4El-ot-kDm" customClass="FirstTabViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,9 +52,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jSv-h1-mVk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Qms-Kq-dq1"/>
+                    <tabBarItem key="tabBarItem" title="No source" id="Qms-Kq-dq1"/>
                     <connections>
-                        <outlet property="navigationBar" destination="yR7-Yt-BfR" id="u99-VX-kcu"/>
+                        <outlet property="navigationBar" destination="iOg-eK-wlw" id="yKJ-kC-w3o"/>
                         <outlet property="tableView" destination="RFx-G2-N74" id="vFc-4m-Osw"/>
                     </connections>
                 </viewController>
@@ -324,7 +324,7 @@
             </objects>
             <point key="canvasLocation" x="-3613.04347826087" y="-2040.4017857142856"/>
         </scene>
-        <!--Item-->
+        <!--No source-->
         <scene sceneID="UcX-xe-OJZ">
             <objects>
                 <viewController id="SRH-Rl-YFP" customClass="FirstTabViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,9 +369,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fBK-zY-cp2"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="2IR-aJ-15P"/>
+                    <tabBarItem key="tabBarItem" title="No source" id="2IR-aJ-15P"/>
                     <connections>
-                        <outlet property="navigationBar" destination="Vvc-3U-p4J" id="AnM-Ll-xDi"/>
+                        <outlet property="navigationBar" destination="moW-2h-JoQ" id="8Wg-Mn-z1T"/>
                         <outlet property="tableView" destination="Cc7-ir-X1S" id="q84-C6-33P"/>
                     </connections>
                 </viewController>
@@ -379,7 +379,7 @@
             </objects>
             <point key="canvasLocation" x="-3574" y="-539"/>
         </scene>
-        <!--Item-->
+        <!--No source-->
         <scene sceneID="VtZ-cJ-EnL">
             <objects>
                 <viewController id="yb8-se-CBX" customClass="FirstTabViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
@@ -424,9 +424,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pkl-Ff-I0D"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="IQc-YT-pZ7"/>
+                    <tabBarItem key="tabBarItem" title="No source" id="IQc-YT-pZ7"/>
                     <connections>
-                        <outlet property="navigationBar" destination="VvD-j9-Hbq" id="uBQ-1o-UDV"/>
+                        <outlet property="navigationBar" destination="xV4-To-Mqn" id="P4j-YE-3aZ"/>
                         <outlet property="tableView" destination="o0t-hB-B4c" id="ofv-k2-25H"/>
                     </connections>
                 </viewController>

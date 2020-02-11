@@ -24,7 +24,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - @IBOutlets
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var navigationBar: UINavigationItem!
+    @IBOutlet var navigationBar: UINavigationBar!
     
     // MARK: - Public properties
     
@@ -45,25 +45,28 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         FirstTabConfigurator.shared.configure(with: self)
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "NewCell", bundle: nil), forCellReuseIdentifier: "NewCell")
+       
+        tabBar = tabBarController?.tabBar
+        guard let selectedBarItem = tabBar.selectedItem else { return }
+        indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem))
+        
+        configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let tabBar = tabBarController?.tabBar else { return }
-        guard let selectedBarItem = tabBar.selectedItem else { return }
-        indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem))
-        
-        navigationBar.title = tabBar.selectedItem?.title
-        
         getNews(indexOfTab: indexOfTab)
         getNewsByTimer(indexOfTab: indexOfTab)
+        
+        navigationBar.topItem?.title = tabBar.selectedItem?.title
     }
     
     // MARK: Routing
@@ -134,6 +137,14 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         interactor?.getNewsByRefreshing(request: request)
     }
     
+    private func configureView() {
+        view.backgroundColor              = Constants.Colors.backGroundColor
+        tableView.backgroundColor         = Constants.Colors.backGroundColor
+        tabBar.barTintColor               = Constants.Colors.backGroundColor
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+    }
+    
     // MARK: - IBActions
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
@@ -166,6 +177,15 @@ extension FirstTabViewController {
 }
 
 extension FirstTabViewController {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! NewCell
+        cell.backgroundColor         = Constants.Colors.backGroundColor
+        cell.newTitleLabel.textColor = Constants.Colors.titleTextColor
+        cell.newTextLabel.textColor  = Constants.Colors.mainTextColor
+        cell.newTitleLabel.font      = Constants.Fonts.titleTextFontSize
+        cell.newTextLabel.font       = Constants.Fonts.mainTextFontSize
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == selectedIndex {

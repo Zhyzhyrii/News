@@ -60,7 +60,7 @@ class SourceOfNewSettingsPresenter: SourceOfNewSettingsPresentationLogic {
     // MARK: - Present bar item title
     
     func presentTabBarItemTitle(response: SourceOfNewSettings.SaveFeedSettings.Response) {
-        var feedName = "Item"
+        var feedName = "No source"
         
         if let selectedFeed = response.feeds.first(where: { (feed) -> Bool in
             feed.isSelected
