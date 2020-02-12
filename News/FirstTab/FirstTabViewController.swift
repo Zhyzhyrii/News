@@ -183,10 +183,10 @@ extension FirstTabViewController {
         guard let news = news else { return UITableViewCell() }
         
         cell.configure(with: news[indexPath.row])
+        
         if selectedIndex == indexPath.row {
             cell.newTextLabel.isHidden = false
         }
-        cell.selectionStyle = .none
         
         return cell
     }
@@ -208,7 +208,7 @@ extension FirstTabViewController {
         if indexPath.row == selectedIndex {
             return 120
         }
-        return 60
+        return 80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

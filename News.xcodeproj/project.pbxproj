@@ -10,6 +10,10 @@
 		319D3C3F5B0E9FF7675B169F /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC180ECE2F63029AA8A8F05F /* Pods_News.framework */; };
 		782468FE23F06F24004B7812 /* GetNewsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782468FD23F06F24004B7812 /* GetNewsError.swift */; };
 		7824690023F1874E004B7812 /* Extension+URLCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782468FF23F1874D004B7812 /* Extension+URLCache.swift */; };
+		7824690223F4449F004B7812 /* TabSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7824690123F4449F004B7812 /* TabSettingCell.xib */; };
+		7824690623F44C53004B7812 /* TabSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824690523F44C53004B7812 /* TabSettingCell.swift */; };
+		7824690823F45112004B7812 /* IntervalOfUpdatingNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7824690723F45112004B7812 /* IntervalOfUpdatingNewsCell.xib */; };
+		7824690A23F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */; };
 		782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782744E523E96F3B00EBCD43 /* TimeHelper.swift */; };
 		785489C223EEEE4C002B55E6 /* SourceOfNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */; };
 		7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860594E23AC07F700FEB374 /* AppDelegate.swift */; };
@@ -71,6 +75,10 @@
 /* Begin PBXFileReference section */
 		782468FD23F06F24004B7812 /* GetNewsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsError.swift; sourceTree = "<group>"; };
 		782468FF23F1874D004B7812 /* Extension+URLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URLCache.swift"; sourceTree = "<group>"; };
+		7824690123F4449F004B7812 /* TabSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabSettingCell.xib; sourceTree = "<group>"; };
+		7824690523F44C53004B7812 /* TabSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSettingCell.swift; sourceTree = "<group>"; };
+		7824690723F45112004B7812 /* IntervalOfUpdatingNewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntervalOfUpdatingNewsCell.xib; sourceTree = "<group>"; };
+		7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingNewsCell.swift; sourceTree = "<group>"; };
 		782744E523E96F3B00EBCD43 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewCell.swift; sourceTree = "<group>"; };
 		7860594B23AC07F700FEB374 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +213,8 @@
 				7860595423AC07F700FEB374 /* Main.storyboard */,
 				78D97B9E23D8E2C200442108 /* NewCell.xib */,
 				7860595923AC07FB00FEB374 /* LaunchScreen.storyboard */,
+				7824690123F4449F004B7812 /* TabSettingCell.xib */,
+				7824690723F45112004B7812 /* IntervalOfUpdatingNewsCell.xib */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -313,6 +323,8 @@
 			children = (
 				78D97B9C23D8E18B00442108 /* NewCell.swift */,
 				785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */,
+				7824690523F44C53004B7812 /* TabSettingCell.swift */,
+				7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -403,8 +415,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7824690823F45112004B7812 /* IntervalOfUpdatingNewsCell.xib in Resources */,
 				7860595B23AC07FB00FEB374 /* LaunchScreen.storyboard in Resources */,
 				7860595823AC07FB00FEB374 /* Assets.xcassets in Resources */,
+				7824690223F4449F004B7812 /* TabSettingCell.xib in Resources */,
 				78D97B9F23D8E2C200442108 /* NewCell.xib in Resources */,
 				7860595623AC07F700FEB374 /* Main.storyboard in Resources */,
 			);
@@ -480,6 +494,7 @@
 				782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */,
 				786059CB23B8FC0700FEB374 /* SourceOfNewSettingsConfigurator.swift in Sources */,
 				7860596823AC153E00FEB374 /* FirstTabPresenter.swift in Sources */,
+				7824690623F44C53004B7812 /* TabSettingCell.swift in Sources */,
 				786059C723B8F76900FEB374 /* SourceOfNewSettingsModels.swift in Sources */,
 				78ED403523DC801900E04467 /* RealmManager.swift in Sources */,
 				7860596923AC153E00FEB374 /* FirstTabWorker.swift in Sources */,
@@ -502,6 +517,7 @@
 				789CD1D123E4752600B7EA12 /* IntervalOfUpdatingConfigurator.swift in Sources */,
 				786059B623B5656F00FEB374 /* SettingsViewController.swift in Sources */,
 				7860597223AC1A8900FEB374 /* SceneDelegate.swift in Sources */,
+				7824690A23F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift in Sources */,
 				7860598223B2B82B00FEB374 /* NprParser.swift in Sources */,
 				78D97B9B23D7B0EB00442108 /* FirstTabConfigurator.swift in Sources */,
 				786059B423B5656F00FEB374 /* SettingsRouter.swift in Sources */,

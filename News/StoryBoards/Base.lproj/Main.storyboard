@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="-3575" y="-1262"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--title-->
         <scene sceneID="seD-AN-rvd">
             <objects>
                 <tableViewController id="odC-Qe-wUV" customClass="SettingsViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,111 +70,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="sectionIndexBackgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Tabs` settings" id="yeA-QF-0a0">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="os1-dz-tkT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TabSettingCell" rowHeight="60" id="os1-dz-tkT" customClass="TabSettingCell" customModule="News" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="os1-dz-tkT" id="A8i-cb-QrO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The first tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vS-63-Xuk">
-                                                    <rect key="frame" x="10" y="0.0" width="394" height="60"/>
-                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="6vS-63-Xuk" firstAttribute="top" secondItem="A8i-cb-QrO" secondAttribute="top" id="60O-Sh-vRr"/>
-                                                <constraint firstItem="6vS-63-Xuk" firstAttribute="leading" secondItem="A8i-cb-QrO" secondAttribute="leading" constant="10" id="BV7-sf-QGu"/>
-                                                <constraint firstAttribute="trailing" secondItem="6vS-63-Xuk" secondAttribute="trailing" constant="10" id="FAr-Tv-j9m"/>
-                                                <constraint firstAttribute="bottom" secondItem="6vS-63-Xuk" secondAttribute="bottom" id="Hja-Ox-W7k"/>
-                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="7iT-7S-is9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TabSettingCell" rowHeight="60" id="7iT-7S-is9" customClass="TabSettingCell" customModule="News" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7iT-7S-is9" id="F0g-pg-E5y">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The second tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAN-Hf-O21">
-                                                    <rect key="frame" x="10" y="0.0" width="394" height="60"/>
-                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="bAN-Hf-O21" secondAttribute="trailing" constant="10" id="An3-Rv-8QA"/>
-                                                <constraint firstItem="bAN-Hf-O21" firstAttribute="top" secondItem="F0g-pg-E5y" secondAttribute="top" id="JCx-mA-bnr"/>
-                                                <constraint firstAttribute="bottom" secondItem="bAN-Hf-O21" secondAttribute="bottom" id="Ya0-JA-9Jd"/>
-                                                <constraint firstItem="bAN-Hf-O21" firstAttribute="leading" secondItem="F0g-pg-E5y" secondAttribute="leading" constant="10" id="hsd-Ab-G1a"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="Uyz-iJ-874">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TabSettingCell" rowHeight="60" id="Uyz-iJ-874" customClass="TabSettingCell" customModule="News" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="148" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uyz-iJ-874" id="9M0-ek-Fwh">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The third tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xri-NO-E1r">
-                                                    <rect key="frame" x="10" y="0.0" width="394" height="60"/>
-                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="xri-NO-E1r" secondAttribute="trailing" constant="10" id="8Hd-oM-oiy"/>
-                                                <constraint firstItem="xri-NO-E1r" firstAttribute="leading" secondItem="9M0-ek-Fwh" secondAttribute="leading" constant="10" id="C3u-xd-ANt"/>
-                                                <constraint firstItem="xri-NO-E1r" firstAttribute="top" secondItem="9M0-ek-Fwh" secondAttribute="top" id="OnK-nZ-PNK"/>
-                                                <constraint firstAttribute="bottom" secondItem="xri-NO-E1r" secondAttribute="bottom" id="Z7c-Ec-LIa"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="News` settings" id="CRW-5p-ufQ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="ftI-Ee-OwB">
-                                        <rect key="frame" x="0.0" y="264" width="414" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntervalOfUpdatingNewsCell" id="ak1-wX-7zJ" customClass="IntervalOfUpdatingNewsCell" customModule="News" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="264" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ftI-Ee-OwB" id="8CM-mG-GoO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ak1-wX-7zJ" id="bo3-CA-Rhu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval of updating news" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LU6-YN-3I2">
-                                                    <rect key="frame" x="10" y="0.0" width="394" height="60"/>
-                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bOz-Tp-z6I">
-                                                    <rect key="frame" x="333" y="14.5" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="switchIntervalOfUpdatingNews:" destination="odC-Qe-wUV" eventType="valueChanged" id="k4a-N5-aPW"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="LU6-YN-3I2" secondAttribute="trailing" constant="10" id="3tQ-d1-kc0"/>
-                                                <constraint firstItem="bOz-Tp-z6I" firstAttribute="centerY" secondItem="LU6-YN-3I2" secondAttribute="centerY" id="7W4-04-lYX"/>
-                                                <constraint firstItem="LU6-YN-3I2" firstAttribute="top" secondItem="8CM-mG-GoO" secondAttribute="top" id="Jc2-bF-gik"/>
-                                                <constraint firstItem="bOz-Tp-z6I" firstAttribute="leading" secondItem="LU6-YN-3I2" secondAttribute="trailing" constant="-71" id="RAl-qu-6vl"/>
-                                                <constraint firstItem="LU6-YN-3I2" firstAttribute="leading" secondItem="8CM-mG-GoO" secondAttribute="leading" constant="10" id="ZeD-Qg-2wE"/>
-                                                <constraint firstAttribute="bottom" secondItem="LU6-YN-3I2" secondAttribute="bottom" id="ryC-0H-cpO"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -185,9 +119,8 @@
                             <outlet property="delegate" destination="odC-Qe-wUV" id="m4F-lK-L0U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="R5D-KR-LZb"/>
+                    <navigationItem key="navigationItem" title="title" id="R5D-KR-LZb"/>
                     <connections>
-                        <outlet property="switcherIntervalOfUpdating" destination="bOz-Tp-z6I" id="zZI-qj-fzq"/>
                         <segue destination="696-pS-5jl" kind="show" identifier="SourceOfNewSettings" id="DNh-XH-RUu"/>
                         <segue destination="CjO-eX-EsR" kind="show" identifier="IntervalOfUpdating" id="K6X-cM-3nd"/>
                     </connections>

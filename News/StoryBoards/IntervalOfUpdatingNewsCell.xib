@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntervalOfUpdatingNewsCell" rowHeight="78" id="V66-eh-Qzy" customClass="IntervalOfUpdatingNewsCell" customModule="News" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V66-eh-Qzy" id="aiQ-MB-ril">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijU-pK-513">
+                        <rect key="frame" x="10" y="5" width="394" height="68"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXR-Jd-Rr3">
+                        <rect key="frame" x="20" y="5" width="310" height="68"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="neq-3C-xlD">
+                        <rect key="frame" x="355" y="23.5" width="41" height="31"/>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ijU-pK-513" secondAttribute="bottom" constant="5" id="AK2-yn-dVP"/>
+                    <constraint firstItem="wXR-Jd-Rr3" firstAttribute="leading" secondItem="ijU-pK-513" secondAttribute="leading" constant="10" id="BjR-26-Rt5"/>
+                    <constraint firstItem="wXR-Jd-Rr3" firstAttribute="width" secondItem="ijU-pK-513" secondAttribute="height" multiplier="155:34" id="G2u-e3-Q6O"/>
+                    <constraint firstAttribute="trailing" secondItem="ijU-pK-513" secondAttribute="trailing" constant="10" id="Jto-6d-KoY"/>
+                    <constraint firstItem="ijU-pK-513" firstAttribute="leading" secondItem="aiQ-MB-ril" secondAttribute="leading" constant="10" id="VFt-Ta-Dlq"/>
+                    <constraint firstItem="ijU-pK-513" firstAttribute="top" secondItem="aiQ-MB-ril" secondAttribute="top" constant="5" id="c52-UB-1b7"/>
+                    <constraint firstItem="neq-3C-xlD" firstAttribute="trailing" secondItem="ijU-pK-513" secondAttribute="trailing" constant="-10" id="fEv-7h-Klx"/>
+                    <constraint firstItem="wXR-Jd-Rr3" firstAttribute="top" secondItem="ijU-pK-513" secondAttribute="top" id="fYH-as-h6T"/>
+                    <constraint firstItem="neq-3C-xlD" firstAttribute="centerY" secondItem="ijU-pK-513" secondAttribute="centerY" id="fYz-c9-5YU"/>
+                    <constraint firstItem="wXR-Jd-Rr3" firstAttribute="bottom" secondItem="ijU-pK-513" secondAttribute="bottom" id="jtg-pt-AAF"/>
+                    <constraint firstItem="neq-3C-xlD" firstAttribute="leading" secondItem="wXR-Jd-Rr3" secondAttribute="trailing" constant="25" id="leU-Pj-nhh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="containerLabel" destination="ijU-pK-513" id="Vr0-wr-uO8"/>
+                <outlet property="switcherIntervalOfUpdating" destination="neq-3C-xlD" id="X12-Au-wiP"/>
+                <outlet property="titleText" destination="wXR-Jd-Rr3" id="ULU-MJ-H5E"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="90.401785714285708"/>
+        </tableViewCell>
+    </objects>
+</document>

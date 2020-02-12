@@ -10,6 +10,7 @@ import UIKit
 
 class NewCell: UITableViewCell {
     
+    @IBOutlet var containerLabel: UILabel!
     @IBOutlet var newImageView: UIImageView!
     @IBOutlet var newTitleLabel: UILabel!
     @IBOutlet var newTextLabel: UILabel!
@@ -20,6 +21,12 @@ class NewCell: UITableViewCell {
         newTextLabel.text = new.descripton
         newTextLabel.isHidden = true
         newImageView.fetchImage(with: new.imageRef)
+        
+        containerLabel.layer.borderWidth = 1
+        containerLabel.layer.borderColor = Constants.Colors.mainTextColor.cgColor
+        containerLabel.layer.cornerRadius = 5
+        
+        selectionStyle = .none
         
     }
 }

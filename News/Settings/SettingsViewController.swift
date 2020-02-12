@@ -20,10 +20,18 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     
     // MARK: - IBOutlets
     
-    @IBOutlet var switcherIntervalOfUpdating: UISwitch!
+    //    @IBOutlet var switcherIntervalOfUpdating: UISwitch!
     
     var interactor: SettingsBusinessLogic?
     var router: (NSObjectProtocol & SettingsRoutingLogic & SettingsDataPassing)?
+    
+    // MARK: - Private properties
+    
+    private let titlesForFirstSectionOfTable = ["The first tab",
+                                                "The second tab",
+                                                "The third tab"]
+    
+    private let titleForSecondSectionOfTable = "Interval of updating news"
     
     // MARK: Object lifecycle
     
@@ -42,8 +50,13 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UINib(nibName: "TabSettingCell", bundle: nil), forCellReuseIdentifier: "TabSettingCell")
+        tableView.register(UINib(nibName: "IntervalOfUpdatingNewsCell", bundle: nil), forCellReuseIdentifier: "IntervalOfUpdatingNewsCell")
+        
         SettingsConfigurator.shared.configure(with: self)
         getSwitcherValue()
+        
+        configureView()
     }
     
     // MARK: - Routing
@@ -64,7 +77,7 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     }
     
     func displaySwitcherValue(viewModel: Settings.GetSwitcherValue.ViewModel) {
-        switcherIntervalOfUpdating.setOn(viewModel.isOn, animated: false)
+        //        switcherIntervalOfUpdating.setOn(viewModel.isOn, animated: false)
     }
     
     // MARK: - Select tab`s settings
@@ -78,11 +91,48 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         //nameTextField.text = viewModel.name
     }
     
+    // MARK: - Private methods
+    
+    private func configureView() {
+        view.backgroundColor                                    = Constants.Colors.backGroundColor
+        
+        navigationController?.navigationBar.barTintColor        = Constants.Colors.backGroundColor
+        navigationController?.navigationBar.topItem?.title      = tabBarController?.tabBar.selectedItem?.title
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    }
+    
     // MARK: - @IBActions
     
     @IBAction func switchIntervalOfUpdatingNews(_ sender: UISwitch) {
         let request = Settings.ChangeValueOfSwitchOfIntervalOfUpdating.Request(switchValue: sender.isOn)
         interactor?.changeValueOfSwitchOfIntervalOfUpdating(request: request)
+    }
+    
+}
+
+extension SettingsViewController {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TabSettingCell", for: indexPath) as! TabSettingCell
+            
+            cell.titleText.text = "\(titlesForFirstSectionOfTable[indexPath.row])"
+            
+            cell.configure()
+            
+            return cell
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "IntervalOfUpdatingNewsCell", for: indexPath) as! IntervalOfUpdatingNewsCell
+            
+            cell.titleText.text = titleForSecondSectionOfTable
+            
+            cell.configure()
+            
+            return cell
+        }
+        return UITableViewCell()
     }
     
 }
@@ -95,6 +145,28 @@ extension SettingsViewController {
             performSegue(withIdentifier: "SourceOfNewSettings", sender: nil) // TODO constant
         } else {
             performSegue(withIdentifier: "IntervalOfUpdating", sender: nil) // TODO constant
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.tintColor            = Constants.Colors.backGroundColor
+            header.textLabel?.textColor = Constants.Colors.titleTextColor
+            header.textLabel?.font      = Constants.Fonts.titleTextFontSize
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let cell                  = cell as! TabSettingCell
+            cell.backgroundColor      = Constants.Colors.backGroundColor
+            cell.titleText.textColor  = Constants.Colors.mainTextColor
+            cell.titleText.font       = Constants.Fonts.settingsOptionsTextFontSize
+        } else if indexPath.section == 1 {
+            let cell                  = cell as! IntervalOfUpdatingNewsCell
+            cell.backgroundColor      = Constants.Colors.backGroundColor
+            cell.titleText.textColor  = Constants.Colors.mainTextColor
+            cell.titleText.font       = Constants.Fonts.settingsOptionsTextFontSize
         }
     }
     
