@@ -16,7 +16,6 @@ class NewCell: UITableViewCell {
     @IBOutlet var newTextLabel: UILabel!
     
     func configure(with new: DisplayedNew) {
-        
         newTitleLabel.text = new.title
         newTextLabel.text = new.descripton
         newTextLabel.isHidden = true
@@ -27,6 +26,5 @@ class NewCell: UITableViewCell {
         containerLabel.layer.cornerRadius = 5
         
         selectionStyle = .none
-        
     }
 }

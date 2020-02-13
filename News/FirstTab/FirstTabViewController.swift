@@ -155,10 +155,11 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func configureView() {
-        view.backgroundColor              = Constants.Colors.backGroundColor
-        tableView.backgroundColor         = Constants.Colors.backGroundColor
-        tabBar.barTintColor               = Constants.Colors.backGroundColor
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        view.backgroundColor                                 = Constants.Colors.backGroundColor
+        tableView.backgroundColor                            = Constants.Colors.backGroundColor
+        tabBar.barTintColor                                  = Constants.Colors.backGroundColor
+        navigationBar.titleTextAttributes                    = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationBar.topItem?.rightBarButtonItem?.tintColor = Constants.Colors.navigationBarItemColor
         navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
@@ -195,7 +196,7 @@ extension FirstTabViewController {
 
 extension FirstTabViewController {
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) { // TODO move to configure method in cell
         let cell = cell as! NewCell
         cell.backgroundColor         = Constants.Colors.backGroundColor
         cell.newTitleLabel.textColor = Constants.Colors.titleTextColor

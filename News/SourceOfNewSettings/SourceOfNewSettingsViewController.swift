@@ -58,10 +58,13 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UINib(nibName: "SourceOfNewSettingsCell", bundle: nil), forCellReuseIdentifier: "SourceOfNewSettingsCell")
+        
         displayNavigationTitle()
         displaySourceOfNew()
         displayTabBarTitle()
         
+        configureView()
     }
     
     // MARK: - Routing
@@ -149,7 +152,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         self.feedsModels = feedsModels
         tableView.reloadData()
         for index in 0..<feedsModels.count {
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! SourceOfNewCell
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! SourceOfNewSettingsCell
             let toggleValue = (feedsModels[index].isSelected) ? true : false
             cell.turnSourceOfNew.setOn(toggleValue, animated: true)
         }
@@ -164,6 +167,14 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         tabBarController?.tabBar.items?[numberOfTab].title = title
     }
     
+    private func configureView() {
+        view.backgroundColor              = Constants.Colors.backGroundColor
+//        tabBar.barTintColor               = Constants.Colors.backGroundColor // TODO - need to make workable
+//        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+//        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.tintColor = Constants.Colors.navigationBarItemColor
+    }
+    
     //MARK: - @IBActions
     
     @IBAction func saveButtonPressed(_ sender: Any) {
@@ -173,7 +184,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     
     @IBAction func changeToggleSourceOfNew(_ sender: UISwitch) {
         
-        guard let cell = sender.superview?.superview as? SourceOfNewCell else { return }
+        guard let cell = sender.superview?.superview as? SourceOfNewSettingsCell else { return }
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         
         selectNewSource(indexPath: indexPath)
@@ -190,8 +201,9 @@ extension SourceOfNewSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = feedsModels[indexPath.row].feedName
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SourceOfNewSettingsCell", for: indexPath) as! SourceOfNewSettingsCell
+        cell.sourceLabel?.text = feedsModels[indexPath.row].feedName // TODO move to configure
+        cell.configure()
         return cell
     }
 }
@@ -218,4 +230,8 @@ extension SourceOfNewSettingsViewController {
         
         return UISwipeActionsConfiguration(actions: [changeTheTitleOfNew])
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 78
+     }
 }

@@ -15,7 +15,8 @@
 		7824690823F45112004B7812 /* IntervalOfUpdatingNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7824690723F45112004B7812 /* IntervalOfUpdatingNewsCell.xib */; };
 		7824690A23F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */; };
 		782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782744E523E96F3B00EBCD43 /* TimeHelper.swift */; };
-		785489C223EEEE4C002B55E6 /* SourceOfNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */; };
+		785A4B9023F4AD08002AF2A4 /* SourceOfNewSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785A4B8F23F4AD08002AF2A4 /* SourceOfNewSettingsCell.xib */; };
+		785A4B9223F4AD2B002AF2A4 /* SourceOfNewSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A4B9123F4AD2B002AF2A4 /* SourceOfNewSettingsCell.swift */; };
 		7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860594E23AC07F700FEB374 /* AppDelegate.swift */; };
 		7860595623AC07F700FEB374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7860595423AC07F700FEB374 /* Main.storyboard */; };
 		7860595823AC07FB00FEB374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7860595723AC07FB00FEB374 /* Assets.xcassets */; };
@@ -80,7 +81,8 @@
 		7824690723F45112004B7812 /* IntervalOfUpdatingNewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntervalOfUpdatingNewsCell.xib; sourceTree = "<group>"; };
 		7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingNewsCell.swift; sourceTree = "<group>"; };
 		782744E523E96F3B00EBCD43 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
-		785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewCell.swift; sourceTree = "<group>"; };
+		785A4B8F23F4AD08002AF2A4 /* SourceOfNewSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourceOfNewSettingsCell.xib; sourceTree = "<group>"; };
+		785A4B9123F4AD2B002AF2A4 /* SourceOfNewSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsCell.swift; sourceTree = "<group>"; };
 		7860594B23AC07F700FEB374 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7860594E23AC07F700FEB374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7860595523AC07F700FEB374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				7860595923AC07FB00FEB374 /* LaunchScreen.storyboard */,
 				7824690123F4449F004B7812 /* TabSettingCell.xib */,
 				7824690723F45112004B7812 /* IntervalOfUpdatingNewsCell.xib */,
+				785A4B8F23F4AD08002AF2A4 /* SourceOfNewSettingsCell.xib */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -322,9 +325,9 @@
 			isa = PBXGroup;
 			children = (
 				78D97B9C23D8E18B00442108 /* NewCell.swift */,
-				785489C123EEEE4C002B55E6 /* SourceOfNewCell.swift */,
 				7824690523F44C53004B7812 /* TabSettingCell.swift */,
 				7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */,
+				785A4B9123F4AD2B002AF2A4 /* SourceOfNewSettingsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 			files = (
 				7824690823F45112004B7812 /* IntervalOfUpdatingNewsCell.xib in Resources */,
 				7860595B23AC07FB00FEB374 /* LaunchScreen.storyboard in Resources */,
+				785A4B9023F4AD08002AF2A4 /* SourceOfNewSettingsCell.xib in Resources */,
 				7860595823AC07FB00FEB374 /* Assets.xcassets in Resources */,
 				7824690223F4449F004B7812 /* TabSettingCell.xib in Resources */,
 				78D97B9F23D8E2C200442108 /* NewCell.xib in Resources */,
@@ -475,6 +479,7 @@
 			files = (
 				786059B923B5659200FEB374 /* SettingsConfigurator.swift in Sources */,
 				78A92F5123C4EE940058A293 /* UserDefaultsStorageManager.swift in Sources */,
+				785A4B9223F4AD2B002AF2A4 /* SourceOfNewSettingsCell.swift in Sources */,
 				78ED403323DC757100E04467 /* Extension+UIImageView.swift in Sources */,
 				7860598823B356B500FEB374 /* CbnParser.swift in Sources */,
 				789CD1CD23E474F500B7EA12 /* IntervalOfUpdatingModels.swift in Sources */,
@@ -503,7 +508,6 @@
 				7860596C23AC153E00FEB374 /* FirstTabViewController.swift in Sources */,
 				7860598423B2BDD100FEB374 /* GenericNewsParser.swift in Sources */,
 				786059B223B5656F00FEB374 /* SettingsPresenter.swift in Sources */,
-				785489C223EEEE4C002B55E6 /* SourceOfNewCell.swift in Sources */,
 				78A92F5723C4F9900058A293 /* Constants.swift in Sources */,
 				7860597F23B2AD6000FEB374 /* ExtractHelper.swift in Sources */,
 				789CD1CC23E474F500B7EA12 /* IntervalOfUpdatingRouter.swift in Sources */,

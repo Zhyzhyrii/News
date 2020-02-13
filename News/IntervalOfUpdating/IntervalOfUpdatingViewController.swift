@@ -13,7 +13,7 @@
 import UIKit
 
 protocol IntervalOfUpdatingDisplayLogic: class {
-//    func displaySomething(viewModel: IntervalOfUpdating.Something.ViewModel)
+    //    func displaySomething(viewModel: IntervalOfUpdating.Something.ViewModel)
 }
 
 class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisplayLogic {
@@ -50,6 +50,8 @@ class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisp
     override func viewDidLoad() {
         super.viewDidLoad()
         IntervalOfUpdatingConfigurator.shared.configure(with: self)
+        
+        configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,11 +78,11 @@ class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisp
         }
     }
     
-    // MARK: Do something
+    // MARK: - Private methods
     
-//    func displaySomething(viewModel: IntervalOfUpdating.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
-//    }
+    private func configureView() {
+        view.backgroundColor = Constants.Colors.backGroundColor
+    }
     
     // MARK: - IBActions
     
@@ -108,30 +110,32 @@ extension IntervalOfUpdatingViewController: UIPickerViewDataSource {
 
 extension IntervalOfUpdatingViewController: UIPickerViewDelegate {
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var attributedString: NSAttributedString!
         switch component {
         case 0:
-            return "\(row) Hours"
+            attributedString = NSAttributedString(string: "\(row) Hours", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
         case 1:
-            return "\(row) Minutes"
+            attributedString = NSAttributedString(string: "\(row) Minutes", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
         case 2:
-            return "\(row) Seconds"
+            attributedString = NSAttributedString(string: "\(row) Seconds", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
         default:
-            return ""
+            attributedString = nil
         }
+        return attributedString
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            switch component {
-            case 0:
-                hours = row
-            case 1:
-                minutes = row
-            case 2:
-                seconds = row
-            default:
-                break
-            }
+        switch component {
+        case 0:
+            hours = row
+        case 1:
+            minutes = row
+        case 2:
+            seconds = row
+        default:
+            break
+        }
         
         let savedInterval = TimeHelper.convertTimeToSeconds(hours: hours, minutes: minutes, seconds: seconds)
         

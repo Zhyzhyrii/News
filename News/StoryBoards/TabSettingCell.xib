@@ -29,9 +29,9 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Wer-sb-MC6" firstAttribute="bottom" secondItem="FVS-AK-2cR" secondAttribute="bottom" id="0eI-Y2-tgO"/>
                     <constraint firstAttribute="bottom" secondItem="FVS-AK-2cR" secondAttribute="bottom" constant="5" id="5go-8m-x8d"/>
                     <constraint firstItem="Wer-sb-MC6" firstAttribute="leading" secondItem="FVS-AK-2cR" secondAttribute="leading" constant="10" id="N0Q-4u-kzY"/>
-                    <constraint firstItem="Wer-sb-MC6" firstAttribute="bottom" secondItem="FVS-AK-2cR" secondAttribute="bottom" id="NZI-ht-eOf"/>
                     <constraint firstAttribute="trailing" secondItem="FVS-AK-2cR" secondAttribute="trailing" constant="10" id="daV-Zd-glq"/>
                     <constraint firstItem="FVS-AK-2cR" firstAttribute="leading" secondItem="wy6-5E-c72" secondAttribute="leading" constant="10" id="nB9-5V-nzS"/>
                     <constraint firstItem="FVS-AK-2cR" firstAttribute="top" secondItem="wy6-5E-c72" secondAttribute="top" constant="5" id="vmY-Wa-Y0u"/>

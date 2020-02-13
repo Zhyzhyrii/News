@@ -17,9 +17,10 @@ struct Constants {
     }
     
     struct Colors {
-        static let backGroundColor = UIColor(red: 0.071, green: 0.071, blue: 0.071, alpha: 1)
-        static let titleTextColor  = UIColor(red: 1, green: 0.992, blue: 0.992, alpha: 1)
-        static let mainTextColor   = UIColor(red: 0.671, green: 0.654, blue: 0.654, alpha: 1)
+        static let backGroundColor        = UIColor(red: 0.071, green: 0.071, blue: 0.071, alpha: 1)
+        static let titleTextColor         = UIColor(red: 1, green: 0.992, blue: 0.992, alpha: 1)
+        static let mainTextColor          = UIColor(red: 0.671, green: 0.654, blue: 0.654, alpha: 1)
+        static let navigationBarItemColor = UIColor(red: 0.416, green: 0.831, blue: 0.569, alpha: 1)
     }
     
     struct Fonts {

@@ -94,12 +94,12 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     // MARK: - Private methods
     
     private func configureView() {
-        view.backgroundColor                                    = Constants.Colors.backGroundColor
+        view.backgroundColor                                                       = Constants.Colors.backGroundColor
         
-        navigationController?.navigationBar.barTintColor        = Constants.Colors.backGroundColor
-        navigationController?.navigationBar.topItem?.title      = tabBarController?.tabBar.selectedItem?.title
+        navigationController?.navigationBar.barTintColor                           = Constants.Colors.backGroundColor
+        navigationController?.navigationBar.topItem?.title                         = tabBarController?.tabBar.selectedItem?.title
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes                    = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
