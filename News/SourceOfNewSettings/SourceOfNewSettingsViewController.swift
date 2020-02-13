@@ -172,7 +172,6 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
 //        tabBar.barTintColor               = Constants.Colors.backGroundColor // TODO - need to make workable
 //        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 //        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.tintColor = Constants.Colors.navigationBarItemColor
     }
     
     //MARK: - @IBActions
