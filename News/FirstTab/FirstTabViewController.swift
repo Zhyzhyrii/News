@@ -53,7 +53,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "NewCell", bundle: nil), forCellReuseIdentifier: "NewCell")
-       
+        
         tabBar = tabBarController?.tabBar
         guard let selectedBarItem = tabBar.selectedItem else { return }
         indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem))
@@ -159,7 +159,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.backgroundColor                            = Constants.Colors.backGroundColor
         
         tabBar.barTintColor                                  = Constants.Colors.backGroundColor
-
+        
         navigationBar.titleTextAttributes                    = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationBar.topItem?.rightBarButtonItem?.tintColor = Constants.Colors.navigationTabBarItemColor
         navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -185,10 +185,13 @@ extension FirstTabViewController {
         
         guard let news = news else { return UITableViewCell() }
         
-        cell.configure(with: news[indexPath.row])
+        cell.configureCellData(with: news[indexPath.row])
         
-        if selectedIndex == indexPath.row {
-            cell.newTextLabel.isHidden = false
+        if indexPath.row == selectedIndex {
+            cell.newTextLabel.text = news[indexPath.row].descripton
+            cell.configureSelectedCellView()
+        } else {
+            cell.configureNotSelectedCellView()
         }
         
         return cell
@@ -197,15 +200,6 @@ extension FirstTabViewController {
 }
 
 extension FirstTabViewController {
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) { // TODO move to configure method in cell
-        let cell = cell as! NewCell
-        cell.backgroundColor         = Constants.Colors.backGroundColor
-        cell.newTitleLabel.textColor = Constants.Colors.titleTextColor
-        cell.newTextLabel.textColor  = Constants.Colors.mainTextColor
-        cell.newTitleLabel.font      = Constants.Fonts.titleTextFontSize
-        cell.newTextLabel.font       = Constants.Fonts.mainTextFontSize
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == selectedIndex {
@@ -216,12 +210,17 @@ extension FirstTabViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! NewCell
+        
+        guard let news = news else { return }
+        
         if indexPath.row == selectedIndex {
+            cell.newTextLabel.text      = news[selectedIndex].title
+            cell.configureNotSelectedCellView()
             selectedIndex = -1
-            cell.newTextLabel?.isHidden = true
         }else{
-            selectedIndex = indexPath.row
-            cell.newTextLabel?.isHidden = false
+            selectedIndex               = indexPath.row
+            cell.newTextLabel.text      = news[selectedIndex].descripton
+            cell.configureSelectedCellView()
         }
         
         tableView.beginUpdates()
@@ -231,7 +230,8 @@ extension FirstTabViewController {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         guard let cell = tableView.cellForRow(at: indexPath) as? NewCell else { return }
-        cell.newTextLabel?.isHidden = true
+        cell.newTextLabel.textColor = Constants.Colors.titleTextColor
+        cell.newTextLabel.font      = Constants.Fonts.titleTextFontSize
         
     }
     
