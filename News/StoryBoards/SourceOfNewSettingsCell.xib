@@ -31,6 +31,9 @@
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XAZ-xd-Her">
                         <rect key="frame" x="345" y="23.5" width="51" height="31"/>
+                        <connections>
+                            <action selector="changeToggleSourceOfNew:" destination="04G-80-1u2" eventType="valueChanged" id="JNX-is-pPH"/>
+                        </connections>
                     </switch>
                 </subviews>
                 <constraints>

@@ -17,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let diskCacheSize = 500*1024*1024 // 500MB
         URLCache.configSharedCache(disk: diskCacheSize)
-        
-        UITabBar.appearance().tintColor = Constants.Colors.backGroundColor
-        
+
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Constants.Colors.navigationTabBarItemColor], for: .selected)
         UITabBar.appearance().tintColor = Constants.Colors.navigationTabBarItemColor
         

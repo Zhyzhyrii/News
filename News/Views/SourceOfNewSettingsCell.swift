@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ChangeValueOfSourceOfNewSwitcher: class {
+    func changeSourceOfNewSwitcherValue(_ sender: UISwitch)
+}
+
 class SourceOfNewSettingsCell: UITableViewCell {
     
     @IBOutlet var containerLabel: UILabel!
     @IBOutlet var sourceLabel: UILabel!
     @IBOutlet var turnSourceOfNew: UISwitch!
+    
+    weak var delegate: ChangeValueOfSourceOfNewSwitcher?
     
     func configure() {
         backgroundColor       = Constants.Colors.backGroundColor
@@ -25,5 +31,10 @@ class SourceOfNewSettingsCell: UITableViewCell {
         
         selectionStyle = .none
     }
+    
+    @IBAction func changeToggleSourceOfNew(_ sender: UISwitch) {
+        delegate?.changeSourceOfNewSwitcherValue(sender)
+    }
+    
     
 }

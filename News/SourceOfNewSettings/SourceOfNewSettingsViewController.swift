@@ -25,7 +25,7 @@ protocol SourceOfNewSettingsDisplayLogic: class {
     func displayAlertTheSameTitle(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel)
 }
 
-class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSettingsDisplayLogic {
+class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSettingsDisplayLogic, ChangeValueOfSourceOfNewSwitcher {
     
     // MARK: - Outlets
     
@@ -39,13 +39,8 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     // MARK: - Private properties
     
     private var feedsModels: [FeedModel]!
-//    private let tabBar = UIApplication.shared.windows.first?.rootViewController as! UITabBarController
     
     // MARK: - Object lifecycle
-    
-    //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    //    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -146,7 +141,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         UIHelpers.showMessage(withTitle: "The same title", message: "Title for tne new must be unique", viewController: self, buttonTitle: "OK")
     }
     
-    // MARK: - Change source of new for the specific tab (ChangeValueOfSourceOfNewSwitcher protocol`s method)
+    // MARK: - Change source of new for the specific tab
     
     func changeSourceOfNewSwitcherValue(_ sender: UISwitch) {
         guard let cell = sender.superview?.superview as? SourceOfNewSettingsCell else { return }
@@ -178,9 +173,9 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     
     private func configureView() {
         view.backgroundColor              = Constants.Colors.backGroundColor
-//        tabBar.barTintColor               = Constants.Colors.backGroundColor // TODO - need to make workable
-//        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-//        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //        tabBar.barTintColor               = Constants.Colors.backGroundColor // TODO - need to make workable
+        //        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        //        navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
     //MARK: - @IBActions
@@ -189,16 +184,6 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         let request = SourceOfNewSettings.SaveFeedSettings.Request()
         interactor?.saveFeedSettings(request: request)
     }
-    
-    @IBAction func changeToggleSourceOfNew(_ sender: UISwitch) {
-        
-        guard let cell = sender.superview?.superview as? SourceOfNewSettingsCell else { return }
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        
-        selectNewSource(indexPath: indexPath)
-        
-    }
-    
     
 }
 
@@ -210,6 +195,9 @@ extension SourceOfNewSettingsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SourceOfNewSettingsCell", for: indexPath) as! SourceOfNewSettingsCell
+        
+        cell.delegate = self
+        
         cell.sourceLabel?.text = feedsModels[indexPath.row].feedName // TODO move to configure
         cell.configure()
         return cell
@@ -222,15 +210,15 @@ extension SourceOfNewSettingsViewController {
         let changeTheTitleOfNew = UIContextualAction(style: .normal, title: "Update title") {_,_,complete in
             
             UIHelpers.showAlertWithTextField(withTitle: "Change title",
-                                        message: "Provide new title for the new",
-                                        viewController: self,
-                                        buttonTitle: "OK",
-                                        actionHandler: { (newTitle) in
-                                            guard let newTitle = newTitle else { return }
-                                            let request = SourceOfNewSettings.UpdateTitleOfTheNew.Request(feedName: newTitle, indexPathOfRow: indexPath)
-                                            self.interactor?.updateTitleOfTheNew(request: request)
-
-                                            complete(true)
+                                             message: "Provide new title for the new",
+                                             viewController: self,
+                                             buttonTitle: "OK",
+                                             actionHandler: { (newTitle) in
+                                                guard let newTitle = newTitle else { return }
+                                                let request = SourceOfNewSettings.UpdateTitleOfTheNew.Request(feedName: newTitle, indexPathOfRow: indexPath)
+                                                self.interactor?.updateTitleOfTheNew(request: request)
+                                                
+                                                complete(true)
             }) {
                 complete(false)
             }
@@ -241,5 +229,6 @@ extension SourceOfNewSettingsViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 78
-     }
+    }
+    
 }

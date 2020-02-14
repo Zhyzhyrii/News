@@ -52,7 +52,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jSv-h1-mVk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" image="firstTab" id="Qms-Kq-dq1"/>
+                    <tabBarItem key="tabBarItem" image="firstTab" id="Qms-Kq-dq1">
+                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="navigationBar" destination="iOg-eK-wlw" id="yKJ-kC-w3o"/>
                         <outlet property="tableView" destination="RFx-G2-N74" id="vFc-4m-Osw"/>
@@ -210,7 +212,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
