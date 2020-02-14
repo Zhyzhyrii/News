@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Constants.Colors.navigationTabBarItemColor], for: .selected)
         UITabBar.appearance().tintColor = Constants.Colors.navigationTabBarItemColor
         
+        UITabBar.appearance().tintColor = Constants.Colors.backGroundColor
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Constants.Colors.navigationTabBarItemColor], for: .selected)
+        UITabBar.appearance().tintColor = Constants.Colors.navigationTabBarItemColor
+        
         return true
     }
 
