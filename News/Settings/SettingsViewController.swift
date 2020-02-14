@@ -101,7 +101,7 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.tintColor           = Constants.Colors.navigationBarItemColor
+        navigationController?.navigationBar.tintColor           = Constants.Colors.navigationTabBarItemColor
     }
     
     // MARK: - @IBActions

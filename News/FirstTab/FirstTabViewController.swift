@@ -157,9 +157,9 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     private func configureView() {
         view.backgroundColor                                 = Constants.Colors.backGroundColor
         tableView.backgroundColor                            = Constants.Colors.backGroundColor
-        tabBar.barTintColor                                  = Constants.Colors.backGroundColor
+
         navigationBar.titleTextAttributes                    = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationBar.topItem?.rightBarButtonItem?.tintColor = Constants.Colors.navigationBarItemColor
+        navigationBar.topItem?.rightBarButtonItem?.tintColor = Constants.Colors.navigationTabBarItemColor
         navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
