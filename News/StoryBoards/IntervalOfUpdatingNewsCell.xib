@@ -30,6 +30,9 @@
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="neq-3C-xlD">
                         <rect key="frame" x="355" y="23.5" width="41" height="31"/>
+                        <connections>
+                            <action selector="changeToggleIntervalOfUpdating:" destination="V66-eh-Qzy" eventType="valueChanged" id="4Zz-NB-hy8"/>
+                        </connections>
                     </switch>
                 </subviews>
                 <constraints>

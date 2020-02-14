@@ -146,6 +146,15 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         UIHelpers.showMessage(withTitle: "The same title", message: "Title for tne new must be unique", viewController: self, buttonTitle: "OK")
     }
     
+    // MARK: - Change source of new for the specific tab (ChangeValueOfSourceOfNewSwitcher protocol`s method)
+    
+    func changeSourceOfNewSwitcherValue(_ sender: UISwitch) {
+        guard let cell = sender.superview?.superview as? SourceOfNewSettingsCell else { return }
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        selectNewSource(indexPath: indexPath)
+    }
+    
     // MARK: - Private methods
     
     private func displaySourcesOfNews(feedsModels: [FeedModel]) {

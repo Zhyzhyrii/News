@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ChangeValueOfIntervalOfUpdatingSwitcher: class {
+    func changeValueOfIntervalOfUpdatingSwitcher(_ sender: UISwitch)
+}
+
 class IntervalOfUpdatingNewsCell: UITableViewCell {
     
     @IBOutlet var containerLabel: UILabel!
     @IBOutlet var titleText: UILabel!
     @IBOutlet var switcherIntervalOfUpdating: UISwitch!
+    
+    weak var delegate: ChangeValueOfIntervalOfUpdatingSwitcher?
     
     func configure() {
         selectionStyle = .none
@@ -20,6 +26,10 @@ class IntervalOfUpdatingNewsCell: UITableViewCell {
         containerLabel.layer.borderWidth  = 1
         containerLabel.layer.borderColor  = Constants.Colors.mainTextColor.cgColor
         containerLabel.layer.cornerRadius = 5
+    }
+    
+    @IBAction func changeToggleIntervalOfUpdating(_ sender: UISwitch) {
+        delegate?.changeValueOfIntervalOfUpdatingSwitcher(sender)
     }
     
 }

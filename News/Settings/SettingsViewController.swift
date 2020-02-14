@@ -16,11 +16,9 @@ protocol SettingsDisplayLogic: class {
     func displaySwitcherValue(viewModel: Settings.GetSwitcherValue.ViewModel)
 }
 
-class SettingsViewController: UITableViewController, SettingsDisplayLogic {
+class SettingsViewController: UITableViewController, SettingsDisplayLogic, ChangeValueOfIntervalOfUpdatingSwitcher {
     
     // MARK: - IBOutlets
-    
-    //    @IBOutlet var switcherIntervalOfUpdating: UISwitch!
     
     var interactor: SettingsBusinessLogic?
     var router: (NSObjectProtocol & SettingsRoutingLogic & SettingsDataPassing)?
@@ -33,18 +31,6 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     
     private let titleForSecondSectionOfTable = "Interval of updating news"
     
-    // MARK: Object lifecycle
-    
-    //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    //        setup()
-    //    }
-    //
-    //    required init?(coder aDecoder: NSCoder) {
-    //        super.init(coder: aDecoder)
-    //        setup()
-    //    }
-    
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
@@ -54,9 +40,14 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         tableView.register(UINib(nibName: "IntervalOfUpdatingNewsCell", bundle: nil), forCellReuseIdentifier: "IntervalOfUpdatingNewsCell")
         
         SettingsConfigurator.shared.configure(with: self)
-        getSwitcherValue()
         
         configureView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getSwitcherValue()
     }
     
     // MARK: - Routing
@@ -77,7 +68,9 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
     }
     
     func displaySwitcherValue(viewModel: Settings.GetSwitcherValue.ViewModel) {
-        //        switcherIntervalOfUpdating.setOn(viewModel.isOn, animated: false)
+        let indexPath = IndexPath(row: 0, section: 1)
+        guard let cell = tableView.cellForRow(at: indexPath) as? IntervalOfUpdatingNewsCell else { return }
+        cell.switcherIntervalOfUpdating.setOn(viewModel.isOn, animated: false)
     }
     
     // MARK: - Select tab`s settings
@@ -87,8 +80,11 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         interactor?.selectTab(request: request)
     }
     
-    func displaySomething(viewModel: Settings.SelectTab.ViewModel) {
-        //nameTextField.text = viewModel.name
+    // MARK: - Change value of interval of updating news (ChangeValueOfIntervalOfUpdatingSwitcher protocol`s method)
+    
+    func changeValueOfIntervalOfUpdatingSwitcher(_ sender: UISwitch) {
+        let request = Settings.ChangeValueOfSwitchOfIntervalOfUpdating.Request(switchValue: sender.isOn)
+        interactor?.changeValueOfSwitchOfIntervalOfUpdating(request: request)
     }
     
     // MARK: - Private methods
@@ -102,13 +98,6 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.tintColor           = Constants.Colors.navigationTabBarItemColor
-    }
-    
-    // MARK: - @IBActions
-    
-    @IBAction func switchIntervalOfUpdatingNews(_ sender: UISwitch) {
-        let request = Settings.ChangeValueOfSwitchOfIntervalOfUpdating.Request(switchValue: sender.isOn)
-        interactor?.changeValueOfSwitchOfIntervalOfUpdating(request: request)
     }
     
 }
@@ -126,6 +115,8 @@ extension SettingsViewController {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "IntervalOfUpdatingNewsCell", for: indexPath) as! IntervalOfUpdatingNewsCell
+            
+            cell.delegate = self
             
             cell.titleText.text = titleForSecondSectionOfTable
             
