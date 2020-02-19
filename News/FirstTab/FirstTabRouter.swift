@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol FirstTabRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToDetailedNew(segue: UIStoryboardSegue?)
 }
 
 protocol FirstTabDataPassing {
@@ -27,29 +27,17 @@ class FirstTabRouter: NSObject, FirstTabRoutingLogic, FirstTabDataPassing {
     
     // MARK: Routing
     
-    //func routeToSomewhere(segue: UIStoryboardSegue?) {
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
-    
-    // MARK: Navigation
-    
-    //func navigateToSomewhere(source: FirstTabViewController, destination: SomewhereViewController) {
-    //  source.show(destination, sender: nil)
-    //}
+    func routeToDetailedNew(segue: UIStoryboardSegue?) {
+      if let segue = segue {
+        let destinationVC = segue.destination as! DetailedNewViewController
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToDetailedNew(source: dataStore!, destination: &destinationDS)
+      }
+    }
     
     // MARK: Passing data
     
-    //func passDataToSomewhere(source: FirstTabDataStore, destination: inout SomewhereDataStore) {
-    //  destination.name = source.name
-    //}
+    func passDataToDetailedNew(source: FirstTabDataStore, destination: inout DetailedNewDataStore) {
+        destination.new = source.selectedNew
+    }
 }

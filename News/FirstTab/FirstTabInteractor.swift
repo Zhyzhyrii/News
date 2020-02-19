@@ -17,10 +17,12 @@ protocol FirstTabBusinessLogic {
     func getNewsByRefreshing(request: FirstTab.RefreshNews.Request)
     func getNewsByTimer(request: FirstTab.GetNewsByTimer.Request)
     func getNavigationBar(request: FirstTab.DisplayNavigatioBar.Request)
+    func selectNew(request: FirstTab.SelectNew.Request)
 }
 
 protocol FirstTabDataStore {
     var news: [New]? { get }
+    var selectedNew: New! { get }
 }
 
 class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
@@ -29,6 +31,7 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     var worker = FirstTabWorker()
     
     var news: [New]?
+    var selectedNew: New!
     
     private var timer: Timer?
     
@@ -77,6 +80,13 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
         }
         let reponse = FirstTab.DisplayNavigatioBar.Response(title: title)
         presenter?.presentNavigationBar(response: reponse)
+    }
+    
+    // MARK: - Select new via long press
+    
+    func selectNew(request: FirstTab.SelectNew.Request) {
+        guard let news = news else { return }
+        selectedNew = news[request.indexOfNew]
     }
     
     private func startTimer(indexOfTab: Int) {

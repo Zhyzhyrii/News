@@ -15,6 +15,13 @@
 		7824690823F45112004B7812 /* IntervalOfUpdatingNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7824690723F45112004B7812 /* IntervalOfUpdatingNewsCell.xib */; };
 		7824690A23F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */; };
 		782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782744E523E96F3B00EBCD43 /* TimeHelper.swift */; };
+		7858D73E23FB140800E2AAEA /* DetailedNewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73823FB140800E2AAEA /* DetailedNewPresenter.swift */; };
+		7858D73F23FB140800E2AAEA /* DetailedNewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73923FB140800E2AAEA /* DetailedNewWorker.swift */; };
+		7858D74023FB140800E2AAEA /* DetailedNewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73A23FB140800E2AAEA /* DetailedNewRouter.swift */; };
+		7858D74123FB140800E2AAEA /* DetailedNewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73B23FB140800E2AAEA /* DetailedNewModels.swift */; };
+		7858D74223FB140800E2AAEA /* DetailedNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73C23FB140800E2AAEA /* DetailedNewViewController.swift */; };
+		7858D74323FB140800E2AAEA /* DetailedNewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73D23FB140800E2AAEA /* DetailedNewInteractor.swift */; };
+		7858D74523FB143600E2AAEA /* DetailedNewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D74423FB143600E2AAEA /* DetailedNewConfigurator.swift */; };
 		785A4B9023F4AD08002AF2A4 /* SourceOfNewSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785A4B8F23F4AD08002AF2A4 /* SourceOfNewSettingsCell.xib */; };
 		785A4B9223F4AD2B002AF2A4 /* SourceOfNewSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785A4B9123F4AD2B002AF2A4 /* SourceOfNewSettingsCell.swift */; };
 		7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860594E23AC07F700FEB374 /* AppDelegate.swift */; };
@@ -81,6 +88,13 @@
 		7824690723F45112004B7812 /* IntervalOfUpdatingNewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntervalOfUpdatingNewsCell.xib; sourceTree = "<group>"; };
 		7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingNewsCell.swift; sourceTree = "<group>"; };
 		782744E523E96F3B00EBCD43 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
+		7858D73823FB140800E2AAEA /* DetailedNewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewPresenter.swift; sourceTree = "<group>"; };
+		7858D73923FB140800E2AAEA /* DetailedNewWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewWorker.swift; sourceTree = "<group>"; };
+		7858D73A23FB140800E2AAEA /* DetailedNewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewRouter.swift; sourceTree = "<group>"; };
+		7858D73B23FB140800E2AAEA /* DetailedNewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewModels.swift; sourceTree = "<group>"; };
+		7858D73C23FB140800E2AAEA /* DetailedNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewViewController.swift; sourceTree = "<group>"; };
+		7858D73D23FB140800E2AAEA /* DetailedNewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewInteractor.swift; sourceTree = "<group>"; };
+		7858D74423FB143600E2AAEA /* DetailedNewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewConfigurator.swift; sourceTree = "<group>"; };
 		785A4B8F23F4AD08002AF2A4 /* SourceOfNewSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourceOfNewSettingsCell.xib; sourceTree = "<group>"; };
 		785A4B9123F4AD2B002AF2A4 /* SourceOfNewSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsCell.swift; sourceTree = "<group>"; };
 		7860594B23AC07F700FEB374 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +170,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7858D73723FB13D100E2AAEA /* DetailedNew */ = {
+			isa = PBXGroup;
+			children = (
+				7858D73C23FB140800E2AAEA /* DetailedNewViewController.swift */,
+				7858D73D23FB140800E2AAEA /* DetailedNewInteractor.swift */,
+				7858D73823FB140800E2AAEA /* DetailedNewPresenter.swift */,
+				7858D73923FB140800E2AAEA /* DetailedNewWorker.swift */,
+				7858D73A23FB140800E2AAEA /* DetailedNewRouter.swift */,
+				7858D73B23FB140800E2AAEA /* DetailedNewModels.swift */,
+				7858D74423FB143600E2AAEA /* DetailedNewConfigurator.swift */,
+			);
+			path = DetailedNew;
+			sourceTree = "<group>";
+		};
 		7860594223AC07F700FEB374 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				7860596E23AC154800FEB374 /* FirstTab */,
+				7858D73723FB13D100E2AAEA /* DetailedNew */,
 				786059AB23B5654B00FEB374 /* Settings */,
 				786059BD23B8F6C000FEB374 /* SourceOfNewSettings */,
 				789CD1C323E4749400B7EA12 /* IntervalOfUpdating */,
@@ -483,20 +512,25 @@
 				78ED403323DC757100E04467 /* Extension+UIImageView.swift in Sources */,
 				7860598823B356B500FEB374 /* CbnParser.swift in Sources */,
 				789CD1CD23E474F500B7EA12 /* IntervalOfUpdatingModels.swift in Sources */,
+				7858D73F23FB140800E2AAEA /* DetailedNewWorker.swift in Sources */,
 				786059B523B5656F00FEB374 /* SettingsModels.swift in Sources */,
 				789CD1C223DF97D600B7EA12 /* RealmNewManager.swift in Sources */,
 				7860596D23AC153E00FEB374 /* FirstTabInteractor.swift in Sources */,
 				7824690023F1874E004B7812 /* Extension+URLCache.swift in Sources */,
 				7860596B23AC153E00FEB374 /* FirstTabModels.swift in Sources */,
+				7858D73E23FB140800E2AAEA /* DetailedNewPresenter.swift in Sources */,
 				7860597723AC1CB500FEB374 /* ParsingResult.swift in Sources */,
 				789CD1CF23E474F500B7EA12 /* IntervalOfUpdatingInteractor.swift in Sources */,
+				7858D74323FB140800E2AAEA /* DetailedNewInteractor.swift in Sources */,
 				7860596A23AC153E00FEB374 /* FirstTabRouter.swift in Sources */,
 				786059C923B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift in Sources */,
 				7860597923AC1D4800FEB374 /* RSSParser.swift in Sources */,
+				7858D74223FB140800E2AAEA /* DetailedNewViewController.swift in Sources */,
 				78D97B9D23D8E18B00442108 /* NewCell.swift in Sources */,
 				786059C623B8F76900FEB374 /* SourceOfNewSettingsRouter.swift in Sources */,
 				789CD1CB23E474F500B7EA12 /* IntervalOfUpdatingWorker.swift in Sources */,
 				782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */,
+				7858D74023FB140800E2AAEA /* DetailedNewRouter.swift in Sources */,
 				786059CB23B8FC0700FEB374 /* SourceOfNewSettingsConfigurator.swift in Sources */,
 				7860596823AC153E00FEB374 /* FirstTabPresenter.swift in Sources */,
 				7824690623F44C53004B7812 /* TabSettingCell.swift in Sources */,
@@ -530,6 +564,8 @@
 				7860597B23B1542700FEB374 /* Parser.swift in Sources */,
 				786059C523B8F76900FEB374 /* SourceOfNewSettingsWorker.swift in Sources */,
 				786059C423B8F76900FEB374 /* SourceOfNewSettingsPresenter.swift in Sources */,
+				7858D74523FB143600E2AAEA /* DetailedNewConfigurator.swift in Sources */,
+				7858D74123FB140800E2AAEA /* DetailedNewModels.swift in Sources */,
 				7860598623B2BF4200FEB374 /* TheWestParser.swift in Sources */,
 				7860598E23B36F1F00FEB374 /* Feed.swift in Sources */,
 				786059B723B5656F00FEB374 /* SettingsInteractor.swift in Sources */,

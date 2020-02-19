@@ -59,6 +59,21 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         indexOfTab = tabBar.items?.firstIndex(of: (selectedBarItem))
         
         configureView()
+        
+        let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressHappened))
+        tableView.addGestureRecognizer(recognizer)
+    }
+    
+    @objc func longPressHappened(sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == .began {
+            let touchPoint = sender.location(in: self.tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                let request = FirstTab.SelectNew.Request(indexOfNew: indexPath.row)
+                interactor?.selectNew(request: request)
+                performSegue(withIdentifier: "DetailedNew", sender: nil)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
