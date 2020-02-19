@@ -72,4 +72,16 @@ enum FirstTab {
         }
     }
     
+    enum SelectNew {
+        struct Request {
+            let indexOfNew: Int
+        }
+        
+        struct Response {
+        }
+        
+        struct ViewModel {
+        }
+    }
+    
 }
