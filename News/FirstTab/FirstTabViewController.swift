@@ -171,7 +171,9 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func configureView() {
         view.backgroundColor                                 = Constants.Colors.backGroundColor
+        
         tableView.backgroundColor                            = Constants.Colors.backGroundColor
+        tableView.separatorStyle                             = .none
         
         tabBar.barTintColor                                  = Constants.Colors.backGroundColor
         
