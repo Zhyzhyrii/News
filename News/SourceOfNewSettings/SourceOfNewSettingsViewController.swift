@@ -128,8 +128,8 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     func displayTitleOfTheNew(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel) {
         
         if let indexPathOfEditedRow = viewModel.indexPathOfRow {
-            let editedCell = tableView.cellForRow(at: indexPathOfEditedRow)
-            editedCell?.textLabel?.text = viewModel.feeds[indexPathOfEditedRow.row].feedName
+            let editedCell = tableView.cellForRow(at: indexPathOfEditedRow) as! SourceOfNewSettingsCell
+            editedCell.sourceLabel.text = viewModel.feeds[indexPathOfEditedRow.row].feedName
             
             feedsModels = viewModel.feeds
         }
