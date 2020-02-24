@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First Tab View Controller-->
+        <!--No source-->
         <scene sceneID="NaP-kH-dEj">
             <objects>
                 <viewController id="4El-ot-kDm" customClass="FirstTabViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jSv-h1-mVk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" image="firstTab" id="Qms-Kq-dq1">
+                    <tabBarItem key="tabBarItem" title="No source" image="firstTab" id="Qms-Kq-dq1">
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <connections>
@@ -118,6 +118,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="09L-HW-NOr"/>
                     </view>
+                    <navigationItem key="navigationItem" id="bJq-pL-4fl"/>
                     <connections>
                         <outlet property="descriptionOfNew" destination="SLl-BC-TSC" id="kgV-GU-Rck"/>
                         <outlet property="imageOfNew" destination="zt8-Nb-hEY" id="LIH-HA-ehd"/>
@@ -359,6 +360,7 @@
                     <connections>
                         <outlet property="navigationBar" destination="moW-2h-JoQ" id="8Wg-Mn-z1T"/>
                         <outlet property="tableView" destination="Cc7-ir-X1S" id="q84-C6-33P"/>
+                        <segue destination="JxH-pI-yCZ" kind="presentation" identifier="DetailedNew" id="uDT-Tt-bWk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bjz-aD-YCc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -414,6 +416,7 @@
                     <connections>
                         <outlet property="navigationBar" destination="xV4-To-Mqn" id="P4j-YE-3aZ"/>
                         <outlet property="tableView" destination="o0t-hB-B4c" id="ofv-k2-25H"/>
+                        <segue destination="JxH-pI-yCZ" kind="presentation" identifier="DetailedNew" id="EGD-Lh-fiF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38e-iE-H15" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -427,4 +430,7 @@
         <image name="secondTab" width="25" height="37.666667938232422"/>
         <image name="thirdTab" width="25" height="31"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CBQ-n7-TmR"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -25,11 +25,21 @@ class FirstTabPresenter: FirstTabPresentationLogic {
     
     // MARK: Present news
     
-    func presentNews(response: FirstTab.GetNewsFromDBOrNetwork.Response) { //TODO the same as 2 below - have to make use only one
+    func presentNews(response: FirstTab.GetNewsFromDBOrNetwork.Response) {
         
-        guard let news = response.news else {
-            viewController?.notDisplayNews()
-            return }
+        if let error = response.error {
+            switch error {
+            case .noSourceIsSelected:
+                let viewModel = FirstTab.GetNewsFromDBOrNetwork.ViewModel(news: nil)
+                viewController?.displayNews(viewModel: viewModel)
+            case .dataWasNotReceivedFromNetwork:
+                let viewModel = FirstTab.GetNewsFromDBOrNetwork.ViewModel(news: nil)
+                viewController?.doNotDisplayNewsDueToNetworkProblem(viewModel: viewModel)
+            }
+            return
+        }
+        
+        guard let news = response.news else { return }
         
         let displayedNews = prepareDisplayedNews(news)
         
@@ -59,8 +69,13 @@ class FirstTabPresenter: FirstTabPresentationLogic {
     // MARK: - Present navigation bar
     
     func presentNavigationBar(response: FirstTab.DisplayNavigatioBar.Response) {
-        let viewModel = FirstTab.DisplayNavigatioBar.ViewModel(title: response.title)
-        viewController?.displayNavigationBar(viewModel: viewModel)
+        if let navigationBarTitle = response.title {
+            let viewModel = FirstTab.DisplayNavigatioBar.ViewModel(title: navigationBarTitle)
+            viewController?.displayNavigationBar(viewModel: viewModel)
+        } else {
+            viewController?.hideNavigationBar()
+        }
+        
     }
     
     // MARK: - Prepare displayed news

@@ -14,10 +14,11 @@ import UIKit
 
 protocol FirstTabDisplayLogic: class {
     func displayNews(viewModel: FirstTab.GetNewsFromDBOrNetwork.ViewModel)
-    func notDisplayNews()
+    func doNotDisplayNewsDueToNetworkProblem(viewModel: FirstTab.GetNewsFromDBOrNetwork.ViewModel)
     func displayNewsByRefreshing(viewModel: FirstTab.RefreshNews.ViewModel)
     func displayNewsByTimer(viewModel: FirstTab.GetNewsByTimer.ViewModel)
     func displayNavigationBar(viewModel: FirstTab.DisplayNavigatioBar.ViewModel)
+    func hideNavigationBar()
 }
 
 class FirstTabViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FirstTabDisplayLogic {
@@ -76,12 +77,11 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         getNews(indexOfTab: indexOfTab)
         getNewsByTimer(indexOfTab: indexOfTab)
-        
         displayNavigatioBar()
     }
     
@@ -100,16 +100,18 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     
     func displayNavigatioBar() {
         let request = FirstTab.DisplayNavigatioBar.Request(indexOfTab: indexOfTab)
-        interactor?.getNavigationBar(request: request)
+        interactor?.getNavigationBarTitle(request: request)
     }
     
     func displayNavigationBar(viewModel: FirstTab.DisplayNavigatioBar.ViewModel) {
-        if let title = viewModel.title {
-            navigationBar.isHidden = false
-            navigationBar.topItem?.title = title
-        } else {
-            navigationBar.isHidden = true
-        }
+        navigationBar.isHidden = false
+        navigationBar.topItem?.title = viewModel.title
+    }
+    
+    // MARK: - Hide navigation bar
+    
+    func hideNavigationBar() {
+        navigationBar.isHidden = true
     }
     
     // MARK: Display news
@@ -150,11 +152,11 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         interactor?.getNewsByTimer(request: request)
     }
     
-    // MARK: - News are not displayed if the source is not selected for the specific tab
+    // MARK: - News are not displayed due to internet problem
     
-    func notDisplayNews() {
-        self.news = nil
-        tableView.reloadData()
+    func doNotDisplayNewsDueToNetworkProblem(viewModel: FirstTab.GetNewsFromDBOrNetwork.ViewModel) {
+        displayNews(news: viewModel.news)
+        UIHelpers.showMessage(withTitle: "Network error", message: "News was not received due to network problems", viewController: self, buttonTitle: "OK")
     }
     
     // MARK: - Private methods
@@ -231,12 +233,12 @@ extension FirstTabViewController {
         guard let news = news else { return }
         
         if indexPath.row == selectedIndex {
-            cell.newTextLabel.text      = news[selectedIndex].title
+            cell.newTextLabel.text = news[selectedIndex].title
             cell.configureNotSelectedCellView()
             selectedIndex = -1
-        }else{
-            selectedIndex               = indexPath.row
-            cell.newTextLabel.text      = news[selectedIndex].descripton
+        } else {
+            selectedIndex          = indexPath.row
+            cell.newTextLabel.text = news[selectedIndex].descripton
             cell.configureSelectedCellView()
         }
         

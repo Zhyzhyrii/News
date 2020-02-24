@@ -20,12 +20,12 @@ class NewCell: UITableViewCell {
     }
     
     func configureNotSelectedCellView() {
-        newTextLabel.textColor  = Constants.Colors.titleTextColor
-        newTextLabel.font      = Constants.Fonts.titleTextFontSize
+        newTextLabel.textColor            = Constants.Colors.titleTextColor
+        newTextLabel.font                 = Constants.Fonts.titleTextFontSize
         
-        backgroundColor         = Constants.Colors.backGroundColor
-        containerLabel.layer.borderWidth = 1
-        containerLabel.layer.borderColor = Constants.Colors.mainTextColor.cgColor
+        backgroundColor                   = Constants.Colors.backGroundColor
+        containerLabel.layer.borderWidth  = 1
+        containerLabel.layer.borderColor  = Constants.Colors.mainTextColor.cgColor
         containerLabel.layer.cornerRadius = 5
         selectionStyle = .none
     }

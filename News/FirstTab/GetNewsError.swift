@@ -7,5 +7,6 @@
 //
 
 enum GetNewsError {
-  case noSourceIsSelected
+    case noSourceIsSelected
+    case dataWasNotReceivedFromNetwork
 }

@@ -23,10 +23,11 @@ enum FirstTab {
         
         struct Response {
             let news: [New]?
+            let error: GetNewsError?
         }
         
         struct ViewModel {
-            let news: [DisplayedNew]
+            let news: [DisplayedNew]?
         }
     }
     
@@ -68,7 +69,7 @@ enum FirstTab {
         }
         
         struct ViewModel {
-            let title: String?
+            let title: String
         }
     }
     

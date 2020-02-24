@@ -16,7 +16,7 @@ protocol FirstTabBusinessLogic {
     func getNewsFromDBOrNetworkFor(request: FirstTab.GetNewsFromDBOrNetwork.Request)
     func getNewsByRefreshing(request: FirstTab.RefreshNews.Request)
     func getNewsByTimer(request: FirstTab.GetNewsByTimer.Request)
-    func getNavigationBar(request: FirstTab.DisplayNavigatioBar.Request)
+    func getNavigationBarTitle(request: FirstTab.DisplayNavigatioBar.Request)
     func selectNew(request: FirstTab.SelectNew.Request)
 }
 
@@ -28,6 +28,7 @@ protocol FirstTabDataStore {
 class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     
     var presenter: FirstTabPresentationLogic?
+    
     var worker = FirstTabWorker()
     
     var news: [New]?
@@ -41,15 +42,16 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
         worker.getNewsFromDBOrNetworkFor(indexOfTab: request.indexOfTab) { [weak self] (news, getNewsError) in
             guard let self = self else { return }
             
-            if let error = getNewsError, error == .noSourceIsSelected {
-                self.news = nil
-            }
-            if let news = news {
+            if let error = getNewsError {
+                let response = FirstTab.GetNewsFromDBOrNetwork.Response(news: nil, error: error)
+                presenter?.presentNews(response: response)
+            } else if let news = news {
                 self.news = news
+                let response = FirstTab.GetNewsFromDBOrNetwork.Response(news: self.news, error: nil)
+                presenter?.presentNews(response: response)
             }
         }
-        let response = FirstTab.GetNewsFromDBOrNetwork.Response(news: self.news)
-        presenter?.presentNews(response: response)
+        
     }
     
     // MARK: - Get news by refreshing
@@ -73,7 +75,7 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     
     // MARK: - Get navigation bar
     
-    func getNavigationBar(request: FirstTab.DisplayNavigatioBar.Request) {
+    func getNavigationBarTitle(request: FirstTab.DisplayNavigatioBar.Request) {
         var title: String?
         if let selectedFeedModel = worker.getSelectedFeedModel(indexOfTab: request.indexOfTab) {
             title = selectedFeedModel.feedName

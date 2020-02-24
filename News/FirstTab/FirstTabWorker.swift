@@ -37,7 +37,9 @@ class FirstTabWorker: Parser {
         if let news = getNewsFromDataBase(feedSource: feedModel.feedSource) {
             completionHandler(news, nil)
         } else {
-            guard let news = getNewsFromParser(indexOfTab: indexOfTab) else { return } // TODO return nil if news are not recieved from the specific source
+            guard let news = getNewsFromParser(feedModel: feedModel) else {
+                completionHandler(nil, GetNewsError.dataWasNotReceivedFromNetwork)
+                return } // if news are not recieved from the specific source
             saveNewsToDataBase(news: news)
             completionHandler(news, nil)
         }
@@ -48,9 +50,9 @@ class FirstTabWorker: Parser {
     func updateNewsInDBFor(indexOfTab: Int) {
         var refreshedNews: [New]!
         
-        guard let feedModel = getSelectedFeedModel(indexOfTab: indexOfTab) else { return } //TODO something went wrong alert (not select source for tab)
+        guard let feedModel = getSelectedFeedModel(indexOfTab: indexOfTab) else { return }
         
-        guard let newsFromNetwork = getNewsFromParser(indexOfTab: indexOfTab) else { return }
+        guard let newsFromNetwork = getNewsFromParser(feedModel: feedModel) else { return }
         
         if let newsFromDB = getNewsFromDataBase(feedSource: feedModel.feedSource) {
             var amountOfDifferentNews = 0
@@ -80,7 +82,7 @@ class FirstTabWorker: Parser {
         guard let feedsModels = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: indexOfTab) else { return nil }
         guard let feedModel = feedsModels.first(where: { (feedModel) -> Bool in
             feedModel.isSelected
-        }) else { return nil } //TODO something went wrong alert (not select source for tab)
+        }) else { return nil }
         
         return feedModel
         
@@ -88,11 +90,9 @@ class FirstTabWorker: Parser {
     
     // MARK: Get saved parser
     
-    private func getNewsFromParser(indexOfTab: Int) -> [New]? {
+    private func getNewsFromParser(feedModel: FeedModel) -> [New]? {
         
-        guard let feedModel = getSelectedFeedModel(indexOfTab: indexOfTab) else { return nil }
-        
-        guard let parser = Feed.init(rawValue: feedModel.feedSource)?.parser else { return nil } //TODO something went wrong alert
+        guard let parser = Feed.init(rawValue: feedModel.feedSource)?.parser else { return nil }
         
         parser.delegate = self
         parser.startParsingWithContentsOfURL()
