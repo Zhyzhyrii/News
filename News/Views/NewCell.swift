@@ -32,6 +32,6 @@ class NewCell: UITableViewCell {
     
     func configureSelectedCellView() {
         newTextLabel.textColor = Constants.Colors.mainTextColor
-        newTextLabel.font      = Constants.Fonts.mainTextFontSize
+        newTextLabel.font      = Constants.Fonts.mainTextCellFontSize
     }
 }

@@ -21,8 +21,8 @@ class DetailedNewViewController: UIViewController, DetailedNewDisplayLogic {
     // MARK: - @IBOutlets
     
     @IBOutlet var imageOfNew: UIImageView!
-    @IBOutlet var titleOfNew: UILabel!
-    @IBOutlet var descriptionOfNew: UILabel!
+    @IBOutlet var titleOfNew: UITextView!
+    @IBOutlet var descriptionOfNew: UITextView!
     
     // MARK: - Public properties
     
@@ -46,7 +46,7 @@ class DetailedNewViewController: UIViewController, DetailedNewDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        DetailedNewConfigurator.shared.configure(with: self)
+        configureView()
         
         interactor?.getSelectedNew()
         
@@ -70,6 +70,22 @@ class DetailedNewViewController: UIViewController, DetailedNewDisplayLogic {
         imageOfNew.fetchImage(with: new.imageRef)
         titleOfNew.text = new.title
         descriptionOfNew.text = new.descripton
+    }
+    
+    // MARK: - Private methods
+    
+    private func configureView() {
+        
+        view.backgroundColor = Constants.Colors.backGroundColor
+        
+        imageOfNew.layer.cornerRadius = 5
+        
+        titleOfNew.font               = Constants.Fonts.titleTextFontSize
+        titleOfNew.textColor          = Constants.Colors.titleTextColor
+        
+        descriptionOfNew.font         = Constants.Fonts.mainTextDetailedNewFontSize
+        descriptionOfNew.textColor    = Constants.Colors.mainTextColor
+        
     }
     
 }

@@ -56,7 +56,7 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     
     func getNewsByRefreshing(request: FirstTab.RefreshNews.Request) {
         guard let news = getNewsByRefreshing(indexOfTab: request.indexOfTab) else { return }
-       
+        
         let response = FirstTab.RefreshNews.Response(news: news)
         presenter?.presentNewsByRefreshing(response: response)
     }
@@ -120,6 +120,6 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
             self.news = news
         }
         return news
-     }
+    }
     
 }

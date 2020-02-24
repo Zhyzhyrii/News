@@ -24,10 +24,12 @@ struct Constants {
     }
     
     struct Fonts {
-        static let titleTextFontSize = UIFont.systemFont(ofSize: 18)
-        static let mainTextFontSize  = UIFont.systemFont(ofSize: 15)
+        static let titleTextFontSize           = UIFont.systemFont(ofSize: 18)
+        static let mainTextCellFontSize        = UIFont.systemFont(ofSize: 15)
         
-        static let settingsOptionsTextFontSize  = UIFont.systemFont(ofSize: 17)
+        static let mainTextDetailedNewFontSize = UIFont.systemFont(ofSize: 16)
+        
+        static let settingsOptionsTextFontSize = UIFont.systemFont(ofSize: 17)
     }
     
 }
