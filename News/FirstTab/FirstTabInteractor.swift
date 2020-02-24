@@ -33,7 +33,7 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     var news: [New]?
     var selectedNew: New!
     
-    private var timer: Timer?
+    private weak var timer: Timer?
     
     // MARK: Get news from BD. If news are missing in DB - fetch news from network
     
@@ -64,10 +64,10 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     // MARK: - Get news by timer
     
     func getNewsByTimer(request: FirstTab.GetNewsByTimer.Request) {
+        stopTimer()
+        
         if UserDefaultsStorageManager.shared.getSavedSwitchValueForIntervalOfUpdating() {
             startTimer(indexOfTab: request.indexOfTab)
-        } else {
-            stopTimer()
         }
     }
     
@@ -90,14 +90,12 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     }
     
     private func startTimer(indexOfTab: Int) {
-        guard timer == nil else { return }
         guard let timeInterval = UserDefaultsStorageManager.shared.getSavedIntervalOfUpdatingInSeconds() else { return }
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(timeInterval), target: self, selector: #selector(getNewsByTimer(timer:)), userInfo: indexOfTab, repeats: true)
     }
     
     private func stopTimer() {
         timer?.invalidate()
-        timer = nil
     }
     
     // MARK: - Get news by timer

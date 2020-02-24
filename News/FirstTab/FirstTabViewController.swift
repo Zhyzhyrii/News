@@ -125,7 +125,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         interactor?.getNewsFromDBOrNetworkFor(request: request)
     }
     
-    // MARK: - Get news by timer delegate method (to get new immediately - you do not need to select tab)
+    // MARK: - Get news by timer delegate method
     
     func getNews() {
         getNewsByTimer(indexOfTab: indexOfTab)
