@@ -25,7 +25,6 @@ protocol SettingsDataStore {
 class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore {
     
     var presenter: SettingsPresentationLogic?
-    var worker: SettingsWorker?
     
     var numberOfTab: Int!
     

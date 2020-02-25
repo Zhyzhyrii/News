@@ -24,9 +24,11 @@ class NewCell: UITableViewCell {
         newTextLabel.font                 = Constants.Fonts.titleTextFontSize
         
         backgroundColor                   = Constants.Colors.backGroundColor
+        
         containerLabel.layer.borderWidth  = 1
         containerLabel.layer.borderColor  = Constants.Colors.mainTextColor.cgColor
         containerLabel.layer.cornerRadius = 5
+       
         selectionStyle = .none
     }
     

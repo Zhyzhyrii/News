@@ -16,7 +16,6 @@
 		7824690A23F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */; };
 		782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782744E523E96F3B00EBCD43 /* TimeHelper.swift */; };
 		7858D73E23FB140800E2AAEA /* DetailedNewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73823FB140800E2AAEA /* DetailedNewPresenter.swift */; };
-		7858D73F23FB140800E2AAEA /* DetailedNewWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73923FB140800E2AAEA /* DetailedNewWorker.swift */; };
 		7858D74023FB140800E2AAEA /* DetailedNewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73A23FB140800E2AAEA /* DetailedNewRouter.swift */; };
 		7858D74123FB140800E2AAEA /* DetailedNewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73B23FB140800E2AAEA /* DetailedNewModels.swift */; };
 		7858D74223FB140800E2AAEA /* DetailedNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7858D73C23FB140800E2AAEA /* DetailedNewViewController.swift */; };
@@ -47,7 +46,6 @@
 		7860598A23B35FF700FEB374 /* XmlFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860598923B35FF700FEB374 /* XmlFields.swift */; };
 		7860598E23B36F1F00FEB374 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7860598D23B36F1F00FEB374 /* Feed.swift */; };
 		786059B223B5656F00FEB374 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059AC23B5656F00FEB374 /* SettingsPresenter.swift */; };
-		786059B323B5656F00FEB374 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059AD23B5656F00FEB374 /* SettingsWorker.swift */; };
 		786059B423B5656F00FEB374 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059AE23B5656F00FEB374 /* SettingsRouter.swift */; };
 		786059B523B5656F00FEB374 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059AF23B5656F00FEB374 /* SettingsModels.swift */; };
 		786059B623B5656F00FEB374 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059B023B5656F00FEB374 /* SettingsViewController.swift */; };
@@ -55,8 +53,6 @@
 		786059B923B5659200FEB374 /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059B823B5659200FEB374 /* SettingsConfigurator.swift */; };
 		786059BC23B8CB0000FEB374 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059BB23B8CB0000FEB374 /* FeedModel.swift */; };
 		786059C423B8F76900FEB374 /* SourceOfNewSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059BE23B8F76900FEB374 /* SourceOfNewSettingsPresenter.swift */; };
-		786059C523B8F76900FEB374 /* SourceOfNewSettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059BF23B8F76900FEB374 /* SourceOfNewSettingsWorker.swift */; };
-		786059C623B8F76900FEB374 /* SourceOfNewSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059C023B8F76900FEB374 /* SourceOfNewSettingsRouter.swift */; };
 		786059C723B8F76900FEB374 /* SourceOfNewSettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059C123B8F76900FEB374 /* SourceOfNewSettingsModels.swift */; };
 		786059C823B8F76900FEB374 /* SourceOfNewSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059C223B8F76900FEB374 /* SourceOfNewSettingsViewController.swift */; };
 		786059C923B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786059C323B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift */; };
@@ -72,6 +68,7 @@
 		789CD1D123E4752600B7EA12 /* IntervalOfUpdatingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1D023E4752600B7EA12 /* IntervalOfUpdatingConfigurator.swift */; };
 		78A92F5123C4EE940058A293 /* UserDefaultsStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5023C4EE940058A293 /* UserDefaultsStorageManager.swift */; };
 		78A92F5723C4F9900058A293 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92F5623C4F9900058A293 /* Constants.swift */; };
+		78B477982405AAF300C01CE6 /* SourceOfNewSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B477972405AAF300C01CE6 /* SourceOfNewSettingsRouter.swift */; };
 		78D97B9923D7778100442108 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9823D7778100442108 /* UIHelpers.swift */; };
 		78D97B9B23D7B0EB00442108 /* FirstTabConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9A23D7B0EB00442108 /* FirstTabConfigurator.swift */; };
 		78D97B9D23D8E18B00442108 /* NewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D97B9C23D8E18B00442108 /* NewCell.swift */; };
@@ -89,7 +86,6 @@
 		7824690923F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingNewsCell.swift; sourceTree = "<group>"; };
 		782744E523E96F3B00EBCD43 /* TimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		7858D73823FB140800E2AAEA /* DetailedNewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewPresenter.swift; sourceTree = "<group>"; };
-		7858D73923FB140800E2AAEA /* DetailedNewWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewWorker.swift; sourceTree = "<group>"; };
 		7858D73A23FB140800E2AAEA /* DetailedNewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewRouter.swift; sourceTree = "<group>"; };
 		7858D73B23FB140800E2AAEA /* DetailedNewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewModels.swift; sourceTree = "<group>"; };
 		7858D73C23FB140800E2AAEA /* DetailedNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +118,6 @@
 		7860598923B35FF700FEB374 /* XmlFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmlFields.swift; sourceTree = "<group>"; };
 		7860598D23B36F1F00FEB374 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		786059AC23B5656F00FEB374 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		786059AD23B5656F00FEB374 /* SettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWorker.swift; sourceTree = "<group>"; };
 		786059AE23B5656F00FEB374 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		786059AF23B5656F00FEB374 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 		786059B023B5656F00FEB374 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -130,8 +125,6 @@
 		786059B823B5659200FEB374 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
 		786059BB23B8CB0000FEB374 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		786059BE23B8F76900FEB374 /* SourceOfNewSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsPresenter.swift; sourceTree = "<group>"; };
-		786059BF23B8F76900FEB374 /* SourceOfNewSettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsWorker.swift; sourceTree = "<group>"; };
-		786059C023B8F76900FEB374 /* SourceOfNewSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsRouter.swift; sourceTree = "<group>"; };
 		786059C123B8F76900FEB374 /* SourceOfNewSettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsModels.swift; sourceTree = "<group>"; };
 		786059C223B8F76900FEB374 /* SourceOfNewSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsViewController.swift; sourceTree = "<group>"; };
 		786059C323B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsInteractor.swift; sourceTree = "<group>"; };
@@ -147,6 +140,7 @@
 		789CD1D023E4752600B7EA12 /* IntervalOfUpdatingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingConfigurator.swift; sourceTree = "<group>"; };
 		78A92F5023C4EE940058A293 /* UserDefaultsStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageManager.swift; sourceTree = "<group>"; };
 		78A92F5623C4F9900058A293 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		78B477972405AAF300C01CE6 /* SourceOfNewSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOfNewSettingsRouter.swift; sourceTree = "<group>"; };
 		78D97B9823D7778100442108 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 		78D97B9A23D7B0EB00442108 /* FirstTabConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabConfigurator.swift; sourceTree = "<group>"; };
 		78D97B9C23D8E18B00442108 /* NewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCell.swift; sourceTree = "<group>"; };
@@ -176,7 +170,6 @@
 				7858D73C23FB140800E2AAEA /* DetailedNewViewController.swift */,
 				7858D73D23FB140800E2AAEA /* DetailedNewInteractor.swift */,
 				7858D73823FB140800E2AAEA /* DetailedNewPresenter.swift */,
-				7858D73923FB140800E2AAEA /* DetailedNewWorker.swift */,
 				7858D73A23FB140800E2AAEA /* DetailedNewRouter.swift */,
 				7858D73B23FB140800E2AAEA /* DetailedNewModels.swift */,
 				7858D74423FB143600E2AAEA /* DetailedNewConfigurator.swift */,
@@ -289,7 +282,6 @@
 				786059B023B5656F00FEB374 /* SettingsViewController.swift */,
 				786059B123B5656F00FEB374 /* SettingsInteractor.swift */,
 				786059AC23B5656F00FEB374 /* SettingsPresenter.swift */,
-				786059AD23B5656F00FEB374 /* SettingsWorker.swift */,
 				786059AE23B5656F00FEB374 /* SettingsRouter.swift */,
 				786059AF23B5656F00FEB374 /* SettingsModels.swift */,
 				786059B823B5659200FEB374 /* SettingsConfigurator.swift */,
@@ -314,10 +306,9 @@
 				786059C223B8F76900FEB374 /* SourceOfNewSettingsViewController.swift */,
 				786059C323B8F76900FEB374 /* SourceOfNewSettingsInteractor.swift */,
 				786059BE23B8F76900FEB374 /* SourceOfNewSettingsPresenter.swift */,
-				786059BF23B8F76900FEB374 /* SourceOfNewSettingsWorker.swift */,
-				786059C023B8F76900FEB374 /* SourceOfNewSettingsRouter.swift */,
 				786059C123B8F76900FEB374 /* SourceOfNewSettingsModels.swift */,
 				786059CA23B8FC0700FEB374 /* SourceOfNewSettingsConfigurator.swift */,
+				78B477972405AAF300C01CE6 /* SourceOfNewSettingsRouter.swift */,
 			);
 			path = SourceOfNewSettings;
 			sourceTree = "<group>";
@@ -512,7 +503,6 @@
 				78ED403323DC757100E04467 /* Extension+UIImageView.swift in Sources */,
 				7860598823B356B500FEB374 /* CbnParser.swift in Sources */,
 				789CD1CD23E474F500B7EA12 /* IntervalOfUpdatingModels.swift in Sources */,
-				7858D73F23FB140800E2AAEA /* DetailedNewWorker.swift in Sources */,
 				786059B523B5656F00FEB374 /* SettingsModels.swift in Sources */,
 				789CD1C223DF97D600B7EA12 /* RealmNewManager.swift in Sources */,
 				7860596D23AC153E00FEB374 /* FirstTabInteractor.swift in Sources */,
@@ -527,7 +517,6 @@
 				7860597923AC1D4800FEB374 /* RSSParser.swift in Sources */,
 				7858D74223FB140800E2AAEA /* DetailedNewViewController.swift in Sources */,
 				78D97B9D23D8E18B00442108 /* NewCell.swift in Sources */,
-				786059C623B8F76900FEB374 /* SourceOfNewSettingsRouter.swift in Sources */,
 				789CD1CB23E474F500B7EA12 /* IntervalOfUpdatingWorker.swift in Sources */,
 				782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */,
 				7858D74023FB140800E2AAEA /* DetailedNewRouter.swift in Sources */,
@@ -550,19 +539,18 @@
 				7860598A23B35FF700FEB374 /* XmlFields.swift in Sources */,
 				78D97B9923D7778100442108 /* UIHelpers.swift in Sources */,
 				782468FE23F06F24004B7812 /* GetNewsError.swift in Sources */,
-				786059B323B5656F00FEB374 /* SettingsWorker.swift in Sources */,
 				789CD1CA23E474F500B7EA12 /* IntervalOfUpdatingPresenter.swift in Sources */,
 				789CD1D123E4752600B7EA12 /* IntervalOfUpdatingConfigurator.swift in Sources */,
 				786059B623B5656F00FEB374 /* SettingsViewController.swift in Sources */,
 				7860597223AC1A8900FEB374 /* SceneDelegate.swift in Sources */,
 				7824690A23F4516F004B7812 /* IntervalOfUpdatingNewsCell.swift in Sources */,
+				78B477982405AAF300C01CE6 /* SourceOfNewSettingsRouter.swift in Sources */,
 				7860598223B2B82B00FEB374 /* NprParser.swift in Sources */,
 				78D97B9B23D7B0EB00442108 /* FirstTabConfigurator.swift in Sources */,
 				786059B423B5656F00FEB374 /* SettingsRouter.swift in Sources */,
 				789CD1C023DF6E0800B7EA12 /* DisplayedNew.swift in Sources */,
 				7860597D23B15F8B00FEB374 /* New.swift in Sources */,
 				7860597B23B1542700FEB374 /* Parser.swift in Sources */,
-				786059C523B8F76900FEB374 /* SourceOfNewSettingsWorker.swift in Sources */,
 				786059C423B8F76900FEB374 /* SourceOfNewSettingsPresenter.swift in Sources */,
 				7858D74523FB143600E2AAEA /* DetailedNewConfigurator.swift in Sources */,
 				7858D74123FB140800E2AAEA /* DetailedNewModels.swift in Sources */,

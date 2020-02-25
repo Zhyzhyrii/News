@@ -32,4 +32,17 @@ struct Constants {
         static let settingsOptionsTextFontSize = UIFont.systemFont(ofSize: 17)
     }
     
+    struct CellIdentifiers {
+        static let newCell                    = "NewCell"
+        static let tabSettingCell             = "TabSettingCell"
+        static let intervalOfUpdatingNewsCell = "IntervalOfUpdatingNewsCell"
+        static let sourceOfNewSettingsCell    = "SourceOfNewSettingsCell"
+    }
+    
+    struct SegueIdentifiers {
+        static let detailedNew         = "DetailedNew"
+        static let sourceOfNewSettings = "SourceOfNewSettings"
+        static let intervalOfUpdating  = "IntervalOfUpdating"
+    }
+    
 }

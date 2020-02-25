@@ -23,7 +23,6 @@ protocol DetailedNewDataStore {
 class DetailedNewInteractor: DetailedNewBusinessLogic, DetailedNewDataStore {
     
     var presenter: DetailedNewPresentationLogic?
-    var worker: DetailedNewWorker?
     
     var new: New!
     

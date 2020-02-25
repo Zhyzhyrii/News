@@ -20,10 +20,15 @@ class SourceOfNewSettingsCell: UITableViewCell {
     
     weak var delegate: ChangeValueOfSourceOfNewSwitcher?
     
-    func configure() {
-        backgroundColor       = Constants.Colors.backGroundColor
-        sourceLabel.textColor = Constants.Colors.titleTextColor
-        sourceLabel.font      = Constants.Fonts.titleTextFontSize
+    func configureCellData(with feedModel: FeedModel) {
+        sourceLabel.text = feedModel.feedName
+    }
+    
+    func configureCellView() {
+        backgroundColor                   = Constants.Colors.backGroundColor
+        
+        sourceLabel.textColor             = Constants.Colors.titleTextColor
+        sourceLabel.font                  = Constants.Fonts.titleTextFontSize
         
         containerLabel.layer.borderWidth  = 1
         containerLabel.layer.borderColor  = Constants.Colors.mainTextColor.cgColor

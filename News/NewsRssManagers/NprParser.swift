@@ -29,8 +29,6 @@ class NprParser: GenericNewsParser {
                 } else {
                     entity.descripton = string
                 }
-//                entity.descripton! += " \(string)"
-                
             }
             if currentElement == XmlFields.pubDate.description {
                 if let date = ExtractHelper.getFormattedDate(format: "E, d MMM yyyy HH:mm:ss Z", from: string ) {

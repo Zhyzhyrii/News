@@ -36,8 +36,8 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic, Chang
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "TabSettingCell", bundle: nil), forCellReuseIdentifier: "TabSettingCell")
-        tableView.register(UINib(nibName: "IntervalOfUpdatingNewsCell", bundle: nil), forCellReuseIdentifier: "IntervalOfUpdatingNewsCell")
+        tableView.register(UINib(nibName: Constants.CellIdentifiers.tabSettingCell, bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.tabSettingCell)
+        tableView.register(UINib(nibName: Constants.CellIdentifiers.intervalOfUpdatingNewsCell, bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.intervalOfUpdatingNewsCell)
         
         SettingsConfigurator.shared.configure(with: self)
         
@@ -96,8 +96,8 @@ class SettingsViewController: UITableViewController, SettingsDisplayLogic, Chang
         navigationController?.navigationBar.topItem?.title      = tabBarController?.tabBar.selectedItem?.title
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.tintColor           = Constants.Colors.navigationTabBarItemColor
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
 }
@@ -106,7 +106,7 @@ extension SettingsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TabSettingCell", for: indexPath) as! TabSettingCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.tabSettingCell, for: indexPath) as? TabSettingCell else { return UITableViewCell() }
             
             cell.titleText.text = "\(titlesForFirstSectionOfTable[indexPath.row])"
             
@@ -114,7 +114,7 @@ extension SettingsViewController {
             
             return cell
         } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "IntervalOfUpdatingNewsCell", for: indexPath) as! IntervalOfUpdatingNewsCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.intervalOfUpdatingNewsCell, for: indexPath) as? IntervalOfUpdatingNewsCell else { return UITableViewCell() }
             
             cell.delegate = self
             
@@ -134,9 +134,9 @@ extension SettingsViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             selectSettingsForSpecificTab(indexOfTab: indexPath.row)
-            performSegue(withIdentifier: "SourceOfNewSettings", sender: nil) // TODO constant
+            performSegue(withIdentifier: Constants.SegueIdentifiers.sourceOfNewSettings, sender: nil)
         } else {
-            performSegue(withIdentifier: "IntervalOfUpdating", sender: nil) // TODO constant
+            performSegue(withIdentifier: Constants.SegueIdentifiers.intervalOfUpdating, sender: nil)
         }
     }
     
@@ -150,12 +150,12 @@ extension SettingsViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let cell                  = cell as! TabSettingCell
+            guard let cell            = cell as? TabSettingCell else { return }
             cell.backgroundColor      = Constants.Colors.backGroundColor
             cell.titleText.textColor  = Constants.Colors.mainTextColor
             cell.titleText.font       = Constants.Fonts.settingsOptionsTextFontSize
         } else if indexPath.section == 1 {
-            let cell                  = cell as! IntervalOfUpdatingNewsCell
+            guard let cell            = cell as? IntervalOfUpdatingNewsCell else { return }
             cell.backgroundColor      = Constants.Colors.backGroundColor
             cell.titleText.textColor  = Constants.Colors.mainTextColor
             cell.titleText.font       = Constants.Fonts.settingsOptionsTextFontSize

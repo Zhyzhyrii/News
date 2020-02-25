@@ -30,7 +30,6 @@ protocol SourceOfNewSettingsDataStore {
 class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfNewSettingsDataStore {
     
     var presenter: SourceOfNewSettingsPresentationLogic?
-    var worker: SourceOfNewSettingsWorker?
     var feedsModels: [FeedModel]!
     var numberOfTab: Int!
     var indexPathOfEditedRow: IndexPath!

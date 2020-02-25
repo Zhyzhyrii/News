@@ -12,15 +12,12 @@ class GenericNewsParser: NSObject, RSSParser {
     
     var feed: Feed!
     
-    var currentElement = ""
-    
-    typealias T = New
-    typealias DelegateProtocol = Parser
-    
     var entity: New!
     var entities: [New] = []
     
     var delegate: Parser!
+    
+    var currentElement = ""
     
     // MARK: - XMLParserDelegate delegate methods
     

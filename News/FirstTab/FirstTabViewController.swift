@@ -53,7 +53,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UINib(nibName: "NewCell", bundle: nil), forCellReuseIdentifier: "NewCell")
+        tableView.register(UINib(nibName: Constants.CellIdentifiers.newCell, bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.newCell)
         
         tabBar = tabBarController?.tabBar
         guard let selectedBarItem = tabBar.selectedItem else { return }
@@ -72,7 +72,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 let request = FirstTab.SelectNew.Request(indexOfNew: indexPath.row)
                 interactor?.selectNew(request: request)
-                performSegue(withIdentifier: "DetailedNew", sender: nil)
+                performSegue(withIdentifier: Constants.SegueIdentifiers.detailedNew, sender: nil)
             }
         }
     }
@@ -82,7 +82,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         
         getNews(indexOfTab: indexOfTab)
         getNewsByTimer(indexOfTab: indexOfTab)
-        displayNavigatioBar()
+        displayNavigationBar()
     }
     
     // MARK: Routing
@@ -98,7 +98,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Display navigation bar
     
-    func displayNavigatioBar() {
+    func displayNavigationBar() {
         let request = FirstTab.DisplayNavigatioBar.Request(indexOfTab: indexOfTab)
         interactor?.getNavigationBarTitle(request: request)
     }
@@ -200,7 +200,7 @@ extension FirstTabViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as! NewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.newCell, for: indexPath) as! NewCell
         
         guard let news = news else { return UITableViewCell() }
         
@@ -228,7 +228,7 @@ extension FirstTabViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! NewCell
+        guard let cell = tableView.cellForRow(at: indexPath) as? NewCell else { return }
         
         guard let news = news else { return }
         

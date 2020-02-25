@@ -53,24 +53,14 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "SourceOfNewSettingsCell", bundle: nil), forCellReuseIdentifier: "SourceOfNewSettingsCell")
+        view.backgroundColor = Constants.Colors.backGroundColor
+        
+        tableView.register(UINib(nibName: Constants.CellIdentifiers.sourceOfNewSettingsCell, bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.sourceOfNewSettingsCell)
         
         displayNavigationTitle()
         displaySourceOfNew()
         displayTabBarTitle()
-        
-        configureView()
-    }
     
-    // MARK: - Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
     }
     
     // MARK: - Display navigation title
@@ -79,8 +69,6 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         let request = SourceOfNewSettings.DisplayNavigationTitle.Request()
         interactor?.displayNavigationTitle(request: request)
     }
-    
-    //TODO - bug needs to be fixed
     
     func displayNavigationTitle(viewModel: SourceOfNewSettings.DisplayNavigationTitle.ViewModel) {
         navigationItem.title = viewModel.title
@@ -156,7 +144,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         self.feedsModels = feedsModels
         tableView.reloadData()
         for index in 0..<feedsModels.count {
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! SourceOfNewSettingsCell
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SourceOfNewSettingsCell else { return }
             let toggleValue = (feedsModels[index].isSelected) ? true : false
             cell.turnSourceOfNew.setOn(toggleValue, animated: true)
         }
@@ -169,13 +157,6 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     private func displayTabBarItemTitle(numberOfTab: Int, title: String) {
         let numberOfTab = numberOfTab
         tabBarController?.tabBar.items?[numberOfTab].title = title
-    }
-    
-    private func configureView() {
-        view.backgroundColor              = Constants.Colors.backGroundColor
-        //        tabBar.barTintColor               = Constants.Colors.backGroundColor // TODO - need to make workable
-        //        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        //        navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
     //MARK: - @IBActions
@@ -194,12 +175,12 @@ extension SourceOfNewSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SourceOfNewSettingsCell", for: indexPath) as! SourceOfNewSettingsCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.sourceOfNewSettingsCell, for: indexPath) as? SourceOfNewSettingsCell else { return UITableViewCell() }
         
         cell.delegate = self
         
-        cell.sourceLabel?.text = feedsModels[indexPath.row].feedName // TODO move to configure
-        cell.configure()
+        cell.configureCellData(with: feedsModels[indexPath.row])
+        cell.configureCellView()
         return cell
     }
 }
