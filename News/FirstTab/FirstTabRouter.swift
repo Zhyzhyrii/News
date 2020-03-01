@@ -40,4 +40,5 @@ class FirstTabRouter: NSObject, FirstTabRoutingLogic, FirstTabDataPassing {
     func passDataToDetailedNew(source: FirstTabDataStore, destination: inout DetailedNewDataStore) {
         destination.new = source.selectedNew
     }
+    
 }

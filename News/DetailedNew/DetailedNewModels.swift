@@ -17,9 +17,6 @@ enum DetailedNew {
     // MARK: Use cases
     
     enum DisplaySelectedNew {
-        struct Request {
-        }
-        
         struct Response {
             let new: New
         }
