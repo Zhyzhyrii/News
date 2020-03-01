@@ -14,18 +14,26 @@ protocol ChangeValueOfIntervalOfUpdatingSwitcher: class {
 
 class IntervalOfUpdatingNewsCell: UITableViewCell {
     
+    // MARK: - @IBOutlets
+    
     @IBOutlet var containerLabel: UILabel!
     @IBOutlet var titleText: UILabel!
     @IBOutlet var switcherIntervalOfUpdating: UISwitch!
     
+    // MARK: - Public properties
+    
     weak var delegate: ChangeValueOfIntervalOfUpdatingSwitcher?
     
-    func configure() {
+    func configureCellView() {
         selectionStyle = .none
         
         containerLabel.layer.borderWidth  = 1
         containerLabel.layer.borderColor  = Constants.Colors.mainTextColor.cgColor
         containerLabel.layer.cornerRadius = 5
+    }
+    
+    func configureCellData() {
+          titleText.text = "Interval of updating news"
     }
     
     @IBAction func changeToggleIntervalOfUpdating(_ sender: UISwitch) {

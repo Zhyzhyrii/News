@@ -18,18 +18,10 @@ protocol SettingsDisplayLogic: class {
 
 class SettingsViewController: UITableViewController, SettingsDisplayLogic, ChangeValueOfIntervalOfUpdatingSwitcher {
     
-    // MARK: - IBOutlets
+    // MARK: - Public properties
     
     var interactor: SettingsBusinessLogic?
     var router: (NSObjectProtocol & SettingsRoutingLogic & SettingsDataPassing)?
-    
-    // MARK: - Private properties
-    
-    private let titlesForFirstSectionOfTable = ["The first tab",
-                                                "The second tab",
-                                                "The third tab"]
-    
-    private let titleForSecondSectionOfTable = "Interval of updating news"
     
     // MARK: - View lifecycle
     
@@ -108,19 +100,16 @@ extension SettingsViewController {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.tabSettingCell, for: indexPath) as? TabSettingCell else { return UITableViewCell() }
             
-            cell.titleText.text = "\(titlesForFirstSectionOfTable[indexPath.row])"
-            
-            cell.configure()
+            cell.configureCellData(for: indexPath.row)
+            cell.configureCellView()
             
             return cell
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.intervalOfUpdatingNewsCell, for: indexPath) as? IntervalOfUpdatingNewsCell else { return UITableViewCell() }
             
             cell.delegate = self
-            
-            cell.titleText.text = titleForSecondSectionOfTable
-            
-            cell.configure()
+            cell.configureCellData()
+            cell.configureCellView()
             
             return cell
         }

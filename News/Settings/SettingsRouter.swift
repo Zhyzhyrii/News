@@ -34,16 +34,11 @@ class SettingsRouter: NSObject, SettingsRoutingLogic, SettingsDataPassing {
             passDataToTabSettings(source: dataStore!, destination: &destinationDS)
         }
     }
-    
-    // MARK: - Navigation
-    
-    func navigateToTabSettings(source: SettingsViewController, destination: SourceOfNewSettingsViewController) {
-        source.show(destination, sender: nil)
-    }
-    
+
     // MARK: - Passing data
     
     func passDataToTabSettings(source: SettingsDataStore, destination: inout SourceOfNewSettingsDataStore) {
         destination.numberOfTab = source.numberOfTab
     }
+    
 }
