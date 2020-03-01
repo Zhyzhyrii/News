@@ -52,18 +52,18 @@ class FirstTabPresenter: FirstTabPresentationLogic {
     
     func presentNewsByRefreshing(response: FirstTab.RefreshNews.Response) {
         let news = prepareDisplayedNews(response.news)
-        
+
         let viewModel = FirstTab.RefreshNews.ViewModel(news: news)
-        viewController?.displayNewsByRefreshing(viewModel: viewModel)
+        viewController?.displayNews(viewModel: viewModel)
     }
-    
+
     // MARK: - Present news by timer
-    
+
     func presentNewsByTimer(response: FirstTab.GetNewsByTimer.Response) {
         let news = prepareDisplayedNews(response.news)
-        
+
         let viewModel = FirstTab.GetNewsByTimer.ViewModel(news: news)
-        viewController?.displayNewsByTimer(viewModel: viewModel)
+        viewController?.displayNews(viewModel: viewModel)
     }
     
     // MARK: - Present navigation bar

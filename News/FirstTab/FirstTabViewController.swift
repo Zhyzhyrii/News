@@ -13,10 +13,8 @@
 import UIKit
 
 protocol FirstTabDisplayLogic: class {
-    func displayNews(viewModel: FirstTab.GetNewsFromDBOrNetwork.ViewModel)
+    func displayNews(viewModel: GetDisplayedNews)
     func doNotDisplayNewsDueToNetworkProblem(viewModel: FirstTab.GetNewsFromDBOrNetwork.ViewModel)
-    func displayNewsByRefreshing(viewModel: FirstTab.RefreshNews.ViewModel)
-    func displayNewsByTimer(viewModel: FirstTab.GetNewsByTimer.ViewModel)
     func displayNavigationBar(viewModel: FirstTab.DisplayNavigatioBar.ViewModel)
     func hideNavigationBar()
 }
@@ -32,8 +30,6 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     
     var interactor: FirstTabBusinessLogic?
     var router: (NSObjectProtocol & FirstTabRoutingLogic & FirstTabDataPassing)?
-    
-    var parser: GenericNewsParser!
     
     // MARK: - Private properties
     
@@ -80,7 +76,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        getNews(indexOfTab: indexOfTab)
+        getNewsFromDBOrNetwork(indexOfTab: indexOfTab)
         getNewsByTimer(indexOfTab: indexOfTab)
         displayNavigationBar()
     }
@@ -98,11 +94,6 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Display navigation bar
     
-    func displayNavigationBar() {
-        let request = FirstTab.DisplayNavigatioBar.Request(indexOfTab: indexOfTab)
-        interactor?.getNavigationBarTitle(request: request)
-    }
-    
     func displayNavigationBar(viewModel: FirstTab.DisplayNavigatioBar.ViewModel) {
         navigationBar.isHidden = false
         navigationBar.topItem?.title = viewModel.title
@@ -116,40 +107,8 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: Display news
     
-    func displayNews(viewModel: FirstTab.GetNewsFromDBOrNetwork.ViewModel) {
+    func displayNews(viewModel: GetDisplayedNews) {
         displayNews(news: viewModel.news)
-    }
-    
-    //MARK: - Get news
-    
-    func getNews(indexOfTab: Int)  {
-        let request = FirstTab.GetNewsFromDBOrNetwork.Request(indexOfTab: indexOfTab)
-        interactor?.getNewsFromDBOrNetworkFor(request: request)
-    }
-    
-    // MARK: - Get news by timer delegate method
-    
-    func getNews() {
-        getNewsByTimer(indexOfTab: indexOfTab)
-    }
-    
-    // MARK: - Display news by refreshing
-    
-    func displayNewsByRefreshing(viewModel: FirstTab.RefreshNews.ViewModel) {
-        displayNews(news: viewModel.news)
-    }
-    
-    //MARK: - Display news by timer
-    
-    func displayNewsByTimer(viewModel: FirstTab.GetNewsByTimer.ViewModel) {
-        displayNews(news: viewModel.news)
-    }
-    
-    // MARK: - Get news via timer
-    
-    func getNewsByTimer(indexOfTab: Int) {
-        let request = FirstTab.GetNewsByTimer.Request(indexOfTab: indexOfTab)
-        interactor?.getNewsByTimer(request: request)
     }
     
     // MARK: - News are not displayed due to internet problem
@@ -160,6 +119,21 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // MARK: - Private methods
+
+    private func getNewsFromDBOrNetwork(indexOfTab: Int)  {
+        let request = FirstTab.GetNewsFromDBOrNetwork.Request(indexOfTab: indexOfTab)
+        interactor?.getNewsFromDBOrNetworkFor(request: request)
+    }
+    
+    private func getNewsByTimer(indexOfTab: Int) {
+        let request = FirstTab.GetNewsByTimer.Request(indexOfTab: indexOfTab)
+        interactor?.getNewsByTimer(request: request)
+    }
+    
+    private func displayNavigationBar() {
+        let request = FirstTab.DisplayNavigatioBar.Request(indexOfTab: indexOfTab)
+        interactor?.getNavigationBarTitle(request: request)
+    }
     
     private func displayNews(news: [DisplayedNew]?) {
         self.news = news
@@ -235,7 +209,7 @@ extension FirstTabViewController {
         if indexPath.row == selectedIndex {
             cell.newTextLabel.text = news[selectedIndex].title
             cell.configureNotSelectedCellView()
-            selectedIndex = -1
+            selectedIndex          = -1
         } else {
             selectedIndex          = indexPath.row
             cell.newTextLabel.text = news[selectedIndex].descripton
@@ -249,6 +223,7 @@ extension FirstTabViewController {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         guard let cell = tableView.cellForRow(at: indexPath) as? NewCell else { return }
+       
         cell.newTextLabel.textColor = Constants.Colors.titleTextColor
         cell.newTextLabel.font      = Constants.Fonts.titleTextFontSize
         

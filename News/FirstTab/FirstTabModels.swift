@@ -12,6 +12,10 @@
 
 import UIKit
 
+protocol GetDisplayedNews {
+    var news: [DisplayedNew]? { get }
+}
+
 enum FirstTab {
     
     // MARK: Use cases
@@ -26,7 +30,7 @@ enum FirstTab {
             let error: GetNewsError?
         }
         
-        struct ViewModel {
+        struct ViewModel: GetDisplayedNews {
             let news: [DisplayedNew]?
         }
     }
@@ -40,8 +44,8 @@ enum FirstTab {
             let news: [New]
         }
         
-        struct ViewModel {
-            let news: [DisplayedNew]
+        struct ViewModel: GetDisplayedNews {
+            let news: [DisplayedNew]?
         }
     }
     
@@ -54,8 +58,8 @@ enum FirstTab {
             let news: [New]
         }
         
-        struct ViewModel {
-            let news: [DisplayedNew]
+        struct ViewModel: GetDisplayedNews {
+            let news: [DisplayedNew]?
         }
     }
     
