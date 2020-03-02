@@ -30,7 +30,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     // MARK: - Public properties
     
     var interactor: SourceOfNewSettingsBusinessLogic?
-    var router: (NSObjectProtocol & SourceOfNewSettingsRoutingLogic & SourceOfNewSettingsDataPassing)?
+    var router: SourceOfNewSettingsDataPassing?
     
     // MARK: - Private properties
     
