@@ -158,7 +158,7 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
-    // MARK: - IBActions
+    // MARK: - @IBActions
     
     @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
         getNewsByRefreshing(indexOfTab: indexOfTab)

@@ -12,6 +12,22 @@
 
 import UIKit
 
+protocol GetNumberOfTab {
+    var numberOfTab: Int { get }
+}
+
+protocol GetTabBarItemTitleForViewModel {
+    var titleOfBar: String { get }
+}
+
+protocol GetTabBarItemTitleForResponse { // TODO as above??
+    var tabBarItemTitle: String? { get }
+}
+
+protocol GetFeedModels {
+    var feedsModels: [FeedModel] { get }
+}
+
 enum SourceOfNewSettings {
     
     // MARK: Use cases
@@ -21,32 +37,26 @@ enum SourceOfNewSettings {
             let feed: FeedModel
         }
         
-        struct Response {
+        struct Response: GetFeedModels {
             let feedsModels: [FeedModel]
         }
         
-        struct ViewModel {
+        struct ViewModel: GetFeedModels {
             let feedsModels: [FeedModel]
         }
     }
     
     enum DisplaySourceOfNew {
-        struct Request {
+        struct Response: GetFeedModels {
+            let feedsModels: [FeedModel]
         }
         
-        struct Response {
-            let feeds: [FeedModel]
-        }
-        
-        struct ViewModel {
+        struct ViewModel: GetFeedModels {
             let feedsModels: [FeedModel]
         }
     }
     
     enum DisplayNavigationTitle {
-        struct Request {
-        }
-        
         struct Response {
             let numberOfTab: Int
         }
@@ -57,19 +67,14 @@ enum SourceOfNewSettings {
     }
     
     enum SaveFeedSettings {
-        struct Request {
+        struct Response: GetTabBarItemTitleForResponse, GetNumberOfTab {
+            let tabBarItemTitle: String?
+            let numberOfTab: Int
         }
         
-        struct Response {
-            let feeds: [FeedModel]
+        struct ViewModel: GetTabBarItemTitleForViewModel, GetNumberOfTab {
             let numberOfTab: Int
-            let indexPathfOfEditedRow: IndexPath?
-        }
-        
-        struct ViewModel {
-            let feedName: String
-            let numberOfTab: Int
-            let indexPathOfRow: IndexPath?
+            let titleOfBar: String
         }
     }
     
@@ -94,17 +99,14 @@ enum SourceOfNewSettings {
     }
     
     enum DisplayTabBarItemTitle {
-        struct Request {
+        struct Response: GetTabBarItemTitleForResponse, GetNumberOfTab {
+            let tabBarItemTitle: String?
+            let numberOfTab: Int
         }
         
-        struct Response {
+        struct ViewModel: GetTabBarItemTitleForViewModel, GetNumberOfTab {
             let numberOfTab: Int
-            let title: String
-        }
-        
-        struct ViewModel {
-            let numberOfTab: Int
-            let title: String
+            let titleOfBar: String
         }
     }
     

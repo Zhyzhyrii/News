@@ -14,12 +14,8 @@ import UIKit
 
 protocol SourceOfNewSettingsDisplayLogic: class {
     func displayNavigationTitle(viewModel: SourceOfNewSettings.DisplayNavigationTitle.ViewModel)
-    
-    func displaySourcesOfNews(viewModel: SourceOfNewSettings.DisplaySourceOfNew.ViewModel)
-    func displayTabBarItemTitle(viewModel: SourceOfNewSettings.DisplayTabBarItemTitle.ViewModel) //TODO why 2 functions
-    func displaySelectedSourceOfNew(viewModel: SourceOfNewSettings.SelectNewSource.ViewModel)
-    
-    func displayTabBarItem(viewModel: SourceOfNewSettings.SaveFeedSettings.ViewModel)
+    func displayTabBarItemTitle(viewModel: GetTabBarItemTitleForViewModel & GetNumberOfTab)
+    func displaySourcesOfNews(viewModel: GetFeedModels)
     
     func displayTitleOfTheNew(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel)
     func displayAlertTheSameTitle(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel)
@@ -27,7 +23,7 @@ protocol SourceOfNewSettingsDisplayLogic: class {
 
 class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSettingsDisplayLogic, ChangeValueOfSourceOfNewSwitcher {
     
-    // MARK: - Outlets
+    // MARK: - @IBOutlets
     
     @IBOutlet var saveButton: UIBarButtonItem!
     
@@ -58,16 +54,15 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         tableView.register(UINib(nibName: Constants.CellIdentifiers.sourceOfNewSettingsCell, bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.sourceOfNewSettingsCell)
         
         displayNavigationTitle()
-        displaySourceOfNew()
+        displaySourceOfNews()
         displayTabBarTitle()
-    
+        
     }
     
     // MARK: - Display navigation title
     
     func displayNavigationTitle() {
-        let request = SourceOfNewSettings.DisplayNavigationTitle.Request()
-        interactor?.displayNavigationTitle(request: request)
+        interactor?.displayNavigationTitle()
     }
     
     func displayNavigationTitle(viewModel: SourceOfNewSettings.DisplayNavigationTitle.ViewModel) {
@@ -76,24 +71,29 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     
     // MARK: - Display source of new
     
-    func displaySourceOfNew() {
-        let request = SourceOfNewSettings.DisplaySourceOfNew.Request()
-        interactor?.displaySourceOfNew(request: request)
+    func displaySourceOfNews() {
+        interactor?.displaySourceOfNews()
     }
     
-    func displaySourcesOfNews(viewModel: SourceOfNewSettings.DisplaySourceOfNew.ViewModel) {
-        displaySourcesOfNews(feedsModels: viewModel.feedsModels)
+    func displaySourcesOfNews(viewModel: GetFeedModels) {
+        feedsModels = viewModel.feedsModels
+        tableView.reloadData()
+        for index in 0..<feedsModels.count {
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SourceOfNewSettingsCell else { return }
+            let toggleValue = (feedsModels[index].isSelected) ? true : false
+            cell.turnSourceOfNew.setOn(toggleValue, animated: true)
+        }
     }
     
-    // MARK: - Display tab bar title
+    // MARK: - Display tab bar`s title
     
     func displayTabBarTitle() {
-        let request = SourceOfNewSettings.DisplayTabBarItemTitle.Request()
-        interactor?.displayTabBarItemTitle(request: request)
+        interactor?.displayTabBarItemTitle()
     }
     
-    func displayTabBarItemTitle(viewModel: SourceOfNewSettings.DisplayTabBarItemTitle.ViewModel) { // TODO why 2 functions
-        displayTabBarItemTitle(numberOfTab: viewModel.numberOfTab, title: viewModel.title)
+    func displayTabBarItemTitle(viewModel: GetTabBarItemTitleForViewModel & GetNumberOfTab) {
+        let numberOfTab = viewModel.numberOfTab
+        tabBarController?.tabBar.items?[numberOfTab].title = viewModel.titleOfBar
     }
     
     // MARK: - Select new`s source
@@ -103,20 +103,12 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         interactor?.selectNewSource(request: request)
     }
     
-    func displaySelectedSourceOfNew(viewModel: SourceOfNewSettings.SelectNewSource.ViewModel) {
-        displaySourcesOfNews(feedsModels: viewModel.feedsModels)
-    }
-    
-    // MARK: - Display bar item title
-    
-    func displayTabBarItem(viewModel: SourceOfNewSettings.SaveFeedSettings.ViewModel) {
-        displayTabBarItemTitle(numberOfTab: viewModel.numberOfTab, title: viewModel.feedName)
-    }
+    // MARK: - Display title of the new
     
     func displayTitleOfTheNew(viewModel: SourceOfNewSettings.UpdateTitleOfTheNew.ViewModel) {
         
         if let indexPathOfEditedRow = viewModel.indexPathOfRow {
-            let editedCell = tableView.cellForRow(at: indexPathOfEditedRow) as! SourceOfNewSettingsCell
+            guard let editedCell = tableView.cellForRow(at: indexPathOfEditedRow) as? SourceOfNewSettingsCell else { return }
             editedCell.sourceLabel.text = viewModel.feeds[indexPathOfEditedRow.row].feedName
             
             feedsModels = viewModel.feeds
@@ -138,32 +130,10 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
         selectNewSource(indexPath: indexPath)
     }
     
-    // MARK: - Private methods
-    
-    private func displaySourcesOfNews(feedsModels: [FeedModel]) {
-        self.feedsModels = feedsModels
-        tableView.reloadData()
-        for index in 0..<feedsModels.count {
-            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SourceOfNewSettingsCell else { return }
-            let toggleValue = (feedsModels[index].isSelected) ? true : false
-            cell.turnSourceOfNew.setOn(toggleValue, animated: true)
-        }
-        
-        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
-        }
-    }
-    
-    private func displayTabBarItemTitle(numberOfTab: Int, title: String) {
-        let numberOfTab = numberOfTab
-        tabBarController?.tabBar.items?[numberOfTab].title = title
-    }
-    
     //MARK: - @IBActions
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        let request = SourceOfNewSettings.SaveFeedSettings.Request()
-        interactor?.saveFeedSettings(request: request)
+        interactor?.saveFeedSettings()
     }
     
 }

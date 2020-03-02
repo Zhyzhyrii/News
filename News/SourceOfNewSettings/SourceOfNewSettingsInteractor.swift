@@ -13,11 +13,10 @@
 import UIKit
 
 protocol SourceOfNewSettingsBusinessLogic {
-    func displayNavigationTitle(request: SourceOfNewSettings.DisplayNavigationTitle.Request)
-    func saveFeedSettings(request: SourceOfNewSettings.SaveFeedSettings.Request)
-    
-    func displaySourceOfNew(request: SourceOfNewSettings.DisplaySourceOfNew.Request)
-    func displayTabBarItemTitle(request: SourceOfNewSettings.DisplayTabBarItemTitle.Request)
+    func displayNavigationTitle()
+    func saveFeedSettings()
+    func displaySourceOfNews()
+    func displayTabBarItemTitle()
     func selectNewSource(request: SourceOfNewSettings.SelectNewSource.Request)
     func updateTitleOfTheNew(request: SourceOfNewSettings.UpdateTitleOfTheNew.Request)
 }
@@ -36,7 +35,7 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
     
     // MARK: - Display source of new
     
-    func displaySourceOfNew(request: SourceOfNewSettings.DisplaySourceOfNew.Request) {
+    func displaySourceOfNews() {
         if let feedsModels = UserDefaultsStorageManager.shared.getSavedFeeds(forKey: numberOfTab) {
             self.feedsModels = feedsModels
         } else {
@@ -45,7 +44,7 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
             }
         }
         
-        let response = SourceOfNewSettings.DisplaySourceOfNew.Response(feeds: feedsModels)
+        let response = SourceOfNewSettings.DisplaySourceOfNew.Response(feedsModels: feedsModels)
         presenter?.presentSourceOfNew(response: response)
     }
     
@@ -59,23 +58,21 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
         }
         
         let response = SourceOfNewSettings.SelectNewSource.Response(feedsModels: feedsModels)
-        presenter?.presentSelectedNewSource(response: response)
+        presenter?.presentSourceOfNew(response: response)
     }
     
     //MARK: - Display tab bar title
     
-    func displayTabBarItemTitle(request: SourceOfNewSettings.DisplayTabBarItemTitle.Request) {
-        if let selectedFeed = feedsModels.first(where: { (feed) -> Bool in
-            feed.isSelected
-        }) {
-            let response = SourceOfNewSettings.DisplayTabBarItemTitle.Response(numberOfTab: numberOfTab, title: selectedFeed.feedName)
-            presenter?.presentTabBarItemTitle(response: response)
-        }
+    func displayTabBarItemTitle() {
+        let feedName = getSelectedFeedName()
+        
+        let response = SourceOfNewSettings.DisplayTabBarItemTitle.Response(tabBarItemTitle: feedName, numberOfTab: numberOfTab)
+        presenter?.presentTabBarItemTitle(response: response)
     }
     
     // MARK: - Display navigation title
     
-    func displayNavigationTitle(request: SourceOfNewSettings.DisplayNavigationTitle.Request) {
+    func displayNavigationTitle() {
         if let numberOfTab = numberOfTab {
             let response = SourceOfNewSettings.DisplayNavigationTitle.Response(numberOfTab: numberOfTab)
             presenter?.presentNavigationTitle(response: response)
@@ -84,10 +81,12 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
     
     // MARK: - Save feed settings
     
-    func saveFeedSettings(request: SourceOfNewSettings.SaveFeedSettings.Request) {
+    func saveFeedSettings() {
         UserDefaultsStorageManager.shared.saveFeeds(feedsModels, forKey: numberOfTab)
         
-        let response = SourceOfNewSettings.SaveFeedSettings.Response(feeds: feedsModels, numberOfTab: numberOfTab, indexPathfOfEditedRow: indexPathOfEditedRow)
+        let feedName = getSelectedFeedName()
+        
+        let response = SourceOfNewSettings.SaveFeedSettings.Response(tabBarItemTitle: feedName, numberOfTab: numberOfTab)
         presenter?.presentTabBarItemTitle(response: response)
     }
     
@@ -106,6 +105,18 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
             
             let response = SourceOfNewSettings.UpdateTitleOfTheNew.Response(success: true, feeds: feedsModels, numberOfTab: numberOfTab, indexPathfOfEditedRow: indexPathOfEditedRow)
             presenter?.presentTitleOfTheNew(response: response)
+        }
+    }
+    
+    // MARK: - Get selected feedName
+    
+    private func getSelectedFeedName() -> String? {
+        if let selectedFeed = feedsModels.first(where: { (feed) -> Bool in
+            feed.isSelected
+        }) {
+            return selectedFeed.feedName
+        } else {
+            return nil
         }
     }
     
