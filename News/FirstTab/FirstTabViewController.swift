@@ -174,7 +174,7 @@ extension FirstTabViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.newCell, for: indexPath) as! NewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.newCell, for: indexPath) as? NewCell else { return UITableViewCell() }
         
         guard let news = news else { return UITableViewCell() }
         
