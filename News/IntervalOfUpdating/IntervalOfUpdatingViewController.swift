@@ -25,7 +25,6 @@ class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisp
     // MARK: - Public properties
     
     var interactor: IntervalOfUpdatingBusinessLogic?
-    var router: (NSObjectProtocol & IntervalOfUpdatingRoutingLogic & IntervalOfUpdatingDataPassing)?
     
     // MARK: - Private properties
     
@@ -47,17 +46,6 @@ class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisp
         interactor?.getSavedIntervalOfUpdatingInSeconds()
     }
     
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     // MARK: - Private methods
     
     private func configureView() {
@@ -67,7 +55,7 @@ class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisp
     // MARK: - Display saved interval of updating
     
     func displaySavedIntervalOfUpdating(viewModel: IntervalOfUpdating.GetSavedIntervalOfUpdating.ViewModel) {
-        hours = viewModel.hours
+        hours   = viewModel.hours
         minutes = viewModel.minutes
         seconds = viewModel.seconds
         

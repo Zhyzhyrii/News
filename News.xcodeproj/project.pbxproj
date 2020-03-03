@@ -60,8 +60,6 @@
 		789CD1C023DF6E0800B7EA12 /* DisplayedNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1BF23DF6E0700B7EA12 /* DisplayedNew.swift */; };
 		789CD1C223DF97D600B7EA12 /* RealmNewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1C123DF97D600B7EA12 /* RealmNewManager.swift */; };
 		789CD1CA23E474F500B7EA12 /* IntervalOfUpdatingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1C423E474F500B7EA12 /* IntervalOfUpdatingPresenter.swift */; };
-		789CD1CB23E474F500B7EA12 /* IntervalOfUpdatingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1C523E474F500B7EA12 /* IntervalOfUpdatingWorker.swift */; };
-		789CD1CC23E474F500B7EA12 /* IntervalOfUpdatingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1C623E474F500B7EA12 /* IntervalOfUpdatingRouter.swift */; };
 		789CD1CD23E474F500B7EA12 /* IntervalOfUpdatingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1C723E474F500B7EA12 /* IntervalOfUpdatingModels.swift */; };
 		789CD1CE23E474F500B7EA12 /* IntervalOfUpdatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1C823E474F500B7EA12 /* IntervalOfUpdatingViewController.swift */; };
 		789CD1CF23E474F500B7EA12 /* IntervalOfUpdatingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CD1C923E474F500B7EA12 /* IntervalOfUpdatingInteractor.swift */; };
@@ -132,8 +130,6 @@
 		789CD1BF23DF6E0700B7EA12 /* DisplayedNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayedNew.swift; sourceTree = "<group>"; };
 		789CD1C123DF97D600B7EA12 /* RealmNewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNewManager.swift; sourceTree = "<group>"; };
 		789CD1C423E474F500B7EA12 /* IntervalOfUpdatingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingPresenter.swift; sourceTree = "<group>"; };
-		789CD1C523E474F500B7EA12 /* IntervalOfUpdatingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingWorker.swift; sourceTree = "<group>"; };
-		789CD1C623E474F500B7EA12 /* IntervalOfUpdatingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingRouter.swift; sourceTree = "<group>"; };
 		789CD1C723E474F500B7EA12 /* IntervalOfUpdatingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingModels.swift; sourceTree = "<group>"; };
 		789CD1C823E474F500B7EA12 /* IntervalOfUpdatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingViewController.swift; sourceTree = "<group>"; };
 		789CD1C923E474F500B7EA12 /* IntervalOfUpdatingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalOfUpdatingInteractor.swift; sourceTree = "<group>"; };
@@ -319,8 +315,6 @@
 				789CD1C823E474F500B7EA12 /* IntervalOfUpdatingViewController.swift */,
 				789CD1C923E474F500B7EA12 /* IntervalOfUpdatingInteractor.swift */,
 				789CD1C423E474F500B7EA12 /* IntervalOfUpdatingPresenter.swift */,
-				789CD1C523E474F500B7EA12 /* IntervalOfUpdatingWorker.swift */,
-				789CD1C623E474F500B7EA12 /* IntervalOfUpdatingRouter.swift */,
 				789CD1C723E474F500B7EA12 /* IntervalOfUpdatingModels.swift */,
 				789CD1D023E4752600B7EA12 /* IntervalOfUpdatingConfigurator.swift */,
 			);
@@ -517,7 +511,6 @@
 				7860597923AC1D4800FEB374 /* RSSParser.swift in Sources */,
 				7858D74223FB140800E2AAEA /* DetailedNewViewController.swift in Sources */,
 				78D97B9D23D8E18B00442108 /* NewCell.swift in Sources */,
-				789CD1CB23E474F500B7EA12 /* IntervalOfUpdatingWorker.swift in Sources */,
 				782744E623E96F3C00EBCD43 /* TimeHelper.swift in Sources */,
 				7858D74023FB140800E2AAEA /* DetailedNewRouter.swift in Sources */,
 				786059CB23B8FC0700FEB374 /* SourceOfNewSettingsConfigurator.swift in Sources */,
@@ -533,7 +526,6 @@
 				786059B223B5656F00FEB374 /* SettingsPresenter.swift in Sources */,
 				78A92F5723C4F9900058A293 /* Constants.swift in Sources */,
 				7860597F23B2AD6000FEB374 /* ExtractHelper.swift in Sources */,
-				789CD1CC23E474F500B7EA12 /* IntervalOfUpdatingRouter.swift in Sources */,
 				7860594F23AC07F700FEB374 /* AppDelegate.swift in Sources */,
 				786059BC23B8CB0000FEB374 /* FeedModel.swift in Sources */,
 				7860598A23B35FF700FEB374 /* XmlFields.swift in Sources */,

@@ -14,13 +14,9 @@ class IntervalOfUpdatingConfigurator {
         let viewController = viewController
         let interactor = IntervalOfUpdatingInteractor()
         let presenter = IntervalOfUpdatingPresenter()
-        let router = IntervalOfUpdatingRouter()
         viewController.interactor = interactor
-        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
     }
     
 }

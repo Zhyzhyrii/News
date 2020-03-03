@@ -17,15 +17,9 @@ protocol IntervalOfUpdatingBusinessLogic {
     func getSavedIntervalOfUpdatingInSeconds()
 }
 
-protocol IntervalOfUpdatingDataStore {
-    //var name: String { get set }
-}
-
-class IntervalOfUpdatingInteractor: IntervalOfUpdatingBusinessLogic, IntervalOfUpdatingDataStore {
+class IntervalOfUpdatingInteractor: IntervalOfUpdatingBusinessLogic {
     
     var presenter: IntervalOfUpdatingPresentationLogic?
-    var worker: IntervalOfUpdatingWorker?
-    //var name: String = ""
     
     // MARK: Save interval
     
@@ -46,4 +40,5 @@ class IntervalOfUpdatingInteractor: IntervalOfUpdatingBusinessLogic, IntervalOfU
             presenter?.presentSavedIntervalOfUpdating(response: response)
         }
     }
+    
 }
