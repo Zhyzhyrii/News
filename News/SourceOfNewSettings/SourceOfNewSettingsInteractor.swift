@@ -96,7 +96,7 @@ class SourceOfNewSettingsInteractor: SourceOfNewSettingsBusinessLogic, SourceOfN
         indexPathOfEditedRow = request.indexPathOfRow
         
         if let _ = feedsModels.first(where: { (feed) -> Bool in
-            feed.feedName == request.feedName
+            feed.feedName.caseInsensitiveCompare(request.feedName) == .orderedSame
         }) {
             let response = SourceOfNewSettings.UpdateTitleOfTheNew.Response(success: false, feeds: feedsModels, numberOfTab: numberOfTab, indexPathfOfEditedRow: indexPathOfEditedRow)
             presenter?.presentTitleOfTheNew(response: response)

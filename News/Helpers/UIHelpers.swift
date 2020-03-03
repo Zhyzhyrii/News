@@ -12,15 +12,15 @@ class UIHelpers {
     
     // MARK: - Alert with text field
     
-    static func showAlertWithTextField(withTitle title: String, message: String, viewController: UIViewController, buttonTitle: String, actionHandler: ((_ text: String?) -> Void)?, completeHandler: @escaping () -> Void) {
-         let alert = createAlertWithTextField(withTitle: title, message: message, buttonTitle: buttonTitle, actionHandler: actionHandler, completeHandler: completeHandler)
+    static func showAlertWithTextField(withTitle title: String, message: String, viewController: UIViewController, buttonTitle: String, textFieldDefaultValue: String, actionHandler: ((_ text: String?) -> Void)?, completeHandler: @escaping () -> Void) {
+        let alert = createAlertWithTextField(withTitle: title, message: message, buttonTitle: buttonTitle, textFieldDefaultValue: textFieldDefaultValue, actionHandler: actionHandler, completeHandler: completeHandler)
          viewController.present(alert, animated: true, completion: nil)
      }
     
-    private static func createAlertWithTextField(withTitle title: String, message: String, buttonTitle: String, actionHandler: ((_ text: String?) -> Void)?, completeHandler: @escaping () -> Void) -> UIAlertController {
+    private static func createAlertWithTextField(withTitle title: String, message: String, buttonTitle: String, textFieldDefaultValue: String, actionHandler: ((_ text: String?) -> Void)?, completeHandler: @escaping () -> Void) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addTextField { (textField) in
-            textField.placeholder = "Enter new title"
+            textField.text = textFieldDefaultValue
         }
         
         let okAction = UIAlertAction(title: buttonTitle, style: .default) { (action) in

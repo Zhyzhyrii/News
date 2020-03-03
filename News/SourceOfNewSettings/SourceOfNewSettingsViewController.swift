@@ -158,12 +158,17 @@ extension SourceOfNewSettingsViewController {
 extension SourceOfNewSettingsViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        guard let cell = tableView.cellForRow(at: indexPath) as? SourceOfNewSettingsCell else { return nil }
+        guard let textFieldDefaultValue = cell.sourceLabel.text else { return nil }
+        
         let changeTheTitleOfNew = UIContextualAction(style: .normal, title: "Update title") {_,_,complete in
             
             UIHelpers.showAlertWithTextField(withTitle: "Change title",
                                              message: "Provide new title for the new",
                                              viewController: self,
                                              buttonTitle: "OK",
+                                             textFieldDefaultValue: textFieldDefaultValue,
                                              actionHandler: { (newTitle) in
                                                 guard let newTitle = newTitle else { return }
                                                 let request = SourceOfNewSettings.UpdateTitleOfTheNew.Request(feedName: newTitle, indexPathOfRow: indexPath)
