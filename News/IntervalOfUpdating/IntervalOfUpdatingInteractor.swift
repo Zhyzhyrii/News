@@ -14,6 +14,7 @@ import UIKit
 
 protocol IntervalOfUpdatingBusinessLogic {
     func saveIntervalOfUpdating(request: IntervalOfUpdating.SaveIntervalOfUpdating.Request)
+    func getSavedIntervalOfUpdatingInSeconds()
 }
 
 protocol IntervalOfUpdatingDataStore {
@@ -26,9 +27,23 @@ class IntervalOfUpdatingInteractor: IntervalOfUpdatingBusinessLogic, IntervalOfU
     var worker: IntervalOfUpdatingWorker?
     //var name: String = ""
     
-    // MARK: Do something
+    // MARK: Save interval
     
     func saveIntervalOfUpdating(request: IntervalOfUpdating.SaveIntervalOfUpdating.Request) {
         UserDefaultsStorageManager.shared.saveIntervalOfUpdatingIn(seconds: request.seconds)
+    }
+    
+    // MARK - Get saved interval
+    
+    func getSavedIntervalOfUpdatingInSeconds() {
+        if let savedInterval = UserDefaultsStorageManager.shared.getSavedIntervalOfUpdatingInSeconds() {
+            let savedTime = TimeHelper.convertSecondsToTime(seconds: savedInterval)
+            let hours = savedTime.hours
+            let minutes = savedTime.minutes
+            let seconds = savedTime.seconds
+            
+            let response = IntervalOfUpdating.GetSavedIntervalOfUpdating.Response(hours: hours, minutes: minutes, seconds: seconds)
+            presenter?.presentSavedIntervalOfUpdating(response: response)
+        }
     }
 }

@@ -13,17 +13,17 @@
 import UIKit
 
 protocol IntervalOfUpdatingPresentationLogic {
-//    func presentSomething(response: IntervalOfUpdating.Something.Response)
+    func presentSavedIntervalOfUpdating(response: IntervalOfUpdating.GetSavedIntervalOfUpdating.Response)
 }
 
 class IntervalOfUpdatingPresenter: IntervalOfUpdatingPresentationLogic {
     
     weak var viewController: IntervalOfUpdatingDisplayLogic?
     
-    // MARK: Do something
+    // MARK: Present saved interval of updating
     
-//    func presentSomething(response: IntervalOfUpdating.Something.Response) {
-//        let viewModel = IntervalOfUpdating.Something.ViewModel()
-//        viewController?.displaySomething(viewModel: viewModel)
-//    }
+    func presentSavedIntervalOfUpdating(response: IntervalOfUpdating.GetSavedIntervalOfUpdating.Response) {
+        let viewModel = IntervalOfUpdating.GetSavedIntervalOfUpdating.ViewModel(hours: response.hours, minutes: response.minutes, seconds: response.seconds)
+        viewController?.displaySavedIntervalOfUpdating(viewModel: viewModel)
+    }
 }

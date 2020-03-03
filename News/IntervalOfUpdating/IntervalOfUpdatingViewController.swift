@@ -13,7 +13,7 @@
 import UIKit
 
 protocol IntervalOfUpdatingDisplayLogic: class {
-    //    func displaySomething(viewModel: IntervalOfUpdating.Something.ViewModel)
+    func displaySavedIntervalOfUpdating(viewModel: IntervalOfUpdating.GetSavedIntervalOfUpdating.ViewModel)
 }
 
 class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisplayLogic {
@@ -44,15 +44,7 @@ class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisp
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let savedInterval = UserDefaultsStorageManager.shared.getSavedIntervalOfUpdatingInSeconds() {
-            let savedTime = TimeHelper.convertSecondsToTime(seconds: savedInterval)
-            hours = savedTime.hours
-            minutes = savedTime.minutes
-            seconds = savedTime.seconds
-        }
-        timeIntervalPickerView.selectRow(hours, inComponent: 0, animated: true)
-        timeIntervalPickerView.selectRow(minutes, inComponent: 1, animated: true)
-        timeIntervalPickerView.selectRow(seconds, inComponent: 2, animated: true)
+        interactor?.getSavedIntervalOfUpdatingInSeconds()
     }
     
     // MARK: Routing
@@ -72,8 +64,17 @@ class IntervalOfUpdatingViewController: UIViewController, IntervalOfUpdatingDisp
         view.backgroundColor = Constants.Colors.backGroundColor
     }
     
-    // MARK: - IBActions
+    // MARK: - Display saved interval of updating
     
+    func displaySavedIntervalOfUpdating(viewModel: IntervalOfUpdating.GetSavedIntervalOfUpdating.ViewModel) {
+        hours = viewModel.hours
+        minutes = viewModel.minutes
+        seconds = viewModel.seconds
+        
+        timeIntervalPickerView.selectRow(hours, inComponent: 0, animated: true)
+        timeIntervalPickerView.selectRow(minutes, inComponent: 1, animated: true)
+        timeIntervalPickerView.selectRow(seconds, inComponent: 2, animated: true)
+    }
     
 }
 

@@ -20,11 +20,15 @@ enum IntervalOfUpdating {
         struct Request {
             let seconds: Int
         }
-        
+    }
+    
+    enum GetSavedIntervalOfUpdating {
         struct Response {
+            let (hours, minutes, seconds): (Int, Int, Int)
         }
         
         struct ViewModel {
+            let (hours, minutes, seconds): (Int, Int, Int)
         }
     }
 }
