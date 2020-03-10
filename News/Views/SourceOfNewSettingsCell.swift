@@ -41,5 +41,4 @@ class SourceOfNewSettingsCell: UITableViewCell {
         delegate?.changeSourceOfNewSwitcherValue(sender)
     }
     
-    
 }
