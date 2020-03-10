@@ -41,8 +41,9 @@
                     <constraint firstItem="Qo2-po-KcK" firstAttribute="top" secondItem="VNB-hL-Ych" secondAttribute="top" id="9rc-jB-KzJ"/>
                     <constraint firstAttribute="trailing" secondItem="VNB-hL-Ych" secondAttribute="trailing" constant="10" id="BnQ-sb-DUj"/>
                     <constraint firstItem="XAZ-xd-Her" firstAttribute="centerY" secondItem="VNB-hL-Ych" secondAttribute="centerY" id="JUM-g2-F7E"/>
+                    <constraint firstItem="Qo2-po-KcK" firstAttribute="width" secondItem="VNB-hL-Ych" secondAttribute="height" multiplier="299:68" id="OpW-IX-gdW"/>
                     <constraint firstItem="VNB-hL-Ych" firstAttribute="leading" secondItem="vUk-ti-502" secondAttribute="leading" constant="10" id="THK-ye-5Cw"/>
-                    <constraint firstItem="XAZ-xd-Her" firstAttribute="leading" secondItem="Qo2-po-KcK" secondAttribute="trailing" constant="26" id="bd5-kW-jKh"/>
+                    <constraint firstItem="XAZ-xd-Her" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qo2-po-KcK" secondAttribute="trailing" constant="26" id="bd5-kW-jKh"/>
                     <constraint firstItem="Qo2-po-KcK" firstAttribute="leading" secondItem="VNB-hL-Ych" secondAttribute="leading" constant="10" id="fbT-Gp-o83"/>
                     <constraint firstItem="VNB-hL-Ych" firstAttribute="top" secondItem="vUk-ti-502" secondAttribute="top" constant="5" id="l5b-5H-zp8"/>
                     <constraint firstAttribute="bottom" secondItem="VNB-hL-Ych" secondAttribute="bottom" constant="5" id="tlc-vD-ieQ"/>

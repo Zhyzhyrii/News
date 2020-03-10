@@ -22,36 +22,33 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXR-Jd-Rr3">
-                        <rect key="frame" x="20" y="5" width="310" height="68"/>
+                        <rect key="frame" x="20" y="5" width="299" height="68"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="neq-3C-xlD">
-                        <rect key="frame" x="355" y="23.5" width="41" height="31"/>
-                        <connections>
-                            <action selector="changeToggleIntervalOfUpdating:" destination="V66-eh-Qzy" eventType="valueChanged" id="4Zz-NB-hy8"/>
-                        </connections>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UTa-Rd-C9s">
+                        <rect key="frame" x="345" y="23.5" width="51" height="31"/>
                     </switch>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="ijU-pK-513" secondAttribute="bottom" constant="5" id="AK2-yn-dVP"/>
                     <constraint firstItem="wXR-Jd-Rr3" firstAttribute="leading" secondItem="ijU-pK-513" secondAttribute="leading" constant="10" id="BjR-26-Rt5"/>
-                    <constraint firstItem="wXR-Jd-Rr3" firstAttribute="width" secondItem="ijU-pK-513" secondAttribute="height" multiplier="155:34" id="G2u-e3-Q6O"/>
+                    <constraint firstItem="UTa-Rd-C9s" firstAttribute="trailing" secondItem="ijU-pK-513" secondAttribute="trailing" constant="-10" id="FDc-vV-iBj"/>
+                    <constraint firstItem="UTa-Rd-C9s" firstAttribute="centerY" secondItem="ijU-pK-513" secondAttribute="centerY" id="Gr8-C5-BDP"/>
                     <constraint firstAttribute="trailing" secondItem="ijU-pK-513" secondAttribute="trailing" constant="10" id="Jto-6d-KoY"/>
                     <constraint firstItem="ijU-pK-513" firstAttribute="leading" secondItem="aiQ-MB-ril" secondAttribute="leading" constant="10" id="VFt-Ta-Dlq"/>
                     <constraint firstItem="ijU-pK-513" firstAttribute="top" secondItem="aiQ-MB-ril" secondAttribute="top" constant="5" id="c52-UB-1b7"/>
-                    <constraint firstItem="neq-3C-xlD" firstAttribute="trailing" secondItem="ijU-pK-513" secondAttribute="trailing" constant="-10" id="fEv-7h-Klx"/>
                     <constraint firstItem="wXR-Jd-Rr3" firstAttribute="top" secondItem="ijU-pK-513" secondAttribute="top" id="fYH-as-h6T"/>
-                    <constraint firstItem="neq-3C-xlD" firstAttribute="centerY" secondItem="ijU-pK-513" secondAttribute="centerY" id="fYz-c9-5YU"/>
+                    <constraint firstItem="wXR-Jd-Rr3" firstAttribute="width" secondItem="ijU-pK-513" secondAttribute="height" multiplier="299:68" id="foG-PD-NE9"/>
                     <constraint firstItem="wXR-Jd-Rr3" firstAttribute="bottom" secondItem="ijU-pK-513" secondAttribute="bottom" id="jtg-pt-AAF"/>
-                    <constraint firstItem="neq-3C-xlD" firstAttribute="leading" secondItem="wXR-Jd-Rr3" secondAttribute="trailing" constant="25" id="leU-Pj-nhh"/>
+                    <constraint firstItem="UTa-Rd-C9s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wXR-Jd-Rr3" secondAttribute="trailing" constant="26" id="nL2-Xx-7dL"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="containerLabel" destination="ijU-pK-513" id="Vr0-wr-uO8"/>
-                <outlet property="switcherIntervalOfUpdating" destination="neq-3C-xlD" id="X12-Au-wiP"/>
+                <outlet property="switcherIntervalOfUpdating" destination="UTa-Rd-C9s" id="okB-cO-2ya"/>
                 <outlet property="titleText" destination="wXR-Jd-Rr3" id="ULU-MJ-H5E"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="90.401785714285708"/>
