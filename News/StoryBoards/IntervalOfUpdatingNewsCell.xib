@@ -46,7 +46,7 @@
                     <constraint firstItem="wXR-Jd-Rr3" firstAttribute="top" secondItem="ijU-pK-513" secondAttribute="top" id="fYH-as-h6T"/>
                     <constraint firstItem="wXR-Jd-Rr3" firstAttribute="width" secondItem="ijU-pK-513" secondAttribute="height" multiplier="299:68" id="foG-PD-NE9"/>
                     <constraint firstItem="wXR-Jd-Rr3" firstAttribute="bottom" secondItem="ijU-pK-513" secondAttribute="bottom" id="jtg-pt-AAF"/>
-                    <constraint firstItem="UTa-Rd-C9s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wXR-Jd-Rr3" secondAttribute="trailing" constant="26" id="nL2-Xx-7dL"/>
+                    <constraint firstItem="UTa-Rd-C9s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wXR-Jd-Rr3" secondAttribute="trailing" constant="10" id="nL2-Xx-7dL"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

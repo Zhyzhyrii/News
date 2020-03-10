@@ -91,11 +91,11 @@ extension IntervalOfUpdatingViewController: UIPickerViewDelegate {
         var attributedString: NSAttributedString!
         switch component {
         case 0:
-            attributedString = NSAttributedString(string: "\(row) Hours", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
+            attributedString = NSAttributedString(string: "\(row) Hrs", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
         case 1:
-            attributedString = NSAttributedString(string: "\(row) Minutes", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
+            attributedString = NSAttributedString(string: "\(row) Mins", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
         case 2:
-            attributedString = NSAttributedString(string: "\(row) Seconds", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
+            attributedString = NSAttributedString(string: "\(row) Secs", attributes: [NSAttributedString.Key.foregroundColor : Constants.Colors.titleTextColor])
         default:
             attributedString = nil
         }
