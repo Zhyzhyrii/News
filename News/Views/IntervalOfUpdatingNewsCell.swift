@@ -27,8 +27,8 @@ class IntervalOfUpdatingNewsCell: UITableViewCell {
     func configureCellView() {
         selectionStyle = .none
         
-        containerLabel.layer.borderWidth  = 1
-        containerLabel.layer.borderColor  = Constants.Colors.mainTextColor.cgColor
+        containerLabel.layer.borderWidth  = 0.5
+        containerLabel.layer.borderColor  = Constants.Colors.cellBorderColor.cgColor
         containerLabel.layer.cornerRadius = 5
     }
     

@@ -25,8 +25,8 @@ class NewCell: UITableViewCell {
         
         backgroundColor                   = Constants.Colors.backGroundColor
         
-        containerLabel.layer.borderWidth  = 1
-        containerLabel.layer.borderColor  = Constants.Colors.mainTextColor.cgColor
+        containerLabel.layer.borderWidth  = 0.5
+        containerLabel.layer.borderColor  = Constants.Colors.cellBorderColor.cgColor
         containerLabel.layer.cornerRadius = 5
        
         selectionStyle = .none

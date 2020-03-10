@@ -30,8 +30,8 @@ class SourceOfNewSettingsCell: UITableViewCell {
         sourceLabel.textColor             = Constants.Colors.titleTextColor
         sourceLabel.font                  = Constants.Fonts.titleTextFontSize
         
-        containerLabel.layer.borderWidth  = 1
-        containerLabel.layer.borderColor  = Constants.Colors.mainTextColor.cgColor
+        containerLabel.layer.borderWidth  = 0.5
+        containerLabel.layer.borderColor  = Constants.Colors.cellBorderColor.cgColor
         containerLabel.layer.cornerRadius = 5
         
         selectionStyle = .none
