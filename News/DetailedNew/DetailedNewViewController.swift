@@ -51,7 +51,11 @@ class DetailedNewViewController: UIViewController, DetailedNewDisplayLogic {
     
     func displaySelectedNew(viewModel: DetailedNew.DisplaySelectedNew.ViewModel) {
         let new = viewModel.new
-        imageOfNew.fetchImage(with: new.imageRef)
+        if let imageRef = new.imageRef, !imageRef.isEmpty {
+            imageOfNew.fetchImage(with: imageRef)
+        } else {
+            imageOfNew.image = #imageLiteral(resourceName: "noPhotoImg")
+        }
         titleOfNew.text = new.title
         descriptionOfNew.text = new.descripton
     }

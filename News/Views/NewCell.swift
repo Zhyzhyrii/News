@@ -16,7 +16,11 @@ class NewCell: UITableViewCell {
     
     func configureCellData(with new: DisplayedNew) {
         newTextLabel.text = new.title
-        newImageView.fetchImage(with: new.imageRef)
+        if let imageRef = new.imageRef, !imageRef.isEmpty {
+            newImageView.fetchImage(with: imageRef)
+        } else {
+            newImageView.image = #imageLiteral(resourceName: "noPhotoImg")
+        }
     }
     
     func configureNotSelectedCellView() {
