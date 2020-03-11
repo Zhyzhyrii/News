@@ -92,7 +92,8 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     }
     
     private func startTimer(indexOfTab: Int) {
-        guard let timeInterval = UserDefaultsStorageManager.shared.getSavedIntervalOfUpdatingInSeconds() else { return }
+        let savedTimeInterval = UserDefaultsStorageManager.shared.getSavedIntervalOfUpdatingInSeconds()
+        let timeInterval = savedTimeInterval == nil ? 0 : savedTimeInterval!
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(timeInterval), target: self, selector: #selector(getNewsByTimer(timer:)), userInfo: indexOfTab, repeats: true)
     }
     
@@ -118,7 +119,10 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
         worker.updateNewsInDBFor(indexOfTab: indexOfTab)
         worker.getNewsFromDBOrNetworkFor(indexOfTab: indexOfTab) { [weak self ] (news, getNewsError) in
             guard let self = self else { return }
-            guard let news = news else { return }
+            guard let news = news else {
+                self.news = nil // if source of news is not selected and timer switcher is turned on - in that case news have not to be displayed for that tab
+                return
+            }
             self.news = news
         }
         return news
