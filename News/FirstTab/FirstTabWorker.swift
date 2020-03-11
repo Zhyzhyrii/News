@@ -99,6 +99,8 @@ class FirstTabWorker: Parser {
         
         return parser.entities.map { (new) -> New in
             new.sourceOfNew = feedModel.feedSource
+            new.title = new.title?.getPureValue
+            new.descripton = new.descripton?.getPureValue
             return new
         }.sorted { (firstNew, secondNew) -> Bool in
             guard let firstDate = firstNew.pubDate, let secondDate = secondNew.pubDate else { return false }
