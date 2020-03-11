@@ -7,11 +7,9 @@
 //
 
 extension String {
-        
+    
     var getPureValue: String {
-        get {
-            return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
-        }
+        return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
     }
     
 }
