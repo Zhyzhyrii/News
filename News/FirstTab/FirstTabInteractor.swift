@@ -51,7 +51,6 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
                 presenter?.presentNews(response: response)
             }
         }
-        
     }
     
     // MARK: - Get news by refreshing
@@ -117,13 +116,9 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     
     private func getNewsByRefreshing(indexOfTab: Int) -> [New]? {
         worker.updateNewsInDBFor(indexOfTab: indexOfTab)
-        worker.getNewsFromDBOrNetworkFor(indexOfTab: indexOfTab) { [weak self ] (news, getNewsError) in
+        worker.getNewsFromDBOrNetworkFor(indexOfTab: indexOfTab) { [weak self] (news, getNewsError) in
             guard let self = self else { return }
-            guard let news = news else {
-                self.news = nil // if source of news is not selected and timer switcher is turned on - in that case news have not to be displayed for that tab
-                return
-            }
-            self.news = news
+            self.news = news == nil ? nil : news // news == nil - if source of news is not selected and timer switcher is turned on - in that case news have not to be displayed for that tab
         }
         return news
     }
