@@ -12,7 +12,7 @@
 
 import RealmSwift
 
-class FirstTabWorker: Parser {
+class FirstTabWorker {
     
     func saveNewsToDataBase(news: [New]) {
         
@@ -69,12 +69,6 @@ class FirstTabWorker: Parser {
         }
     }
     
-    // MARK: - Parser delegate method
-    
-    func parsingWasFinished() {
-        print("Parsing was finished") //TODO ??
-    }
-    
     // MARK: - Get selected FeedModel
     
     func getSelectedFeedModel(indexOfTab: Int) -> FeedModel? {
@@ -94,7 +88,6 @@ class FirstTabWorker: Parser {
         
         guard let parser = Feed.init(rawValue: feedModel.feedSource)?.parser else { return nil }
         
-        parser.delegate = self
         parser.startParsingWithContentsOfURL()
         
         return parser.entities.map { (new) -> New in

@@ -28,12 +28,11 @@ class FirstTabPresenter: FirstTabPresentationLogic {
     func presentNews(response: FirstTab.GetNewsFromDBOrNetwork.Response) {
         
         if let error = response.error {
+            let viewModel = FirstTab.GetNewsFromDBOrNetwork.ViewModel(news: nil)
             switch error {
             case .noSourceIsSelected:
-                let viewModel = FirstTab.GetNewsFromDBOrNetwork.ViewModel(news: nil)
                 viewController?.displayNews(viewModel: viewModel)
             case .dataWasNotReceivedFromNetwork:
-                let viewModel = FirstTab.GetNewsFromDBOrNetwork.ViewModel(news: nil)
                 viewController?.doNotDisplayNewsDueToNetworkProblem(viewModel: viewModel)
             }
             return

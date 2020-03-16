@@ -12,15 +12,11 @@ extension UIImageView {
     
     func fetchImage(with url: String?) {
         guard let imageUrlString = url else { return } //TODO - add default image
-        guard let imageURL = URL(string: imageUrlString) else {
-            //            image = #imageLiteral(resourceName: T##StringimageUrlString) //TODO - add default image
-            return
-        }
+        guard let imageURL = URL(string: imageUrlString) else { return }
         
         //if image is in cache - use it
         if let cachedImage = self.getCachedImage(url: imageURL) {
             self.image = cachedImage
-            print("From cache")
             return
         }
         //if image is not in cache
@@ -37,7 +33,6 @@ extension UIImageView {
             self.saveImageToCache(data: data, response: response, url: imageURL)
             DispatchQueue.main.async {
                 self.image = image
-                print("Save to cache")
             }
         }.resume()
     }

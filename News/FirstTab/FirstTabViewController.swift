@@ -73,12 +73,17 @@ class FirstTabViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        displayNavigationBar()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         getNewsFromDBOrNetwork(indexOfTab: indexOfTab)
         getNewsByTimer(indexOfTab: indexOfTab)
-        displayNavigationBar()
     }
     
     // MARK: Routing

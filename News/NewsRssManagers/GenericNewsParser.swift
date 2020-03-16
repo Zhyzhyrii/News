@@ -49,10 +49,6 @@ class GenericNewsParser: NSObject, RSSParser {
         }
     }
     
-    func parserDidEndDocument(_ parser: XMLParser) {
-        delegate.parsingWasFinished()
-    }
-    
     func startParsingWithContentsOfURL() {
         guard let url = URL(string: feed.url) else { return }
         guard let parser = XMLParser(contentsOf: url) else { return }
