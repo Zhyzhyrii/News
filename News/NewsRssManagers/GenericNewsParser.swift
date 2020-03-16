@@ -15,8 +15,6 @@ class GenericNewsParser: NSObject, RSSParser {
     var entity: New!
     var entities: [New] = []
     
-    var delegate: Parser!
-    
     var currentElement = ""
     
     // MARK: - XMLParserDelegate delegate methods

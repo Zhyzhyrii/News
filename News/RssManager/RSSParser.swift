@@ -11,7 +11,6 @@ import Foundation
 protocol RSSParser: XMLParserDelegate {
     
     associatedtype T
-    associatedtype DelegateProtocol
     associatedtype FeedSource
     
     var feed: FeedSource! { get }
@@ -19,6 +18,4 @@ protocol RSSParser: XMLParserDelegate {
     var entity: T! { get }
     var entities: [T] { get }
 
-    var delegate: DelegateProtocol! { get }
-    
 }
