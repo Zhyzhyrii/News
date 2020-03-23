@@ -11,7 +11,7 @@ import UIKit
 extension UIImageView {
     
     func fetchImage(with url: String?) {
-        guard let imageUrlString = url else { return } //TODO - add default image
+        guard let imageUrlString = url else { return }
         guard let imageURL = URL(string: imageUrlString) else { return }
         
         //if image is in cache - use it
