@@ -46,4 +46,9 @@ struct Constants {
         static let intervalOfUpdating  = "IntervalOfUpdating"
     }
     
+    struct RealmNewManagerConstants {
+        static let sourceOfNewField = "sourceOfNew"
+        static let pubDateField     = "pubDate"
+    }
+    
 }

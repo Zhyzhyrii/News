@@ -12,10 +12,10 @@ class RealmNewManager {
     
     static func getNewsFromDataBase(feedSource: String) -> [New]? {
         
-        let predicate = NSPredicate(format: "sourceOfNew = %@", feedSource) //TODO sourceOfNew make as constant
+        let predicate = NSPredicate(format: "\(Constants.RealmNewManagerConstants.sourceOfNewField) = %@", feedSource)
         let realm = try! Realm()
         
-        let news = Array(realm.objects(New.self).filter(predicate).sorted(byKeyPath: "pubDate", ascending: false)) //TODO make a constant
+        let news = Array(realm.objects(New.self).filter(predicate).sorted(byKeyPath: Constants.RealmNewManagerConstants.pubDateField, ascending: false))
 
         return news.count > 0 ? news : nil
         

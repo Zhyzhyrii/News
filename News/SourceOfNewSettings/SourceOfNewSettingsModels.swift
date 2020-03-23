@@ -17,10 +17,10 @@ protocol GetNumberOfTab {
 }
 
 protocol GetTabBarItemTitleForViewModel {
-    var titleOfBar: String { get }
+    var tabBarItemTitle: String { get }
 }
 
-protocol GetTabBarItemTitleForResponse { // TODO as above??
+protocol GetTabBarItemTitleForResponse {
     var tabBarItemTitle: String? { get }
 }
 
@@ -74,7 +74,7 @@ enum SourceOfNewSettings {
         
         struct ViewModel: GetTabBarItemTitleForViewModel, GetNumberOfTab {
             let numberOfTab: Int
-            let titleOfBar: String
+            let tabBarItemTitle: String
         }
     }
     
@@ -106,7 +106,7 @@ enum SourceOfNewSettings {
         
         struct ViewModel: GetTabBarItemTitleForViewModel, GetNumberOfTab {
             let numberOfTab: Int
-            let titleOfBar: String
+            let tabBarItemTitle: String
         }
     }
     

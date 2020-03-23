@@ -93,7 +93,7 @@ class SourceOfNewSettingsViewController: UITableViewController, SourceOfNewSetti
     
     func displayTabBarItemTitle(viewModel: GetTabBarItemTitleForViewModel & GetNumberOfTab) {
         let numberOfTab = viewModel.numberOfTab
-        tabBarController?.tabBar.items?[numberOfTab].title = viewModel.titleOfBar
+        tabBarController?.tabBar.items?[numberOfTab].title = viewModel.tabBarItemTitle
     }
     
     // MARK: - Select new`s source

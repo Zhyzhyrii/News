@@ -44,9 +44,9 @@ class SourceOfNewSettingsPresenter: SourceOfNewSettingsPresentationLogic {
         let viewModel: SourceOfNewSettings.SaveFeedSettings.ViewModel
         
         if let feedName = response.tabBarItemTitle {
-            viewModel = SourceOfNewSettings.SaveFeedSettings.ViewModel(numberOfTab: response.numberOfTab, titleOfBar: feedName)
+            viewModel = SourceOfNewSettings.SaveFeedSettings.ViewModel(numberOfTab: response.numberOfTab, tabBarItemTitle: feedName)
         } else {
-            viewModel = SourceOfNewSettings.SaveFeedSettings.ViewModel(numberOfTab: response.numberOfTab, titleOfBar: "No source")
+            viewModel = SourceOfNewSettings.SaveFeedSettings.ViewModel(numberOfTab: response.numberOfTab, tabBarItemTitle: "No source")
         }
         
         viewController?.displayTabBarItemTitle(viewModel: viewModel)
