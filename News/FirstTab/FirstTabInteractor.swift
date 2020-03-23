@@ -104,7 +104,6 @@ class FirstTabInteractor: FirstTabBusinessLogic, FirstTabDataStore {
     
     @objc private func getNewsByTimer(timer: Timer) {
         if let indexOfTab = timer.userInfo as? Int {
-            print(indexOfTab)
             guard let news = getNewsByRefreshing(indexOfTab: indexOfTab) else { return }
             
             let response = FirstTab.GetNewsByTimer.Response(news: news)
